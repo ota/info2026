@@ -314,6 +314,15 @@ test("each sentence shows on its own line, and check paragraphs stack", () => {
       '<div class="check"><b>確認</b><div class="check-body"><p>一つ目の段落です。</p>\n<p>二つ目の段落です。</p>\n</div></div>',
     ),
   );
+  // The break after a bold sentence goes after the end of the bold text.
+  const bold = renderLesson(
+    original.trimEnd() + "\n\n**やることの文です。\n続きです。**\n注意の文です。\n",
+    template,
+    "lesson01.md",
+  ).html;
+  assert.ok(
+    bold.includes("<p><strong>やることの文です。<br>\n続きです。</strong><br>\n注意の文です。</p>"),
+  );
 });
 
 test("a check with a source exercise adds a try input that copies from it", () => {

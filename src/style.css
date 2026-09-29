@@ -681,6 +681,11 @@ h1 {
   margin: 0;
   color: #625d4a;
 }
+/* What to do is bold and dark; notes around it stay in the lighter color. */
+.check strong {
+  font-weight: 700;
+  color: #3a3322;
+}
 .type-table {
   border: 1px solid #dde2e7;
   border-radius: 9px;

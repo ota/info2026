@@ -32,37 +32,39 @@ markdown.renderer.rules.link_open = (
 // text or a closing bracket follows. A source line break after "。" also
 // becomes a visible break. Code spans are separate tokens and stay intact.
 markdown.core.ruler.push("sentence_breaks", (state) => {
+  const lineBreak = () => new state.Token("hardbreak", "br", 0);
   for (const block of state.tokens) {
     if (block.type !== "inline" || !block.children) continue;
     const children = [];
-    const hasContentAfter = (index) =>
-      block.children
-        .slice(index + 1)
-        .some(({ type, content }) => type !== "softbreak" && (type !== "text" || content.trim()));
-    block.children.forEach((token, index) => {
-      if (token.type === "softbreak" && children.at(-1)?.content?.endsWith("。")) {
-        children.push(new state.Token("hardbreak", "br", 0));
-        return;
+    // A sentence ended; the break is placed after any closing tags (such as
+    // the end of bold text) and only if more content follows.
+    let pending = false;
+    for (const token of block.children) {
+      if (pending) {
+        if (token.type.endsWith("_close") || (token.type === "text" && !token.content.trim())) {
+          children.push(token);
+          continue;
+        }
+        children.push(lineBreak());
+        pending = false;
+        if (token.type === "softbreak") continue;
       }
       if (token.type !== "text" || !token.content.includes("。")) {
         children.push(token);
-        return;
+        continue;
       }
-      const parts = token.content.split(/(?<=。)(?![」』）)])/);
-      parts.forEach((part, partIndex) => {
+      const parts = token.content
+        .split(/(?<=。)(?![」』）)])/)
+        .map((part, index) => (index ? part.replace(/^\s+/, "") : part))
+        .filter(Boolean);
+      parts.forEach((part, index) => {
+        if (index) children.push(lineBreak());
         const text = new state.Token("text", "", 0);
-        text.content = partIndex ? part.replace(/^\s+/, "") : part;
-        if (text.content) children.push(text);
-        const last = partIndex === parts.length - 1;
-        if (!last && parts.slice(partIndex + 1).some((rest) => rest.trim()))
-          children.push(new state.Token("hardbreak", "br", 0));
+        text.content = part;
+        children.push(text);
       });
-      // A sentence that ends this token but is followed by code or other
-      // inline content still gets its own line.
-      const next = block.children[index + 1];
-      if (parts.at(-1).endsWith("。") && next && next.type !== "softbreak" && hasContentAfter(index))
-        children.push(new state.Token("hardbreak", "br", 0));
-    });
+      pending = parts.at(-1).endsWith("。");
+    }
     block.children = children;
   }
 });
