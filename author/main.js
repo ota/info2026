@@ -284,7 +284,7 @@ function displayModel(nextModel, nextChanges = new Map()) {
   page.replaceChildren(html.querySelector(".shell"));
   document.title = `教材編集 — ${model.title}`;
   for (const control of page.querySelectorAll(
-    "input, textarea, button.run-btn, button.reset-btn, button.export-btn",
+    "input, textarea, button.run-btn, button.reset-btn, button.copy-btn, button.export-btn",
   ))
     control.disabled = true;
   for (const field of model.fields)

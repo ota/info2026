@@ -97,6 +97,34 @@ try {
   assert.equal(await evaluate("document.querySelectorAll('.reset-btn').length"), 4);
   assert.equal(await evaluate("document.querySelector('[data-exercise=first] .reset-btn')"), null);
   console.log("Fix exercise reset button: OK");
+  // A check's try input copies the student's own code from the exercise above.
+  assert.equal(await evaluate("document.querySelectorAll('.try-exercise .copy-btn').length"), 6);
+  const tryBox = "document.querySelector('[data-exercise=values-try]')";
+  const valuesEditor = "document.querySelector('[data-exercise=values] .editor')";
+  const valuesSample = firstList.find(({ id }) => id === "values");
+  const setValue = (target, value) => evaluate(`(() => {const e=${target};e.value=${JSON.stringify(value)};e.dispatchEvent(new Event('input',{bubbles:true}));})()`);
+  await setValue(valuesEditor, "");
+  await setValue(`${tryBox}.querySelector('.editor')`, "");
+  await evaluate(`${tryBox}.querySelector('.copy-btn').click()`);
+  assert.match(await evaluate(`${tryBox}.querySelector('.status').textContent`), /先に上の入力欄/);
+  assert.equal(await evaluate(`${tryBox}.querySelector('.editor').value`), "");
+  await setValue(valuesEditor, valuesSample.code);
+  await evaluate(`${tryBox}.querySelector('.copy-btn').click()`);
+  assert.equal(await evaluate(`${tryBox}.querySelector('.editor').value`), valuesSample.code);
+  assert.equal(await evaluate("localStorage.getItem('info2026:lesson01-1:values-try')"), valuesSample.code);
+  await setValue(`${tryBox}.querySelector('.editor')`, "書き換え中");
+  await evaluate(`${tryBox}.querySelector('.copy-btn').click()`);
+  assert.equal(await evaluate(`${tryBox}.querySelector('.copy-btn').textContent`), "もう一度押すと上書きします");
+  assert.equal(await evaluate(`${tryBox}.querySelector('.editor').value`), "書き換え中");
+  await evaluate(`${tryBox}.querySelector('.copy-btn').click()`);
+  assert.equal(await evaluate(`${tryBox}.querySelector('.editor').value`), valuesSample.code);
+  assert.equal(await evaluate(`${tryBox}.querySelector('.copy-btn').textContent`), "上のコードをコピー");
+  const exBefore = ex;
+  ex = tryBox;
+  const tryResult = await run(valuesSample.code.replace("1 + 2)", "10 - 4)"));
+  ex = exBefore;
+  assert.equal(tryResult.output, valuesSample.expected.replace("\n3\n", "\n6\n"));
+  console.log("Check try input copy button: OK");
   console.log("First period fix exercises start from broken code and pass after repair: OK");
   for (const [body, expectedOutput] of [
     ['System.out.println("こんにちは、Java！");', "こんにちは、Java！\n"],
@@ -175,6 +203,7 @@ try {
   assert.equal(await evaluate("document.body.dataset.lesson"), "lesson01-2");
   assert.equal(await evaluate("document.querySelectorAll('.lesson-switch a').length"), 2);
   assert.equal(await evaluate("localStorage.getItem('info2026:lesson01-1:first')"), samples[0]);
+  assert.equal(await evaluate("document.querySelectorAll('.try-exercise .copy-btn').length"), 3);
   const secondSource = await readFile(new URL("../../content/lesson01-2.md", import.meta.url), "utf8");
   const secondList = exercises(secondSource);
   const secondSamples = secondList.filter(({ fix }) => !fix).map(({ code }) => code);

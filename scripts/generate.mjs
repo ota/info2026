@@ -134,7 +134,7 @@ function splitSections(body, path, offset = 0) {
   });
 }
 
-function exerciseHtml(argument, body, samples, usedIds, path, context) {
+function exerciseHtml(argument, body, samples, usedIds, path, context, { copyFrom } = {}) {
   // "fix" puts code with deliberate errors into the input for students to repair.
   const [id, filename, mode] = argument.split(/\s+/);
   if (mode && mode !== "fix")
@@ -175,21 +175,23 @@ function exerciseHtml(argument, body, samples, usedIds, path, context) {
     ? "上記のサンプルコードを書き写してください："
     : fix
       ? "まず実行してエラーを確かめ、直してから再実行しましょう："
-      : "";
+      : copyFrom
+        ? "上のコードをコピーしてから書き換え、実行しましょう："
+        : "";
   const sampleHtml = sample
     ? `<div class="sample-head"><span class="file-icon">J</span> ${escapeHtml(filename)}${codeField ? `<button type="button" class="author-code-button" data-author-code="${codeField.key}">見本コードを編集</button>` : '<span class="sample-tag">見ながら入力</span>'}</div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>`
     : fix
       ? `<div class="sample-head fix-head"><span class="file-icon">J</span> ${escapeHtml(filename)}${codeField ? `<button type="button" class="author-code-button" data-author-code="${codeField.key}">直すコードを編集</button>` : '<span class="sample-tag">エラーを直す</span>'}</div>`
       : "";
-  return `<div class="exercise${fix ? " fix-exercise" : ""}" data-exercise="${safeId}">
+  return `<div class="exercise${fix ? " fix-exercise" : ""}${copyFrom ? " try-exercise" : ""}" data-exercise="${safeId}"${copyFrom ? ` data-copy-from="${escapeHtml(copyFrom)}"` : ""}>
     ${sampleHtml}
     <div class="work">
       ${label ? `<label for="editor-${safeId}">${label}</label>` : ""}
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
-        <textarea id="editor-${safeId}" aria-label="${sample ? "サンプルコード" : fix ? "直すコード" : escapeHtml(id.replace(/^task(\d+)$/, "課題$1").replace(/^ext(\d+)$/, "発展課題$1")) + "のコード"}" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="${sample ? "// サンプルコードを見ながら、ここに入力" : "// 自分で考えて入力"}">${escapeHtml(initial)}</textarea>
+        <textarea id="editor-${safeId}" aria-label="${sample ? "サンプルコード" : fix ? "直すコード" : copyFrom ? "確認用のコード" : escapeHtml(id.replace(/^task(\d+)$/, "課題$1").replace(/^ext(\d+)$/, "発展$1")) + "のコード"}" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="${sample ? "// サンプルコードを見ながら、ここに入力" : copyFrom ? "// 「上のコードをコピー」を押してから書き換えます" : "// 自分で考えて入力"}">${escapeHtml(initial)}</textarea>
       </div>
-      <div class="work-footer"><div class="buttons">${fix ? '<button type="button" class="reset-btn">最初のコードに戻す</button>' : ""}<button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="work-footer"><div class="buttons">${fix ? '<button type="button" class="reset-btn">最初のコードに戻す</button>' : ""}${copyFrom ? '<button type="button" class="copy-btn">上のコードをコピー</button>' : ""}<button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
       <div class="stdin-panel" hidden>
@@ -262,8 +264,22 @@ function directiveHtml(name, argument, body, samples, usedIds, path, context) {
   }
   if (name === "exercise")
     return exerciseHtml(argument, body, samples, usedIds, path, context);
-  if (name === "check")
-    return `<div class="check"><b>確認</b><div class="check-body">${rich()}</div></div>`;
+  if (name === "check") {
+    const box = `<div class="check"><b>確認</b><div class="check-body">${rich()}</div></div>`;
+    if (!argument) return box;
+    // ":::check SOURCE" adds an input below the check, where students try the
+    // change on a copy of their own code from exercise SOURCE.
+    if (!usedIds.has(argument))
+      throw new Error(`${path}: 確認のコピー元 ${argument} が見つかりません`);
+    let id = `${argument}-try`;
+    for (let n = 2; usedIds.has(id); n++) id = `${argument}-try${n}`;
+    return (
+      box +
+      exerciseHtml(id, "", samples, usedIds, path, context, {
+        copyFrom: argument,
+      })
+    );
+  }
   if (name === "notice") return `<div class="lesson-notice">${rich()}</div>`;
   if (name === "expected") {
     const value = body.trim().startsWith("```")
@@ -349,14 +365,14 @@ function renderSection(section, samples, usedIds, path, editor) {
   });
   if (section.id === "warmup")
     html = html.replace("<ul>", '<ul class="fact-list">');
-  if (section.id === "challenge") {
+  const tasks = section.id === "challenge" || section.id === "extension";
+  if (tasks) {
     html = html.replace(
-      /<h3>課題(\d+)\s+([^<]+)<\/h3>/g,
-      '<h3 class="task-title">課題$1 <span>$2</span></h3>',
+      /<h3>(課題|発展)(\d+)\s+([^<]+)<\/h3>/g,
+      '<h3 class="task-title">$1$2 <span>$3</span></h3>',
     );
   }
-  const className =
-    section.id === "challenge"
+  const className = tasks
       ? "section challenge-section"
       : section.id === "summary"
         ? "section summary"

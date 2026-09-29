@@ -26,7 +26,7 @@
         >
         <nav class="lesson-switch" aria-label="第1回のコマ移動"><a href="./lesson01-1.html" aria-current="page">1コマ目</a><a href="./lesson01-2.html">2コマ目</a></nav>
         <div class="side-label side-sections">今回の内容</div>
-        <nav class="side-nav" aria-label="今回の内容"><a href="#goals">今回の目標</a><a href="#about-java">Javaとは</a><a href="#first-code">Hello World</a><a href="#values">数値と文字列を表示する</a><a href="#print">printとprintln</a><a href="#variables">変数を使う</a><a href="#errors">エラーを直す</a><a href="#challenge">演習問題</a><a href="#summary">1コマ目のまとめ</a><a href="#save">保存</a></nav>
+        <nav class="side-nav" aria-label="今回の内容"><a href="#goals">今回の目標</a><a href="#about-java">Javaとは</a><a href="#first-code">Hello World</a><a href="#values">数値と文字列を表示する</a><a href="#print">printとprintln</a><a href="#variables">変数を使う</a><a href="#errors">エラーを直す</a><a href="#challenge">演習問題</a><a href="#extension">発展課題（余裕がある人のみ）</a><a href="#summary">1コマ目のまとめ</a><a href="#save">保存</a></nav>
       </aside>
       <main id="top" class="main">
         <header class="topbar">
@@ -46,6 +46,11 @@
 <ul>
 <li>最初の実行は準備に少し時間がかかります。</li>
 <li>終わらないときは「停止する」を押します。</li>
+</ul>
+</li>
+<li>「確認」の下の欄では、「上のコードをコピー」で自分の入力を写してから書き換えます。
+<ul>
+<li>写経した上の欄のコードは、そのまま残ります。</li>
 </ul>
 </li>
 <li>「エラーを直す」の欄には、誤りを含むコードが最初から入っています。
@@ -176,14 +181,54 @@ Shiftと押すと <code>{</code> <code>}</code> になります。</li>
 今は基本の形としてそのまま使います。</li><li>C言語の <code>int main(void)</code> と同じく、<code>main</code> から実行が始まります。</li><li>Cで書いた <code>#include &lt;stdio.h&gt;</code> と <code>return 0;</code> は、Javaでは書きません。</li></ul></li>
 <li class="concept"><p><code>System.out.println(...)</code> は、括弧の中の値を画面に表示して改行します。</p><ul class="concept-details"><li>文字の並びを「文字列」と呼び、半角の二重引用符 <code>&quot;</code> で囲みます。</li><li>命令の最後には半角のセミコロン <code>;</code> を付けます。</li></ul></li>
 <li class="concept"><p><code>{</code> と <code>}</code> は処理のまとまりを囲みます。</p><ul class="concept-details"><li>内側の行の先頭を空けると、まとまりが分かりやすくなります。</li></ul></li></ul>
-<div class="check"><b>確認</b><div class="check-body"><p><code>Hello, World!</code> を <code>こんにちは、Java！</code> に書き換えて実行しましょう。<br>
+<div class="check"><b>確認</b><div class="check-body"><p>下の欄にコピーして、<code>Hello, World!</code> を <code>こんにちは、Java！</code> に書き換えて実行しましょう。<br>
 二重引用符 <code>&quot;</code> は残します。<br>
 日本語を打ち終えたら、日本語入力をオフに戻します。<br>
 戻し忘れると <code>”</code> や <code>；</code> が全角になり、エラーになります。</p>
-</div></div>
-<div class="check"><b>確認</b><div class="check-body"><p>3行目の下に <code>System.out.println(&quot;2行目&quot;);</code> を1行足して実行しましょう。<br>
+</div></div><div class="exercise try-exercise" data-exercise="first-try" data-copy-from="first">
+
+    <div class="work">
+      <label for="editor-first-try">上のコードをコピーしてから書き換え、実行しましょう：</label>
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-first-try" aria-label="確認用のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 「上のコードをコピー」を押してから書き換えます"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="copy-btn">上のコードをコピー</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-first-try">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-first-try" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="check"><b>確認</b><div class="check-body"><p>下の欄にコピーして、3行目の下に <code>System.out.println(&quot;2行目&quot;);</code> を1行足して実行しましょう。<br>
 命令は上から順に実行され、2行表示されます。</p>
-</div></div>
+</div></div><div class="exercise try-exercise" data-exercise="first-try2" data-copy-from="first">
+
+    <div class="work">
+      <label for="editor-first-try2">上のコードをコピーしてから書き換え、実行しましょう：</label>
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-first-try2" aria-label="確認用のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 「上のコードをコピー」を押してから書き換えます"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="copy-btn">上のコードをコピー</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-first-try2">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-first-try2" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <section id="values" class="section"><h2>数値と文字列を表示する</h2><p>表示する値には、数値と文字列があります。<br>
 二重引用符 <code>&quot;</code> の有無で意味が変わります。</p>
@@ -222,8 +267,29 @@ Shiftと押すと <code>{</code> <code>}</code> になります。</li>
 <li class="concept"><p><code>1 + 2</code> は計算され、<code>3</code> が表示されます。</p><ul class="concept-details"><li><code>&quot;1 + 2&quot;</code> は文字列なので、計算されずにそのまま表示されます。</li></ul></li>
 <li class="concept"><p><code>3.5</code> のように小数も表示できます。<br>
 数値は二重引用符で囲みません。</p></li></ul>
-<div class="check"><b>確認</b><div class="check-body"><p><code>1 + 2</code> を <code>10 - 4</code> に変えると何が表示されるか、予想してから実行しましょう。</p>
-</div></div>
+<div class="check"><b>確認</b><div class="check-body"><p>下の欄にコピーして、<code>1 + 2</code> を <code>10 - 4</code> に変えます。<br>
+何が表示されるか、予想してから実行しましょう。</p>
+</div></div><div class="exercise try-exercise" data-exercise="values-try" data-copy-from="values">
+
+    <div class="work">
+      <label for="editor-values-try">上のコードをコピーしてから書き換え、実行しましょう：</label>
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-values-try" aria-label="確認用のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 「上のコードをコピー」を押してから書き換えます"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="copy-btn">上のコードをコピー</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-values-try">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-values-try" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <section id="print" class="section"><h2>printとprintln</h2><p><code>println</code> の <code>ln</code> は「line（行）」の略です。<br>
 <code>print</code> を使うと、表示の後に改行しません。</p>
@@ -257,9 +323,30 @@ ABC
 <ul class="concepts"><li class="concept"><p><code>System.out.print(...)</code> は表示した後に改行しません。</p><ul class="concept-details"><li>次の表示は、同じ行の続きになります。</li></ul></li>
 <li class="concept"><p><code>System.out.println(...)</code> は表示した後に改行します。</p><ul class="concept-details"><li>C言語の <code>printf</code> と違い、<code>\n</code> を書かなくても改行します。</li><li><code>println(&quot;Hello\n&quot;)</code> と書くと、改行が2回になり、空の行が入ります。</li></ul></li>
 <li class="concept"><p>二重引用符の内側には、日本語や絵文字も書けます。</p></li></ul>
-<div class="check"><b>確認</b><div class="check-body"><p><code>System.out.print(&quot;B&quot;);</code> を <code>println</code> に変えると、表示は何行になるでしょうか。</p>
+<div class="check"><b>確認</b><div class="check-body"><p>下の欄にコピーして、<code>System.out.print(&quot;B&quot;);</code> を <code>println</code> に変えます。<br>
+表示は何行になるでしょうか。</p>
 <p>予想してから実行しましょう。</p>
-</div></div>
+</div></div><div class="exercise try-exercise" data-exercise="print-lines-try" data-copy-from="print-lines">
+
+    <div class="work">
+      <label for="editor-print-lines-try">上のコードをコピーしてから書き換え、実行しましょう：</label>
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-print-lines-try" aria-label="確認用のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 「上のコードをコピー」を押してから書き換えます"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="copy-btn">上のコードをコピー</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-print-lines-try">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-print-lines-try" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <section id="variables" class="section"><h2>変数を使う</h2><p>値を入れて、後から使える名前を「変数」と呼びます。<br>
 Javaでは、変数を作るときに型も書きます。<br>
@@ -297,8 +384,28 @@ number
 <li class="concept"><p>変数名には英字、数字、<code>_</code> を使えます。<br>
 ただし、先頭を数字にはできません。</p><ul class="concept-details"><li>大文字と小文字は区別されます。<br>
 <code>Number</code> と <code>number</code> は別の名前です。</li></ul></li></ul>
-<div class="check"><b>確認</b><div class="check-body"><p><code>int number = 99;</code> の <code>99</code> を自分の出席番号に変えて実行しましょう。</p>
-</div></div>
+<div class="check"><b>確認</b><div class="check-body"><p>下の欄にコピーして、<code>int number = 99;</code> の <code>99</code> を自分の出席番号に変えて実行しましょう。</p>
+</div></div><div class="exercise try-exercise" data-exercise="variable-try" data-copy-from="variable">
+
+    <div class="work">
+      <label for="editor-variable-try">上のコードをコピーしてから書き換え、実行しましょう：</label>
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-variable-try" aria-label="確認用のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 「上のコードをコピー」を押してから書き換えます"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="copy-btn">上のコードをコピー</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-variable-try">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-variable-try" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
 <p>整数のほかに、小数と文字列の変数も作れます。<br>
 型によって書く名前が違います。</p>
 <div class="exercise" data-exercise="types">
@@ -385,8 +492,28 @@ Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <c
 <ul class="concepts"><li class="concept"><p><code>print</code> で改行せずに続けて表示し、最後だけ <code>println</code> で改行します。</p></li>
 <li class="concept"><p><code>&quot; 番の &quot;</code> のように、文字列の中の空白もそのまま表示されます。</p></li>
 <li class="concept"><p>C言語では、<code>printf</code> と書式指定子で1行にまとめて書けました。</p><ul class="concept-details"><li>Javaで1行にまとめる方法は、2コマ目で学びます。</li></ul></li></ul>
-<div class="check"><b>確認</b><div class="check-body"><p><code>number</code> と <code>name</code> の値を自分の出席番号・氏名に変えて実行しましょう。</p>
-</div></div>
+<div class="check"><b>確認</b><div class="check-body"><p>下の欄にコピーして、<code>number</code> と <code>name</code> の値を自分の出席番号・氏名に変えて実行しましょう。</p>
+</div></div><div class="exercise try-exercise" data-exercise="self-intro-try" data-copy-from="self-intro">
+
+    <div class="work">
+      <label for="editor-self-intro-try">上のコードをコピーしてから書き換え、実行しましょう：</label>
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-self-intro-try" aria-label="確認用のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 「上のコードをコピー」を押してから書き換えます"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="copy-btn">上のコードをコピー</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-self-intro-try">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-self-intro-try" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <section id="errors" class="section"><h2>エラーを直す</h2><p>誤りがあると、実行結果の欄にエラーが表示されます。</p>
 <div class="expected"><code>Main.java:3:44: ';' expected</code></div>
@@ -618,8 +745,11 @@ Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <c
 空白も二重引用符の内側に書きます。</li>
 </ul>
 </details>
-<p>余裕があれば、課題2に1行加えましょう。<br>
-<code>double</code> の変数 <code>pi</code> に <code>3.14</code> を入れ、次の2行を表示します。</p>
+</section>
+<section id="extension" class="section challenge-section"><h2>発展課題（余裕がある人のみ）</h2><p>演習問題が終わった人だけ取り組みます。</p>
+<h3 class="task-title">発展1 <span>円周率を加えた自己紹介</span></h3>
+<p>課題2に1行加えます。<br>
+<code>double</code> の変数 <code>pi</code> に <code>3.14</code> を入れ、次の2行を表示してください。</p>
 <div class="expected"><pre>出席番号 99 番の 太田健吾 です。
 円周率は 3.14 です。
 </pre>
@@ -629,7 +759,7 @@ Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <c
     <div class="work">
 
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
-        <textarea id="editor-ext1" aria-label="発展課題1のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力"></textarea>
+        <textarea id="editor-ext1" aria-label="発展1のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力"></textarea>
       </div>
       <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
@@ -645,6 +775,11 @@ Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <c
       </div>
     </div>
   </div>
+<details class="hint"><summary>ヒント</summary><ul>
+<li>課題2のプログラムに、<code>double pi = 3.14;</code> と表示の行を加えます。</li>
+<li><code>System.out.print(pi);</code> と書くと、変数の値を文の途中に表示できます。</li>
+</ul>
+</details>
 </section>
 <section id="summary" class="section summary"><h2>1コマ目のまとめ</h2><ul>
 <li><code>main</code> の中に実行する処理を書き、命令の最後に <code>;</code> を付ける。</li>

@@ -51,8 +51,32 @@ let running = false;
 function setAllRunButtonsDisabled(disabled) {
   for (const button of document.querySelectorAll(".run-btn"))
     button.disabled = disabled || !javaRuntimeAvailable;
-  for (const button of document.querySelectorAll(".reset-btn"))
+  for (const button of document.querySelectorAll(".reset-btn, .copy-btn"))
     button.disabled = disabled;
+}
+
+// Buttons that replace the input act on a second press within 4 seconds,
+// so one accidental click does not discard what the student typed.
+function twoPress(button, confirmText, action, needsConfirm = () => true) {
+  const label = button.textContent;
+  let timer;
+  const restore = () => {
+    clearTimeout(timer);
+    timer = undefined;
+    button.textContent = label;
+    button.classList.remove("confirming");
+  };
+  button.addEventListener("click", () => {
+    if (running) return;
+    if (!timer && needsConfirm()) {
+      button.textContent = confirmText;
+      button.classList.add("confirming");
+      timer = setTimeout(restore, 4000);
+      return;
+    }
+    restore();
+    action();
+  });
 }
 
 for (const exercise of document.querySelectorAll(".exercise")) {
@@ -110,39 +134,45 @@ for (const exercise of document.querySelectorAll(".exercise")) {
     }
   });
   stopButton.addEventListener("click", stopJava);
-  // Fix exercises: restore the broken starting code after a second press,
-  // so one accidental click does not discard the student's repairs.
-  const resetButton = exercise.querySelector(".reset-btn");
-  let resetTimer;
-  const resetLabel = resetButton?.textContent;
-  resetButton?.addEventListener("click", () => {
-    if (running) return;
-    if (!resetTimer) {
-      resetButton.textContent = "もう一度押すと戻します";
-      resetButton.classList.add("confirming");
-      resetTimer = setTimeout(() => {
-        resetTimer = undefined;
-        resetButton.textContent = resetLabel;
-        resetButton.classList.remove("confirming");
-      }, 4000);
-      return;
-    }
-    clearTimeout(resetTimer);
-    resetTimer = undefined;
-    resetButton.textContent = resetLabel;
-    resetButton.classList.remove("confirming");
-    editor.value = editor.defaultValue;
+  const replaceCode = (code, message) => {
+    editor.value = code;
     editor.dispatchEvent(new Event("input", { bubbles: true }));
     status.classList.remove("error");
-    status.textContent = "最初のコードに戻しました。";
-  });
+    status.textContent = message;
+  };
+  // Fix exercises: restore the broken starting code.
+  const resetButton = exercise.querySelector(".reset-btn");
+  if (resetButton)
+    twoPress(resetButton, "もう一度押すと戻します", () =>
+      replaceCode(editor.defaultValue, "最初のコードに戻しました。"),
+    );
+  // Inputs under a check: copy the student's own code from the exercise above.
+  const copyButton = exercise.querySelector(".copy-btn");
+  const source = document.querySelector(
+    `[data-exercise="${exercise.dataset.copyFrom}"] .editor`,
+  );
+  if (copyButton)
+    twoPress(
+      copyButton,
+      "もう一度押すと上書きします",
+      () => {
+        if (!source.value.trim()) {
+          status.textContent = "先に上の入力欄にコードを入力してください。";
+          status.classList.add("error");
+          return;
+        }
+        replaceCode(source.value, "上のコードをコピーしました。書き換えて実行しましょう。");
+      },
+      () => editor.value.trim() && source.value.trim() && editor.value !== source.value,
+    );
   const saveNote = document.createElement("div");
   saveNote.className = "save-note";
   saveNote.setAttribute("role", "status");
   saveNote.setAttribute("aria-live", "polite");
   editor.closest(".editor-wrap").insertAdjacentElement("afterend", saveNote);
   const updateGutter = () => {
-    const count = Math.max(8, editor.value.split("\n").length);
+    const minimum = exercise.classList.contains("try-exercise") ? 4 : 8;
+    const count = Math.max(minimum, editor.value.split("\n").length);
     gutter.innerHTML = Array.from(
       { length: count },
       (_, index) => index + 1,

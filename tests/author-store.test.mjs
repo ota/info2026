@@ -315,3 +315,20 @@ test("each sentence shows on its own line, and check paragraphs stack", () => {
     ),
   );
 });
+
+test("a check with a source exercise adds a try input that copies from it", () => {
+  // Appended at the end, so the source exercise is already defined.
+  const withChecks = (source) =>
+    original.trimEnd() +
+    `\n\n:::check ${source}\n書き換えてみましょう。\n:::\n\n:::check ${source}\nもう一度試しましょう。\n:::\n`;
+  const page = renderLesson(withChecks("first"), template, "lesson01.md");
+  assert.ok(page.exerciseIds.includes("first-try"));
+  assert.ok(page.exerciseIds.includes("first-try2"));
+  assert.ok(page.html.includes('data-exercise="first-try" data-copy-from="first"'));
+  assert.ok(page.html.includes('<button type="button" class="copy-btn">上のコードをコピー</button>'));
+  assert.equal(page.samples["first-try"], undefined);
+  assert.throws(
+    () => renderLesson(withChecks("missing"), template, "lesson01.md"),
+    /コピー元 missing が見つかりません/,
+  );
+});

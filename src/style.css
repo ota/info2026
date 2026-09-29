@@ -570,11 +570,12 @@ h1 {
   color: #fff;
   box-shadow: 0 3px 7px #27507f25;
 }
-.reset-btn {
+.reset-btn,
+.copy-btn {
   background: #e7ebf0;
   color: #3d5169;
 }
-.reset-btn.confirming {
+.buttons .confirming {
   background: #f3e1dc;
   color: #9a3b2f;
 }
@@ -652,6 +653,16 @@ h1 {
 }
 .check + p {
   margin-top: 30px;
+}
+.check + .try-exercise {
+  margin-top: 12px;
+}
+.try-exercise {
+  border-left: 3px solid #d5b462;
+}
+.try-exercise .editor-wrap,
+.try-exercise .editor {
+  min-height: 130px;
 }
 .check-body {
   flex: 1;

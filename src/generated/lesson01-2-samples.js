@@ -63,14 +63,6 @@ export const samples = {
     "    }",
     "}"
   ],
-  "parse": [
-    "public class Main {",
-    "    public static void main(String[] args) {",
-    "        System.out.println(\"12\" + 3);",
-    "        System.out.println(Integer.parseInt(\"12\") + 3);",
-    "    }",
-    "}"
-  ],
   "area": [
     "public class Main {",
     "    public static void main(String[] args) {",
@@ -90,6 +82,14 @@ export const samples = {
     "        System.out.println(count);",
     "        count += 10;",
     "        System.out.println(count);",
+    "    }",
+    "}"
+  ],
+  "parse": [
+    "public class Main {",
+    "    public static void main(String[] args) {",
+    "        System.out.println(\"12\" + 3);",
+    "        System.out.println(Integer.parseInt(\"12\") + 3);",
     "    }",
     "}"
   ]
