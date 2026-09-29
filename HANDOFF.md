@@ -254,4 +254,6 @@ Node.js 24で `npm ci`、`npm test`、`npm run build`、`npm run build:pages` �
 - 見本や課題のIDが変わったため、改訂前にこのページで入力した内容の一部は新しい欄に引き継がれない。
 - Node.js 24で `npm test`（13件）、`npm run build`、`npm run build:pages` 成功。
 - Chrome 149の開発版で `tests/browser/teavm-runtime.mjs` 成功。全見本が原稿の出力例と一致し、直す演習は誤りのままでは所定のエラー、修正後は正しい出力になることを確認。ブラウザエラー0件。
-- 公開サイトへのデプロイは未実施。
+- 2026年9月29日、ユーザーの依頼で [デプロイ](https://github.com/ota/info2026/actions/runs/36559129205) を実行し成功（`5bad796`）。
+  - 直前のCodexによるデプロイ（`19c6bb8`）は完了済みで、実行中のものはなかった。今回の内容で上書き。
+  - 公開URLに対し、外部の実行環境を遮断して `tests/browser/teavm-runtime.mjs` 成功。ブラウザエラー0件。
