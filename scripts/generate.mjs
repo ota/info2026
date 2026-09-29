@@ -28,6 +28,45 @@ markdown.renderer.rules.link_open = (
   return defaultLinkOpen(tokens, index, options, environment, self);
 };
 
+// Show each sentence on its own line: break after "。" unless it ends the
+// text or a closing bracket follows. A source line break after "。" also
+// becomes a visible break. Code spans are separate tokens and stay intact.
+markdown.core.ruler.push("sentence_breaks", (state) => {
+  for (const block of state.tokens) {
+    if (block.type !== "inline" || !block.children) continue;
+    const children = [];
+    const hasContentAfter = (index) =>
+      block.children
+        .slice(index + 1)
+        .some(({ type, content }) => type !== "softbreak" && (type !== "text" || content.trim()));
+    block.children.forEach((token, index) => {
+      if (token.type === "softbreak" && children.at(-1)?.content?.endsWith("。")) {
+        children.push(new state.Token("hardbreak", "br", 0));
+        return;
+      }
+      if (token.type !== "text" || !token.content.includes("。")) {
+        children.push(token);
+        return;
+      }
+      const parts = token.content.split(/(?<=。)(?![」』）)])/);
+      parts.forEach((part, partIndex) => {
+        const text = new state.Token("text", "", 0);
+        text.content = partIndex ? part.replace(/^\s+/, "") : part;
+        if (text.content) children.push(text);
+        const last = partIndex === parts.length - 1;
+        if (!last && parts.slice(partIndex + 1).some((rest) => rest.trim()))
+          children.push(new state.Token("hardbreak", "br", 0));
+      });
+      // A sentence that ends this token but is followed by code or other
+      // inline content still gets its own line.
+      const next = block.children[index + 1];
+      if (parts.at(-1).endsWith("。") && next && next.type !== "softbreak" && hasContentAfter(index))
+        children.push(new state.Token("hardbreak", "br", 0));
+    });
+    block.children = children;
+  }
+});
+
 // Wide tables scroll inside their own box instead of widening the page on phones.
 markdown.renderer.rules.table_open = () => '<div class="table-scroll"><table>\n';
 markdown.renderer.rules.table_close = () => "</table></div>\n";
@@ -223,7 +262,8 @@ function directiveHtml(name, argument, body, samples, usedIds, path, context) {
   }
   if (name === "exercise")
     return exerciseHtml(argument, body, samples, usedIds, path, context);
-  if (name === "check") return `<div class="check"><b>確認</b>${rich()}</div>`;
+  if (name === "check")
+    return `<div class="check"><b>確認</b><div class="check-body">${rich()}</div></div>`;
   if (name === "notice") return `<div class="lesson-notice">${rich()}</div>`;
   if (name === "expected") {
     const value = body.trim().startsWith("```")

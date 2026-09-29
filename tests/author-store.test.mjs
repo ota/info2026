@@ -296,3 +296,22 @@ test("fix exercises put editable code with errors into the input, not the sample
   });
   assert.equal(await readFile(file, "utf8"), source.replace(broken, fixed));
 });
+
+test("each sentence shows on its own line, and check paragraphs stack", () => {
+  const at = original.lastIndexOf("\n## ");
+  const source =
+    original.slice(0, at) +
+    "\n文の一つ目です。二つ目は「引用。」を含みます。`a。b` の後の文です。\n最後の文です。\n\n:::check\n一つ目の段落です。\n\n二つ目の段落です。\n:::\n" +
+    original.slice(at);
+  const { html } = renderLesson(source, template, "lesson01.md");
+  assert.ok(
+    html.includes(
+      "<p>文の一つ目です。<br>\n二つ目は「引用。」を含みます。<br>\n<code>a。b</code> の後の文です。<br>\n最後の文です。</p>",
+    ),
+  );
+  assert.ok(
+    html.includes(
+      '<div class="check"><b>確認</b><div class="check-body"><p>一つ目の段落です。</p>\n<p>二つ目の段落です。</p>\n</div></div>',
+    ),
+  );
+});

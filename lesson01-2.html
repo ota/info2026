@@ -51,7 +51,8 @@
 </li>
 <li>最後にこのページの出席番号と氏名を入力し、提出用HTMLを保存します。
 <ul>
-<li>1コマ目とは別のファイルです。保存したファイルをMoodleへ提出します。</li>
+<li>1コマ目とは別のファイルです。<br>
+保存したファイルをMoodleへ提出します。</li>
 </ul>
 </li>
 </ul>
@@ -66,7 +67,7 @@
 </li>
 <li><code>System.out.println(...)</code> は値を表示した後に改行します。</li>
 </ul>
-<p>まずは見本を見ずに、<code>Hello</code> と1行表示するプログラムを書いてみましょう。
+<p>まずは見本を見ずに、<code>Hello</code> と1行表示するプログラムを書いてみましょう。<br>
 思い出せないときは、<a href="./lesson01-1.html#first-code">1コマ目のHello World</a>を見て確かめます。</p>
 <div class="expected"><code>Hello</code></div>
 <div class="exercise" data-exercise="warmup">
@@ -91,7 +92,7 @@
     </div>
   </div>
 </section>
-<section id="arithmetic" class="section"><h2>数値の計算</h2><p><code>+</code>、<code>-</code>、<code>*</code>、<code>/</code> は、足し算・引き算・掛け算・割り算を表す「演算子」です。
+<section id="arithmetic" class="section"><h2>数値の計算</h2><p><code>+</code>、<code>-</code>、<code>*</code>、<code>/</code> は、足し算・引き算・掛け算・割り算を表す「演算子」です。<br>
 掛け算は <code>×</code> ではなく <code>*</code>、割り算は <code>÷</code> ではなく <code>/</code> と書きます。</p>
 <ul>
 <li>記号は次のキーで入力します。
@@ -130,7 +131,8 @@
 </div>
 <ul class="concepts"><li class="concept"><p>変数 <code>a</code> と <code>b</code> の値を使って計算し、その結果を表示します。</p></li>
 <li class="concept"><p>表示は上から順に、足し算・引き算・掛け算の結果です。</p></li></ul>
-<p>次は割り算です。整数同士の割り算には、Pythonと違う点があります。</p>
+<p>次は割り算です。<br>
+整数同士の割り算には、Pythonと違う点があります。</p>
 <div class="exercise" data-exercise="division">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
@@ -157,10 +159,14 @@
 1
 </pre>
 </div>
-<ul class="concepts"><li class="concept"><p><code>int</code> 同士の <code>/</code> は、小数部分を切り捨てた整数になります。<code>7 / 2</code> は <code>3</code> です。</p><ul class="concept-details"><li>前期のPythonでは、<code>7 / 2</code> は <code>3.5</code> でした。Javaの整数同士では <code>3</code> になります。</li><li>C言語でも、<code>int</code> 同士の <code>/</code> は同じく切り捨てになります。</li><li>Pythonで整数の割り算に使った <code>//</code> は、Javaでは使いません。</li></ul></li>
-<li class="concept"><p><code>%</code> は割り算の余りです。<code>7 % 2</code> は <code>1</code> になります。</p><ul class="concept-details"><li>偶数を2で割った余りは <code>0</code>、奇数なら <code>1</code> です。後の「条件分岐」で、偶数・奇数の判定に使います。</li></ul></li></ul>
-<div class="check"><b>確認</b><p><code>a</code> を <code>10</code>、<code>b</code> を <code>3</code> に変え、割り算の答えと余りを確認しましょう。</p>
-</div>
+<ul class="concepts"><li class="concept"><p><code>int</code> 同士の <code>/</code> は、小数部分を切り捨てた整数になります。<br>
+<code>7 / 2</code> は <code>3</code> です。</p><ul class="concept-details"><li>前期のPythonでは、<code>7 / 2</code> は <code>3.5</code> でした。<br>
+Javaの整数同士では <code>3</code> になります。</li><li>C言語でも、<code>int</code> 同士の <code>/</code> は同じく切り捨てになります。</li><li>Pythonで整数の割り算に使った <code>//</code> は、Javaでは使いません。</li></ul></li>
+<li class="concept"><p><code>%</code> は割り算の余りです。<br>
+<code>7 % 2</code> は <code>1</code> になります。</p><ul class="concept-details"><li>偶数を2で割った余りは <code>0</code>、奇数なら <code>1</code> です。<br>
+後の「条件分岐」で、偶数・奇数の判定に使います。</li></ul></li></ul>
+<div class="check"><b>確認</b><div class="check-body"><p><code>a</code> を <code>10</code>、<code>b</code> を <code>3</code> に変え、割り算の答えと余りを確認しましょう。</p>
+</div></div>
 <p>小数を含む割り算では、答えも小数になります。</p>
 <div class="exercise" data-exercise="decimal">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
@@ -192,7 +198,8 @@
 <ul class="concepts"><li class="concept"><p><code>double</code> の変数に <code>7</code> を入れると、小数の <code>7.0</code> として扱われます。</p></li>
 <li class="concept"><p>割る数か割られる数の一方が小数なら、答えも小数になります。</p><ul class="concept-details"><li><code>c / b</code> も <code>7 / 2.0</code> も <code>3.5</code> です。</li></ul></li>
 <li class="concept"><p>小数の答えがほしいときは、<code>double</code> の変数を使うか、<code>2.0</code> のように小数で書きます。</p></li></ul>
-<p>式に演算子が複数あるときは、数学と同じく掛け算・割り算が先です。累乗には <code>Math.pow</code> を使います。</p>
+<p>式に演算子が複数あるときは、数学と同じく掛け算・割り算が先です。<br>
+累乗には <code>Math.pow</code> を使います。</p>
 <div class="exercise" data-exercise="order">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
@@ -221,9 +228,12 @@
 </pre>
 </div>
 <ul class="concepts"><li class="concept"><p><code>2 + 3 * 4</code> は、先に <code>3 * 4</code> を計算します。</p><ul class="concept-details"><li>先に計算したい部分は <code>( )</code> で囲みます。</li></ul></li>
-<li class="concept"><p><code>Math.pow(2, 8)</code> は2の8乗を求めます。結果は小数型なので <code>256.0</code> と表示されます。</p><ul class="concept-details"><li><code>println</code> と同じく、Javaに用意された機能を <code>名前(値)</code> の形で使います。値が複数あるときは <code>,</code> で区切ります。</li><li>仕組みは後の回（メソッド）で学びます。</li><li>前期のPythonで累乗に使った <code>**</code> は、Javaでは使いません。</li></ul></li></ul>
+<li class="concept"><p><code>Math.pow(2, 8)</code> は2の8乗を求めます。<br>
+結果は小数型なので <code>256.0</code> と表示されます。</p><ul class="concept-details"><li><code>println</code> と同じく、Javaに用意された機能を <code>名前(値)</code> の形で使います。<br>
+値が複数あるときは <code>,</code> で区切ります。</li><li>仕組みは後の回（メソッド）で学びます。</li><li>前期のPythonで累乗に使った <code>**</code> は、Javaでは使いません。</li></ul></li></ul>
 </section>
-<section id="strings" class="section"><h2>文字列と数値</h2><p>Javaでも、文字列同士は <code>+</code> でつなげられます。ただし、数値の足し算とは結果が違います。</p>
+<section id="strings" class="section"><h2>文字列と数値</h2><p>Javaでも、文字列同士は <code>+</code> でつなげられます。<br>
+ただし、数値の足し算とは結果が違います。</p>
 <div class="exercise" data-exercise="strings">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
@@ -254,7 +264,8 @@
 </div>
 <ul class="concepts"><li class="concept"><p><code>1 + 2</code> は整数の足し算、<code>&quot;1&quot; + &quot;2&quot;</code> は文字列をつなぐ処理です。</p><ul class="concept-details"><li>C言語では、文字列を <code>+</code> でつなぐことはできません。</li></ul></li>
 <li class="concept"><p><code>&quot;★&quot;.repeat(5)</code> は、文字列を5回繰り返します。</p><ul class="concept-details"><li><code>文字列.repeat(回数)</code> の形で書きます。</li><li>Pythonの文字列で使った <code>*</code> は、Javaの文字列には使えません。</li></ul></li></ul>
-<p>文字列と数値も <code>+</code> でつなげます。Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaではつながります。</p>
+<p>文字列と数値も <code>+</code> でつなげます。<br>
+Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaではつながります。</p>
 <div class="exercise" data-exercise="concat">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
@@ -284,9 +295,10 @@
 </div>
 <ul class="concepts"><li class="concept"><p><code>+</code> の片方が文字列なら、もう片方の数値も文字列としてつながります。</p><ul class="concept-details"><li>1コマ目で <code>print</code> と <code>println</code> を5回使った自己紹介が、<code>println</code> 1回で書けます。</li><li>5行目は、C言語なら <code>printf(&quot;出席番号 %d 番の %s です。\n&quot;, number, name);</code> と書く内容です。</li></ul></li>
 <li class="concept"><p><code>+</code> は左から順に処理されます。</p><ul class="concept-details"><li><code>&quot;合計 &quot; + 1</code> で先に <code>&quot;合計 1&quot;</code> となり、続けて <code>2</code> がつながります。</li><li>足し算を先にしたいときは <code>(1 + 2)</code> のように括弧で囲みます。</li></ul></li></ul>
-<div class="check"><b>確認</b><p><code>number</code> と <code>name</code> を自分の出席番号・氏名に変えて実行しましょう。</p>
-</div>
-<p>余裕があれば、次の見本も試しましょう。数字だけの文字列を、計算に使える整数に変えられます。</p>
+<div class="check"><b>確認</b><div class="check-body"><p><code>number</code> と <code>name</code> を自分の出席番号・氏名に変えて実行しましょう。</p>
+</div></div>
+<p>余裕があれば、次の見本も試しましょう。<br>
+数字だけの文字列を、計算に使える整数に変えられます。</p>
 <div class="exercise" data-exercise="parse">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
@@ -316,7 +328,8 @@
 <ul class="concepts"><li class="concept"><p><code>&quot;12&quot; + 3</code> は文字列の連結なので、<code>123</code> になります。</p></li>
 <li class="concept"><p><code>Integer.parseInt(&quot;12&quot;)</code> は、数字の文字列 <code>&quot;12&quot;</code> を整数 <code>12</code> に変えます。</p><ul class="concept-details"><li>Pythonの <code>int(&quot;12&quot;)</code> にあたります。</li><li>数字以外の文字列は、整数に変えられません。</li></ul></li></ul>
 </section>
-<section id="variables" class="section"><h2>代入と面積</h2><p>変数へ値を入れる <code>=</code> を「代入」と呼びます。<code>=</code> の右側には計算を書くこともできます。</p>
+<section id="variables" class="section"><h2>代入と面積</h2><p>変数へ値を入れる <code>=</code> を「代入」と呼びます。<br>
+<code>=</code> の右側には計算を書くこともできます。</p>
 <div class="exercise" data-exercise="area">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
@@ -341,8 +354,8 @@
   </div>
 <div class="expected"><code>面積は 50</code></div>
 <ul class="concepts"><li class="concept"><p><code>int area = base * height;</code> は、先に右側の <code>base * height</code> を計算します。</p><ul class="concept-details"><li>その結果 <code>50</code> を、変数 <code>area</code> に入れます。</li></ul></li></ul>
-<div class="check"><b>確認</b><p><code>base</code> と <code>height</code> の値を変えて実行し、面積が変わることを確かめましょう。</p>
-</div>
+<div class="check"><b>確認</b><div class="check-body"><p><code>base</code> と <code>height</code> の値を変えて実行し、面積が変わることを確かめましょう。</p>
+</div></div>
 <p>代入を繰り返すと、変数の中の値が変わります。</p>
 <div class="exercise" data-exercise="count">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
@@ -373,7 +386,8 @@
 </div>
 <ul class="concepts"><li class="concept"><p><code>count = count + 1</code> は、今の <code>count</code> に1を足した結果を、もう一度 <code>count</code> に入れます。</p><ul class="concept-details"><li>数学の「左右が等しい」という意味ではありません。</li></ul></li>
 <li class="concept"><p><code>count += 10</code> は <code>count = count + 10</code> を短く書いたものです。</p><ul class="concept-details"><li><code>=</code> と <code>+=</code> の書き方は、C言語でも同じです。</li></ul></li>
-<li class="concept"><p>変数を作るときは <code>int</code> を付けます。すでにある変数に入れ直すときは付けません。</p></li></ul>
+<li class="concept"><p>変数を作るときは <code>int</code> を付けます。<br>
+すでにある変数に入れ直すときは付けません。</p></li></ul>
 </section>
 <section id="errors" class="section"><h2>エラーを直す</h2><p>1コマ目と同じく、まず実行してエラーを確かめ、直してから再実行しましょう。</p>
 <div class="exercise fix-exercise" data-exercise="fix-redefine">
@@ -456,7 +470,7 @@
       </div>
     </div>
   </div>
-<p>次のコードはエラーなく動きますが、三角形の面積が <code>7.5</code> ではなく <code>7</code> になります。
+<p>次のコードはエラーなく動きますが、三角形の面積が <code>7.5</code> ではなく <code>7</code> になります。<br>
 正しく <code>7.5</code> と表示されるように直しましょう。</p>
 <div class="exercise fix-exercise" data-exercise="fix-divide">
     <div class="sample-head fix-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">エラーを直す</span></div>
@@ -486,15 +500,19 @@
     </div>
   </div>
 <details class="hint"><summary>ヒント</summary><ul>
-<li>1つ目：<code>variable count is already defined</code> は「<code>count</code> はもう作られている」。4行目の <code>int</code> を消します。</li>
-<li>2つ目：<code>cannot find symbol</code> は「その名前が見つからない」。<code>aera</code> を <code>area</code> に直します。
+<li>1つ目：<code>variable count is already defined</code> は「<code>count</code> はもう作られている」。<br>
+4行目の <code>int</code> を消します。</li>
+<li>2つ目：<code>cannot find symbol</code> は「その名前が見つからない」。<br>
+<code>aera</code> を <code>area</code> に直します。
 <ul>
 <li>次の行の <code>symbol: variable aera</code> に、見つからない名前が表示されます。</li>
 </ul>
 </li>
-<li>3つ目：<code>bad operand types for binary operator '*'</code> は「<code>*</code> を使えない型」。<code>&quot;★&quot;.repeat(5)</code> にします。
+<li>3つ目：<code>bad operand types for binary operator '*'</code> は「<code>*</code> を使えない型」。<br>
+<code>&quot;★&quot;.repeat(5)</code> にします。
 <ul>
-<li>下の2行に、使おうとした値の型が表示されます。<code>java.lang.String</code> は <code>String</code> のことです。</li>
+<li>下の2行に、使おうとした値の型が表示されます。<br>
+<code>java.lang.String</code> は <code>String</code> のことです。</li>
 </ul>
 </li>
 <li>4つ目：<code>int</code> 同士の割り算で、小数部分が切り捨てられています。
@@ -531,8 +549,9 @@
     </div>
   </div>
 <h3 class="task-title">課題2 <span>台形の面積</span></h3>
-<p>上底を <code>upper</code> に <code>3</code>、下底を <code>lower</code> に <code>4</code>、高さを <code>height</code> に <code>5</code> として、台形の面積を求めてください。
-台形の面積は「(上底 + 下底) × 高さ ÷ 2」です。答えは小数を含めて表示します。</p>
+<p>上底を <code>upper</code> に <code>3</code>、下底を <code>lower</code> に <code>4</code>、高さを <code>height</code> に <code>5</code> として、台形の面積を求めてください。<br>
+台形の面積は「(上底 + 下底) × 高さ ÷ 2」です。<br>
+答えは小数を含めて表示します。</p>
 <div class="expected"><code>17.5</code></div>
 <div class="exercise" data-exercise="task2">
 
@@ -556,7 +575,7 @@
     </div>
   </div>
 <h3 class="task-title">課題3 <span>円の面積</span></h3>
-<p>半径 <code>3</code> を変数 <code>r</code> に入れ、円の面積を計算してください。
+<p>半径 <code>3</code> を変数 <code>r</code> に入れ、円の面積を計算してください。<br>
 円周率には Java の <code>Math.PI</code> を使います。</p>
 <div class="expected"><code>28.274333882308138</code></div>
 <div class="exercise" data-exercise="task3">
@@ -587,10 +606,12 @@
 <li>足し算を先にするため、<code>(upper + lower)</code> を括弧で囲みます。</li>
 </ul>
 </li>
-<li>課題3：円の面積は「半径 × 半径 × 円周率」です。<code>Math.PI * r * r</code> と書けます。
+<li>課題3：円の面積は「半径 × 半径 × 円周率」です。<br>
+<code>Math.PI * r * r</code> と書けます。
 <ul>
 <li>小数の桁が長く表示されますが、正しい結果です。</li>
-<li><code>3.14</code> を使うと <code>28.259999999999998</code> になります。小数の計算には、このような小さな誤差が出ることがあります。</li>
+<li><code>3.14</code> を使うと <code>28.259999999999998</code> になります。<br>
+小数の計算には、このような小さな誤差が出ることがあります。</li>
 </ul>
 </li>
 </ul>
@@ -634,7 +655,8 @@
 <section id="summary" class="section summary"><h2>2コマ目のまとめ</h2><ul>
 <li><code>int</code> 同士の <code>/</code> は整数の商、<code>%</code> は余りを求める。</li>
 <li><code>double</code> を使うと小数を含む計算ができる。</li>
-<li>掛け算・割り算が先に計算される。先にしたい部分は <code>( )</code> で囲む。</li>
+<li>掛け算・割り算が先に計算される。<br>
+先にしたい部分は <code>( )</code> で囲む。</li>
 <li><code>+</code> は数値なら足し算、文字列があれば連結になる。</li>
 <li><code>=</code> は代入、<code>+=</code> は今の値に足してから代入する。</li>
 </ul>

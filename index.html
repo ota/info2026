@@ -82,7 +82,7 @@
 </ul>
 </li>
 </ul>
-<p>前期のPythonや、別の授業で学んでいるC言語と比べると、書き方に次の違いがあります。</p>
+<p>前期のPythonや、「計算機基礎演習」で学んでいるC言語と比べると、書き方に次の違いがあります。</p>
 <div class="table-scroll"><table>
 <thead>
 <tr>
@@ -125,8 +125,9 @@
 <li><code>;</code> と <code>{ }</code> を使うこと、変数を作るときにデータの種類（型）も書くことは、Cと同じです。</li>
 </ul>
 </li>
-<li>Javaの字下げは、読みやすくするためのものです。字下げを変えても動作は変わりません。
+<li>JavaとC言語の字下げ（インデント）は、読みやすくするためのものです。
 <ul>
+<li>字下げを変えても動作は変わりません。</li>
 <li>それでも、まとまりが分かるように字下げをそろえて書きます。</li>
 </ul>
 </li>
@@ -137,7 +138,8 @@
 <li>日本語入力をオフにし、記号は半角で入力します。
 <ul>
 <li><code>(</code> <code>)</code> はShiftと <code>8</code> <code>9</code>、<code>&quot;</code> はShiftと <code>2</code> です。</li>
-<li><code>[</code> <code>]</code> は <code>@</code> の右隣・<code>:</code> の右隣のキーです。Shiftと押すと <code>{</code> <code>}</code> になります。</li>
+<li><code>[</code> <code>]</code> は <code>@</code> の右隣・<code>:</code> の右隣のキーです。<br>
+Shiftと押すと <code>{</code> <code>}</code> になります。</li>
 <li><code>;</code> は <code>L</code> の右隣のキーです。</li>
 </ul>
 </li>
@@ -165,20 +167,26 @@
     </div>
   </div>
 <div class="expected"><code>Hello, World!</code></div>
-<ul class="concepts"><li class="concept"><p>3行目以外は、毎回同じ「基本の形」です。今日の見本はすべてこの形を使います。</p><ul class="concept-details"><li>1〜2行目と最後の2行はそのまま書き、3行目の位置に処理を書きます。</li><li>処理が増えたら、3行目の位置に行を増やして書きます。</li></ul></li>
-<li class="concept"><p><code>public class Main { ... }</code> はプログラムを入れる外側のまとまりです。</p><ul class="concept-details"><li>このまとまりを「クラス」と呼びます。名前は <code>Main</code>、ファイル名は <code>Main.java</code> にします。</li><li>この教材の入力欄は <code>Main.java</code> として実行されます。<code>Main</code> の部分は変えません。</li></ul></li>
-<li class="concept"><p><code>public static void main(String[] args) { ... }</code> の中に、最初に実行する処理を書きます。</p><ul class="concept-details"><li>意味は後の回で学びます。今は基本の形としてそのまま使います。</li><li>C言語の <code>int main(void)</code> と同じく、<code>main</code> から実行が始まります。</li><li>Cで書いた <code>#include &lt;stdio.h&gt;</code> と <code>return 0;</code> は、Javaでは書きません。</li></ul></li>
+<ul class="concepts"><li class="concept"><p>3行目以外は、毎回同じ「基本の形」です。<br>
+今日の見本はすべてこの形を使います。</p><ul class="concept-details"><li>1〜2行目と最後の2行はそのまま書き、3行目の位置に処理を書きます。</li><li>処理が増えたら、3行目の位置に行を増やして書きます。</li></ul></li>
+<li class="concept"><p><code>public class Main { ... }</code> はプログラムを入れる外側のまとまりです。</p><ul class="concept-details"><li>このまとまりを「クラス」と呼びます。<br>
+名前は <code>Main</code>、ファイル名は <code>Main.java</code> にします。</li><li>この教材の入力欄は <code>Main.java</code> として実行されます。<br>
+<code>Main</code> の部分は変えません。</li></ul></li>
+<li class="concept"><p><code>public static void main(String[] args) { ... }</code> の中に、最初に実行する処理を書きます。</p><ul class="concept-details"><li>意味は後の回で学びます。<br>
+今は基本の形としてそのまま使います。</li><li>C言語の <code>int main(void)</code> と同じく、<code>main</code> から実行が始まります。</li><li>Cで書いた <code>#include &lt;stdio.h&gt;</code> と <code>return 0;</code> は、Javaでは書きません。</li></ul></li>
 <li class="concept"><p><code>System.out.println(...)</code> は、括弧の中の値を画面に表示して改行します。</p><ul class="concept-details"><li>文字の並びを「文字列」と呼び、半角の二重引用符 <code>&quot;</code> で囲みます。</li><li>命令の最後には半角のセミコロン <code>;</code> を付けます。</li></ul></li>
 <li class="concept"><p><code>{</code> と <code>}</code> は処理のまとまりを囲みます。</p><ul class="concept-details"><li>内側の行の先頭を空けると、まとまりが分かりやすくなります。</li></ul></li></ul>
-<div class="check"><b>確認</b><p><code>Hello, World!</code> を <code>こんにちは、Java！</code> に書き換えて実行しましょう。
-二重引用符 <code>&quot;</code> は残します。
-日本語を打ち終えたら、日本語入力をオフに戻します。戻し忘れると <code>”</code> や <code>；</code> が全角になり、エラーになります。</p>
-</div>
-<div class="check"><b>確認</b><p>3行目の下に <code>System.out.println(&quot;2行目&quot;);</code> を1行足して実行しましょう。
+<div class="check"><b>確認</b><div class="check-body"><p><code>Hello, World!</code> を <code>こんにちは、Java！</code> に書き換えて実行しましょう。<br>
+二重引用符 <code>&quot;</code> は残します。<br>
+日本語を打ち終えたら、日本語入力をオフに戻します。<br>
+戻し忘れると <code>”</code> や <code>；</code> が全角になり、エラーになります。</p>
+</div></div>
+<div class="check"><b>確認</b><div class="check-body"><p>3行目の下に <code>System.out.println(&quot;2行目&quot;);</code> を1行足して実行しましょう。<br>
 命令は上から順に実行され、2行表示されます。</p>
-</div>
+</div></div>
 </section>
-<section id="values" class="section"><h2>数値と文字列を表示する</h2><p>表示する値には、数値と文字列があります。二重引用符 <code>&quot;</code> の有無で意味が変わります。</p>
+<section id="values" class="section"><h2>数値と文字列を表示する</h2><p>表示する値には、数値と文字列があります。<br>
+二重引用符 <code>&quot;</code> の有無で意味が変わります。</p>
 <div class="exercise" data-exercise="values">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
@@ -208,13 +216,17 @@
 3.5
 </pre>
 </div>
-<ul class="concepts"><li class="concept"><p><code>7</code> は数値、<code>&quot;7&quot;</code> は文字列です。表示は同じでも、データの種類が違います。</p><ul class="concept-details"><li>データの種類を「型」と呼びます。型の書き方は、この後の「変数を使う」で学びます。</li></ul></li>
+<ul class="concepts"><li class="concept"><p><code>7</code> は数値、<code>&quot;7&quot;</code> は文字列です。<br>
+表示は同じでも、データの種類が違います。</p><ul class="concept-details"><li>データの種類を「型」と呼びます。<br>
+型の書き方は、この後の「変数を使う」で学びます。</li></ul></li>
 <li class="concept"><p><code>1 + 2</code> は計算され、<code>3</code> が表示されます。</p><ul class="concept-details"><li><code>&quot;1 + 2&quot;</code> は文字列なので、計算されずにそのまま表示されます。</li></ul></li>
-<li class="concept"><p><code>3.5</code> のように小数も表示できます。数値は二重引用符で囲みません。</p></li></ul>
-<div class="check"><b>確認</b><p><code>1 + 2</code> を <code>10 - 4</code> に変えると何が表示されるか、予想してから実行しましょう。</p>
-</div>
+<li class="concept"><p><code>3.5</code> のように小数も表示できます。<br>
+数値は二重引用符で囲みません。</p></li></ul>
+<div class="check"><b>確認</b><div class="check-body"><p><code>1 + 2</code> を <code>10 - 4</code> に変えると何が表示されるか、予想してから実行しましょう。</p>
+</div></div>
 </section>
-<section id="print" class="section"><h2>printとprintln</h2><p><code>println</code> の <code>ln</code> は「line（行）」の略です。<code>print</code> を使うと、表示の後に改行しません。</p>
+<section id="print" class="section"><h2>printとprintln</h2><p><code>println</code> の <code>ln</code> は「line（行）」の略です。<br>
+<code>print</code> を使うと、表示の後に改行しません。</p>
 <div class="exercise" data-exercise="print-lines">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
@@ -245,11 +257,12 @@ ABC
 <ul class="concepts"><li class="concept"><p><code>System.out.print(...)</code> は表示した後に改行しません。</p><ul class="concept-details"><li>次の表示は、同じ行の続きになります。</li></ul></li>
 <li class="concept"><p><code>System.out.println(...)</code> は表示した後に改行します。</p><ul class="concept-details"><li>C言語の <code>printf</code> と違い、<code>\n</code> を書かなくても改行します。</li><li><code>println(&quot;Hello\n&quot;)</code> と書くと、改行が2回になり、空の行が入ります。</li></ul></li>
 <li class="concept"><p>二重引用符の内側には、日本語や絵文字も書けます。</p></li></ul>
-<div class="check"><b>確認</b><p><code>System.out.print(&quot;B&quot;);</code> を <code>println</code> に変えると、表示は何行になるでしょうか。
-予想してから実行しましょう。</p>
-</div>
+<div class="check"><b>確認</b><div class="check-body"><p><code>System.out.print(&quot;B&quot;);</code> を <code>println</code> に変えると、表示は何行になるでしょうか。</p>
+<p>予想してから実行しましょう。</p>
+</div></div>
 </section>
-<section id="variables" class="section"><h2>変数を使う</h2><p>値を入れて、後から使える名前を「変数」と呼びます。Javaでは、変数を作るときに型も書きます。
+<section id="variables" class="section"><h2>変数を使う</h2><p>値を入れて、後から使える名前を「変数」と呼びます。<br>
+Javaでは、変数を作るときに型も書きます。<br>
 <code>=</code> は、Shiftと <code>-</code> のキーで入力します。</p>
 <div class="exercise" data-exercise="variable">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
@@ -277,12 +290,17 @@ ABC
 number
 </pre>
 </div>
-<ul class="concepts"><li class="concept"><p><code>int number = 99;</code> は、整数型の変数 <code>number</code> を作り、<code>99</code> を入れます。</p><ul class="concept-details"><li><code>型 名前 = 値;</code> の順に書きます。<code>int</code> は整数の型です。</li></ul></li>
-<li class="concept"><p><code>System.out.println(number)</code> は、変数の中の値 <code>99</code> を表示します。</p><ul class="concept-details"><li>C言語の <code>%d</code> のような書式指定子は要りません。変数をそのまま括弧に入れます。</li><li><code>&quot;number&quot;</code> と書くと文字列になり、<code>number</code> という文字がそのまま表示されます。</li></ul></li>
-<li class="concept"><p>変数名には英字、数字、<code>_</code> を使えます。ただし、先頭を数字にはできません。</p><ul class="concept-details"><li>大文字と小文字は区別されます。<code>Number</code> と <code>number</code> は別の名前です。</li></ul></li></ul>
-<div class="check"><b>確認</b><p><code>int number = 99;</code> の <code>99</code> を自分の出席番号に変えて実行しましょう。</p>
-</div>
-<p>整数のほかに、小数と文字列の変数も作れます。型によって書く名前が違います。</p>
+<ul class="concepts"><li class="concept"><p><code>int number = 99;</code> は、整数型の変数 <code>number</code> を作り、<code>99</code> を入れます。</p><ul class="concept-details"><li><code>型 名前 = 値;</code> の順に書きます。<br>
+<code>int</code> は整数の型です。</li></ul></li>
+<li class="concept"><p><code>System.out.println(number)</code> は、変数の中の値 <code>99</code> を表示します。</p><ul class="concept-details"><li>C言語の <code>%d</code> のような書式指定子は要りません。<br>
+変数をそのまま括弧に入れます。</li><li><code>&quot;number&quot;</code> と書くと文字列になり、<code>number</code> という文字がそのまま表示されます。</li></ul></li>
+<li class="concept"><p>変数名には英字、数字、<code>_</code> を使えます。<br>
+ただし、先頭を数字にはできません。</p><ul class="concept-details"><li>大文字と小文字は区別されます。<br>
+<code>Number</code> と <code>number</code> は別の名前です。</li></ul></li></ul>
+<div class="check"><b>確認</b><div class="check-body"><p><code>int number = 99;</code> の <code>99</code> を自分の出席番号に変えて実行しましょう。</p>
+</div></div>
+<p>整数のほかに、小数と文字列の変数も作れます。<br>
+型によって書く名前が違います。</p>
 <div class="exercise" data-exercise="types">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
@@ -336,8 +354,10 @@ number
 </tr>
 </tbody>
 </table></div>
-<ul class="concepts"><li class="concept"><p><code>double pi = 3.14;</code> は、小数型の変数 <code>pi</code> に <code>3.14</code> を入れます。</p><ul class="concept-details"><li>C言語の授業では <code>float pi = 3.14;</code> と書きました。Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <code>float pi = 3.14;</code> と書くと、コンパイルエラーになります。</li></ul></li>
-<li class="concept"><p><code>String name = &quot;太田健吾&quot;;</code> は、文字列型の変数 <code>name</code> に氏名を入れます。</p><ul class="concept-details"><li><code>String</code> だけ先頭が大文字です。<code>int</code> と <code>double</code> は小文字です。</li><li>Cの <code>char name[]</code> にあたります。</li></ul></li></ul>
+<ul class="concepts"><li class="concept"><p><code>double pi = 3.14;</code> は、小数型の変数 <code>pi</code> に <code>3.14</code> を入れます。</p><ul class="concept-details"><li>C言語の授業では <code>float pi = 3.14;</code> と書きました。<br>
+Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <code>float pi = 3.14;</code> と書くと、コンパイルエラーになります。</li></ul></li>
+<li class="concept"><p><code>String name = &quot;太田健吾&quot;;</code> は、文字列型の変数 <code>name</code> に氏名を入れます。</p><ul class="concept-details"><li><code>String</code> だけ先頭が大文字です。<br>
+<code>int</code> と <code>double</code> は小文字です。</li><li>Cの <code>char name[]</code> にあたります。</li></ul></li></ul>
 <p><code>print</code> と <code>println</code> を組み合わせると、変数の値を文の途中に入れられます。</p>
 <div class="exercise" data-exercise="self-intro">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
@@ -365,21 +385,24 @@ number
 <ul class="concepts"><li class="concept"><p><code>print</code> で改行せずに続けて表示し、最後だけ <code>println</code> で改行します。</p></li>
 <li class="concept"><p><code>&quot; 番の &quot;</code> のように、文字列の中の空白もそのまま表示されます。</p></li>
 <li class="concept"><p>C言語では、<code>printf</code> と書式指定子で1行にまとめて書けました。</p><ul class="concept-details"><li>Javaで1行にまとめる方法は、2コマ目で学びます。</li></ul></li></ul>
-<div class="check"><b>確認</b><p><code>number</code> と <code>name</code> の値を自分の出席番号・氏名に変えて実行しましょう。</p>
-</div>
+<div class="check"><b>確認</b><div class="check-body"><p><code>number</code> と <code>name</code> の値を自分の出席番号・氏名に変えて実行しましょう。</p>
+</div></div>
 </section>
 <section id="errors" class="section"><h2>エラーを直す</h2><p>誤りがあると、実行結果の欄にエラーが表示されます。</p>
 <div class="expected"><code>Main.java:3:44: ';' expected</code></div>
 <ul>
 <li><code>Main.java:3:44</code> は「<code>Main.java</code> の3行目、左から44文字目あたり」という意味です。
 <ul>
-<li>その後ろにエラーの内容が英語で表示されます。上の例は「<code>;</code> が必要」です。</li>
+<li>その後ろにエラーの内容が英語で表示されます。<br>
+上の例は「<code>;</code> が必要」です。</li>
 </ul>
 </li>
-<li>誤りのある場所は、表示された行の少し前のこともあります。前後の行も見ます。</li>
+<li>誤りのある場所は、表示された行の少し前のこともあります。<br>
+前後の行も見ます。</li>
 <li>エラーが複数表示されたら、最初のエラーから直して再実行します。</li>
 </ul>
-<p>次のコードには、それぞれ誤りが一つあります。まず実行してエラーを確かめ、直してから再実行しましょう。</p>
+<p>次のコードには、それぞれ誤りが一つあります。<br>
+まず実行してエラーを確かめ、直してから再実行しましょう。</p>
 <div class="exercise fix-exercise" data-exercise="fix-semicolon">
     <div class="sample-head fix-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">エラーを直す</span></div>
     <div class="work">
@@ -455,7 +478,8 @@ number
       </div>
     </div>
   </div>
-<p>次の誤りは見た目では分かりにくいものです。エラーは2つ表示されますが、原因は一つです。</p>
+<p>次の誤りは見た目では分かりにくいものです。<br>
+エラーは2つ表示されますが、原因は一つです。</p>
 <div class="exercise fix-exercise" data-exercise="fix-space">
     <div class="sample-head fix-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">エラーを直す</span></div>
     <div class="work">
@@ -483,10 +507,14 @@ number
     </div>
   </div>
 <details class="hint"><summary>ヒント</summary><ul>
-<li>1つ目：<code>';' expected</code> は「<code>;</code> が必要」。3行目の行末に <code>;</code> を付けます。</li>
-<li>2つ目：<code>package system does not exist</code> は「<code>system</code> が見つからない」。<code>System</code> と大文字にします。</li>
-<li>3つ目：<code>unclosed string literal</code> は「文字列が閉じていない」。<code>!</code> の後に <code>&quot;</code> を足します。</li>
-<li>4つ目：<code>illegal character: '\u3000'</code> は「使えない文字がある」。<code>\u3000</code> は全角の空白を表す番号です。
+<li>1つ目：<code>';' expected</code> は「<code>;</code> が必要」。<br>
+3行目の行末に <code>;</code> を付けます。</li>
+<li>2つ目：<code>package system does not exist</code> は「<code>system</code> が見つからない」。<br>
+<code>System</code> と大文字にします。</li>
+<li>3つ目：<code>unclosed string literal</code> は「文字列が閉じていない」。<br>
+<code>!</code> の後に <code>&quot;</code> を足します。</li>
+<li>4つ目：<code>illegal character: '\u3000'</code> は「使えない文字がある」。<br>
+<code>\u3000</code> は全角の空白を表す番号です。
 <ul>
 <li><code>String</code> と <code>name</code> の間を消し、半角の空白を打ち直します。</li>
 </ul>
@@ -498,7 +526,8 @@ number
 <ul>
 <li><code>;</code>、二重引用符 <code>&quot;</code>、括弧 <code>()</code>・<code>{}</code> の抜けはないか。</li>
 <li><code>System</code> と <code>String</code> の先頭は大文字か。</li>
-<li>記号や空白を全角で打っていないか。文字列の中の日本語や全角記号は使えます。</li>
+<li>記号や空白を全角で打っていないか。<br>
+文字列の中の日本語や全角記号は使えます。</li>
 </ul>
 </li>
 <li>直した後は、エラーが消えるだけでなく、表示結果も確認します。</li>
@@ -529,7 +558,7 @@ number
     </div>
   </div>
 <h3 class="task-title">課題2 <span>変数で自己紹介</span></h3>
-<p>出席番号を <code>number</code>、氏名を <code>name</code> という変数に入れ、次の形で表示してください。
+<p>出席番号を <code>number</code>、氏名を <code>name</code> という変数に入れ、次の形で表示してください。<br>
 数字や名前は自分のものに変えます。</p>
 <div class="expected"><code>出席番号 99 番の 太田健吾 です。</code></div>
 <div class="exercise" data-exercise="task2">
@@ -554,7 +583,8 @@ number
     </div>
   </div>
 <h3 class="task-title">課題3 <span>山形模様</span></h3>
-<p>半角の空白と <code>*</code> を使い、次の3行を表示してください。<code>*</code> はShiftと <code>:</code> のキーです。</p>
+<p>半角の空白と <code>*</code> を使い、次の3行を表示してください。<br>
+<code>*</code> はShiftと <code>:</code> のキーです。</p>
 <div class="expected"><pre>  *
  ***
 *****
@@ -584,10 +614,11 @@ number
 <details class="hint"><summary>ヒント</summary><ul>
 <li>課題1：最初の見本の二重引用符の内側を変えます。</li>
 <li>課題2：<code>int</code> と <code>String</code> の変数を一つずつ作り、<code>print</code> と <code>println</code> で表示します。</li>
-<li>課題3：<code>println</code> を3回使います。空白も二重引用符の内側に書きます。</li>
+<li>課題3：<code>println</code> を3回使います。<br>
+空白も二重引用符の内側に書きます。</li>
 </ul>
 </details>
-<p>余裕があれば、課題2に1行加えましょう。
+<p>余裕があれば、課題2に1行加えましょう。<br>
 <code>double</code> の変数 <code>pi</code> に <code>3.14</code> を入れ、次の2行を表示します。</p>
 <div class="expected"><pre>出席番号 99 番の 太田健吾 です。
 円周率は 3.14 です。
