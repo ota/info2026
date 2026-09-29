@@ -346,3 +346,4 @@ Node.js 24で `npm ci`、`npm test`、`npm run build`、`npm run build:pages` �
   - 達成した欄は実行後に「✅ 合格：…」、未達成なら理由（見本と違う、出力例と違う、コピーしたまま等）を表示。
   - 提出HTMLの保存情報に達成状況の枠と「達成率（この端末での目安）」の行、各欄の「✅ 合格」を含める。
 - テスト：`npm test` 21件（比較処理の `tests/progress.test.mjs` を追加）、ブラウザテストに比較・合格・達成状況・提出HTMLの確認を追加。ブラウザテストは最初にlocalStorageを消すようにした（前回の記録の影響を受けないため）。
+- 2026年9月30日、[デプロイ](https://github.com/ota/info2026/actions/runs/36643118437) 成功（`07b0c73`）。公開URLで外部の実行環境を遮断して `tests/browser/teavm-runtime.mjs` 成功（見本との比較・合格・達成状況・提出HTMLを含む）。ブラウザエラー0件。
