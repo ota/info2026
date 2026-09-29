@@ -92,13 +92,18 @@ function splitSections(body, path, offset = 0) {
 }
 
 function exerciseHtml(argument, body, samples, usedIds, path, context) {
-  const [id, filename] = argument.split(/\s+/);
+  // "fix" puts code with deliberate errors into the input for students to repair.
+  const [id, filename, mode] = argument.split(/\s+/);
+  if (mode && mode !== "fix")
+    throw new Error(`${path}: ${id} の指定が不正です: ${mode}`);
+  const fix = mode === "fix";
   if (!/^[a-z][a-z0-9-]*$/.test(id || ""))
     throw new Error(`${path}: 演習IDが不正です: ${id}`);
   if (usedIds.has(id))
     throw new Error(`${path}: 演習ID ${id} が重複しています`);
   usedIds.add(id);
   let sample = "";
+  let initial = "";
   let codeField;
   if (body.trim()) {
     const code = body.trim().match(/^```java\n([\s\S]*?)\n```$/);
@@ -106,29 +111,40 @@ function exerciseHtml(argument, body, samples, usedIds, path, context) {
       throw new Error(
         `${path}: ${id} の見本はJavaコードフェンスとファイル名が必要です`,
       );
-    sample = code[1];
-    samples[id] = sample.split("\n");
+    if (fix) initial = code[1];
+    else {
+      sample = code[1];
+      samples[id] = sample.split("\n");
+    }
     codeField = context.editor?.add(
       "code",
-      sample,
+      code[1],
       context.start + body.length - body.trimStart().length + 8,
-      { exercise: id, filename },
+      { exercise: id, filename, ...(fix && { fix: true }) },
     );
+  } else if (fix) {
+    throw new Error(`${path}: ${id} の直すコードがありません`);
   } else if (filename) {
     throw new Error(`${path}: ${id} の見本コードがありません`);
   }
   const safeId = escapeHtml(id);
-  const label = sample ? "上記のサンプルコードを書き写してください：" : "";
+  const label = sample
+    ? "上記のサンプルコードを書き写してください："
+    : fix
+      ? "まず実行してエラーを確かめ、直してから再実行しましょう："
+      : "";
   const sampleHtml = sample
     ? `<div class="sample-head"><span class="file-icon">J</span> ${escapeHtml(filename)}${codeField ? `<button type="button" class="author-code-button" data-author-code="${codeField.key}">見本コードを編集</button>` : '<span class="sample-tag">見ながら入力</span>'}</div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>`
-    : "";
-  return `<div class="exercise" data-exercise="${safeId}">
+    : fix
+      ? `<div class="sample-head fix-head"><span class="file-icon">J</span> ${escapeHtml(filename)}${codeField ? `<button type="button" class="author-code-button" data-author-code="${codeField.key}">直すコードを編集</button>` : '<span class="sample-tag">エラーを直す</span>'}</div>`
+      : "";
+  return `<div class="exercise${fix ? " fix-exercise" : ""}" data-exercise="${safeId}">
     ${sampleHtml}
     <div class="work">
       ${label ? `<label for="editor-${safeId}">${label}</label>` : ""}
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
-        <textarea id="editor-${safeId}" aria-label="${label ? "サンプルコード" : escapeHtml(id.replace(/^task(\d+)$/, "課題$1")) + "のコード"}" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="${sample ? "// サンプルコードを見ながら、ここに入力" : "// 自分で考えて入力"}"></textarea>
+        <textarea id="editor-${safeId}" aria-label="${sample ? "サンプルコード" : fix ? "直すコード" : escapeHtml(id.replace(/^task(\d+)$/, "課題$1").replace(/^ext(\d+)$/, "発展課題$1")) + "のコード"}" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="${sample ? "// サンプルコードを見ながら、ここに入力" : "// 自分で考えて入力"}">${escapeHtml(initial)}</textarea>
       </div>
       <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>

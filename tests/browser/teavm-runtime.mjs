@@ -16,6 +16,34 @@ async function finished() {
     status:e.querySelector('.status').textContent,exit:e.querySelector('.exit-code').textContent};})()`);
 }
 async function run(code) { await start(code); return finished(); }
+// Samples are compared with the expected block written right after them.
+// Fix exercises must fail as written and pass after the listed repair.
+function exercises(source) {
+  const list = [];
+  for (const m of source.matchAll(/^:::exercise ([a-z0-9-]+) Main\.java( fix)?\n```java\n([\s\S]*?)\n```\n:::\n(?:\n[^:\n][^\n]*\n)*\n?(?::::expected\n([\s\S]*?)\n:::)?/gm)) {
+    const expected = m[4]?.replace(/^```\n|\n```$/g, "");
+    list.push({ id: m[1], fix: !!m[2], code: m[3], expected: expected === undefined ? undefined : expected + "\n" });
+  }
+  return list;
+}
+async function checkFixes(list, repairs) {
+  const fixes = list.filter(({ fix }) => fix);
+  assert.deepEqual(fixes.map(({ id }) => id).sort(), Object.keys(repairs).sort());
+  for (const { id, code } of fixes) {
+    const box = `document.querySelector('[data-exercise=${id}]')`;
+    assert.equal(await evaluate(`${box}.querySelector('.editor').value`), code);
+    const [from, to, output, message] = repairs[id];
+    const broken = await run(code);
+    if (message) {
+      assert.match(broken.exit, /コンパイルエラー/);
+      assert.match(broken.output, message);
+    } else assert.notEqual(broken.output, output);
+    assert.ok(code.includes(from));
+    const fixedResult = await run(code.replace(from, to));
+    assert.equal(fixedResult.output, output, id);
+    assert.equal(fixedResult.exit, "終了コード: 0");
+  }
+}
 try {
   if (process.env.BLOCK_EXTERNAL_RUNTIME) {
     await send("Network.enable");
@@ -32,13 +60,26 @@ try {
   assert.equal(await evaluate(`${ex}.querySelector('.editor').value`), "旧ページの入力");
   assert.equal(await evaluate("localStorage.getItem('info2026:lesson01-1:first')"), "旧ページの入力");
   const source = await readFile(new URL("../../content/lesson01-1.md", import.meta.url), "utf8");
-  const samples = [...source.matchAll(/```java\n([\s\S]*?)\n```/g)].map(match => match[1]);
-  const expected = ["Hello, World!\n", "7\n3.5\nこんにちは、Java！\n🐈\n", "出席番号 12 番の 山田花子 です。\n"];
+  const firstList = exercises(source);
+  const samples = firstList.filter(({ fix }) => !fix).map(({ code }) => code);
+  const expected = firstList.filter(({ fix }) => !fix).map(({ expected }) => expected);
+  assert.equal(samples.length, 6);
   for (let i = 0; i < samples.length; i++) {
+    assert.ok(expected[i], `expected output for sample ${i}`);
     const result = await run(samples[i]);
     assert.equal(result.output, expected[i]);
     assert.equal(result.exit, "終了コード: 0");
   }
+  await checkFixes(firstList, {
+    "fix-semicolon": ['World!")', 'World!");', "Hello, World!\n", /Main\.java:3:\d+: ';' expected/],
+    "fix-case": ["system.", "System.", "Hello, World!\n", /package system does not exist/],
+    "fix-space": ["String\u3000name", "String name", "山田花子\n", /illegal character: '\\u3000'/],
+    "fix-quote": ['World!);', 'World!");', "Hello, World!\n", /unclosed string literal/],
+  });
+  await send("Page.reload");
+  await until(`!!${ex}?.querySelector('.save-note')`);
+  assert.equal(await evaluate("document.querySelector('[data-exercise=fix-case] .editor').value.includes('system.')"), true);
+  console.log("First period fix exercises start from broken code and pass after repair: OK");
   for (const [body, expectedOutput] of [
     ['System.out.println("こんにちは、Java！");', "こんにちは、Java！\n"],
     ['System.out.println("出席番号 12 番の 山田花子 です。");System.out.println("好きなことは読書です。");', "出席番号 12 番の 山田花子 です。\n好きなことは読書です。\n"],
@@ -46,6 +87,7 @@ try {
     ['System.out.print("改行なし😀");', "改行なし😀"],
     ['System.out.print("前");System.err.print("中");System.out.println("後");', "前中後\n"],
     ['System.out.println("1");System.out.println("2");System.out.println("3");', "1\n2\n3\n"],
+    ['int number=12;String name="山田花子";double height=158.5;System.out.print("出席番号 ");System.out.print(number);System.out.print(" 番の ");System.out.print(name);System.out.println(" です。");System.out.print("身長は ");System.out.print(height);System.out.println(" cm です。");', "出席番号 12 番の 山田花子 です。\n身長は 158.5 cm です。\n"],
   ]) {
     const result = await run(main(body));
     assert.equal(result.output, expectedOutput);
@@ -116,16 +158,21 @@ try {
   assert.equal(await evaluate("document.querySelectorAll('.lesson-switch a').length"), 2);
   assert.equal(await evaluate("localStorage.getItem('info2026:lesson01-1:first')"), samples[0]);
   const secondSource = await readFile(new URL("../../content/lesson01-2.md", import.meta.url), "utf8");
-  const secondSamples = [...secondSource.matchAll(/```java\n([\s\S]*?)\n```/g)].map(match => match[1]);
-  const secondExpected = ["9\n5\n14\n3\n1\n3.5\n256.0\n", "Java入門\n3\n12\n★★★★★\n15\n", "50\n2\n"];
+  const secondList = exercises(secondSource);
+  const secondSamples = secondList.filter(({ fix }) => !fix).map(({ code }) => code);
+  const secondExpected = secondList.filter(({ fix }) => !fix).map(({ expected }) => expected);
+  assert.equal(secondSamples.length, 8);
   for (let i = 0; i < secondSamples.length; i++) {
+    assert.ok(secondExpected[i], `expected output for sample ${i}`);
     const sampleResult = await run(secondSamples[i]);
     assert.equal(sampleResult.output, secondExpected[i]);
     assert.equal(sampleResult.exit, "終了コード: 0");
   }
   for (const [body, output] of [
+    ['System.out.println("Hello");', "Hello\n"],
     ['String word="星";System.out.println(word.repeat(10));', "星星星星星星星星星星\n"],
-    ['double base=3;double height=5;System.out.println(base*height/2);', "7.5\n"],
+    ['double upper=3;double lower=4;double height=5;System.out.println((upper+lower)*height/2);', "17.5\n"],
+    ['double r=3;System.out.println(3.14*r*r);', "28.259999999999998\n"],
     ['double r=3;System.out.println(Math.PI*r*r);', "28.274333882308138\n"],
     ['int s=10000;System.out.println(s/3600+"時間"+(s%3600)/60+"分"+s%60+"秒");', "2時間46分40秒\n"],
   ]) {
@@ -133,6 +180,12 @@ try {
     assert.equal(taskResult.output, output);
     assert.equal(taskResult.exit, "終了コード: 0");
   }
+  await checkFixes(secondList, {
+    "fix-redefine": ["int count = count", "count = count", "2\n", /variable count is already defined/],
+    "fix-name": ["println(aera)", "println(area)", "50\n", /cannot find symbol/],
+    "fix-repeat": ['"★" * 5', '"★".repeat(5)', "★★★★★\n", /bad operand types/],
+    "fix-divide": ["int base = 3;\n        int height = 5;", "double base = 3;\n        double height = 5;", "7.5\n"],
+  });
   assert.ok(await evaluate("localStorage.getItem('info2026:lesson01-2:arithmetic')"));
   await evaluate("document.querySelector('#attendance-number').value='12';document.querySelector('#student-name').value='確認用';document.querySelector('.export-btn').click()");
   await until("document.querySelector('#export-status').textContent.includes('ダウンロードを開始')");

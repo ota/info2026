@@ -19,25 +19,33 @@ footer: 後期 第1回・2コマ目 / Javaプログラミング入門
 - [1コマ目](./lesson01-1.html)の `Main` と `main` の形を使います。
 - 見本を入力して「実行する」を押し、表示結果と比べます。
   - 入力欄への貼り付けはできません。
+- 「エラーを直す」の欄には、誤りを含むコードが最初から入っています。
+  - 実行してエラーを確かめ、直してから再実行します。
 - 最後にこのページの出席番号と氏名を入力し、提出用HTMLを保存します。
-  - 1コマ目とは別のファイルです。提出先は授業中の指示に従ってください。
+  - 1コマ目とは別のファイルです。保存したファイルをMoodleへ提出します。
 :::
 
 ## 1コマ目のおさらい {#review}
 
-- 文字列は `"..."` で囲み、整数は囲みません。
+- 文字列は `"..."` で囲み、数値は囲みません。
 - `int number = 12;` は、整数型の変数 `number` に `12` を入れます。
+  - 小数は `double`、文字列は `String` の変数に入れます。
 - `System.out.println(...)` は値を表示した後に改行します。
 
-:::check
-1コマ目の課題2で、出席番号や氏名を変数から表示できたか確認しましょう。
-うまく動かなかった場合は、[1コマ目のページ](./lesson01-1.html)で直してから進みます。
+まずは見本を見ずに、`Hello` と1行表示するプログラムを書いてみましょう。
+思い出せないときは、[1コマ目のHello World](./lesson01-1.html#first-code)を見て確かめます。
+
+:::expected
+Hello
+:::
+
+:::exercise warmup
 :::
 
 ## 数値の計算 {#arithmetic}
 
 `+`、`-`、`*`、`/` は、足し算・引き算・掛け算・割り算を表す「演算子」です。
-`%` は割り算の余りを求めます。
+掛け算は `×` ではなく `*`、割り算は `÷` ではなく `/` と書きます。
 
 :::exercise arithmetic Main.java
 ```java
@@ -48,10 +56,6 @@ public class Main {
         System.out.println(a + b);
         System.out.println(a - b);
         System.out.println(a * b);
-        System.out.println(a / b);
-        System.out.println(a % b);
-        System.out.println(7.0 / 2);
-        System.out.println(Math.pow(2, 8));
     }
 }
 ```
@@ -62,24 +66,78 @@ public class Main {
 9
 5
 14
+```
+:::
+
+:::concepts
+- 変数 `a` と `b` の値を使って計算し、その結果を表示します。
+- 表示は上から順に、足し算・引き算・掛け算の結果です。
+:::
+
+次は割り算です。整数同士の割り算には、Pythonと違う点があります。
+
+:::exercise division Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+        int a = 7;
+        int b = 2;
+        System.out.println(a / b);
+        System.out.println(a % b);
+        System.out.println(7.0 / 2);
+    }
+}
+```
+:::
+
+:::expected
+```
 3
 1
 3.5
-256.0
 ```
 :::
 
 :::concepts
 - `int` 同士の `/` は、小数部分を切り捨てた整数になります。`7 / 2` は `3` です。
   - 前期のPythonで整数の割り算に使った `//` は、Javaでは使いません。
+- `%` は割り算の余りです。`7 % 2` は `1` になります。
+  - 偶数を2で割った余りは `0`、奇数なら `1` です。偶数・奇数の判定に使えます。
 - `7.0` は小数型 `double` の値です。`7.0 / 2` は `3.5` になります。
-- `%` は余りです。`7 % 2` は `1` になります。
-- `Math.pow(2, 8)` は2の8乗を求めます。結果は小数型なので `256.0` と表示されます。
-  - 前期のPythonで累乗に使った `**` は、Javaでは使いません。
+  - 割る数か割られる数の一方が小数なら、答えも小数になります。
 :::
 
 :::check
 `a` を `10`、`b` を `3` に変え、割り算の答えと余りを確認しましょう。
+:::
+
+式に演算子が複数あるときは、数学と同じく掛け算・割り算が先です。
+
+:::exercise order Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(2 + 3 * 4);
+        System.out.println((2 + 3) * 4);
+        System.out.println(Math.pow(2, 8));
+    }
+}
+```
+:::
+
+:::expected
+```
+14
+20
+256.0
+```
+:::
+
+:::concepts
+- `2 + 3 * 4` は、先に `3 * 4` を計算します。
+  - 先に計算したい部分は `( )` で囲みます。
+- `Math.pow(2, 8)` は2の8乗を求めます。結果は小数型なので `256.0` と表示されます。
+  - 前期のPythonで累乗に使った `**` は、Javaでは使いません。
 :::
 
 ## 文字列と数値 {#strings}
@@ -95,8 +153,6 @@ public class Main {
         System.out.println(1 + 2);
         System.out.println("1" + "2");
         System.out.println("★".repeat(5));
-        int number = Integer.parseInt("12");
-        System.out.println(number + 3);
     }
 }
 ```
@@ -108,7 +164,6 @@ Java入門
 3
 12
 ★★★★★
-15
 ```
 :::
 
@@ -116,12 +171,69 @@ Java入門
 - `1 + 2` は整数の足し算、`"1" + "2"` は文字列をつなぐ処理です。
 - `"★".repeat(5)` は、文字列を5回繰り返します。
   - Pythonの文字列で使った `*` は、Javaの文字列には使えません。
-- `Integer.parseInt("12")` は、数字の文字列 `"12"` を整数に変えます。
-  - 数字以外の文字列は、整数に変えられません。
+:::
+
+文字列と数値も `+` でつなげます。Pythonでは `"a" + 1` はエラーでしたが、Javaではつながります。
+
+:::exercise concat Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+        int number = 12;
+        String name = "山田花子";
+        System.out.println("出席番号 " + number + " 番の " + name + " です。");
+        System.out.println("合計 " + 1 + 2);
+        System.out.println("合計 " + (1 + 2));
+    }
+}
+```
+:::
+
+:::expected
+```
+出席番号 12 番の 山田花子 です。
+合計 12
+合計 3
+```
+:::
+
+:::concepts
+- `+` の片方が文字列なら、もう片方の数値も文字列としてつながります。
+  - 1コマ目の `print` 5回分の自己紹介が、`println` 1回で書けます。
+- `+` は左から順に処理されます。
+  - `"合計 " + 1` で先に `"合計 1"` となり、続けて `2` がつながります。
+  - 足し算を先にしたいときは `(1 + 2)` のように括弧で囲みます。
 :::
 
 :::check
-`"12"` を `"7"` に変えると、最後の行は何と表示されるでしょうか。
+`number` と `name` を自分の出席番号・氏名に変えて実行しましょう。
+:::
+
+数字だけの文字列を、計算に使える整数に変えることもできます。
+
+:::exercise parse Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("12" + 3);
+        System.out.println(Integer.parseInt("12") + 3);
+    }
+}
+```
+:::
+
+:::expected
+```
+123
+15
+```
+:::
+
+:::concepts
+- `"12" + 3` は文字列の連結なので、`123` になります。
+- `Integer.parseInt("12")` は、数字の文字列 `"12"` を整数 `12` に変えます。
+  - Pythonの `int("12")` にあたります。
+  - 数字以外の文字列は、整数に変えられません。
 :::
 
 ## 代入と面積 {#variables}
@@ -135,9 +247,36 @@ public class Main {
         int base = 5;
         int height = 10;
         int area = base * height;
-        System.out.println(area);
+        System.out.println("面積は " + area);
+    }
+}
+```
+:::
+
+:::expected
+面積は 50
+:::
+
+:::concepts
+- `int area = base * height;` は、先に右側の `base * height` を計算します。
+  - その結果 `50` を、変数 `area` に入れます。
+:::
+
+:::check
+`base` と `height` の値を変えて実行し、面積が変わることを確かめましょう。
+:::
+
+代入を繰り返すと、変数の中の値が変わります。
+
+:::exercise count Main.java
+```java
+public class Main {
+    public static void main(String[] args) {
         int count = 1;
+        System.out.println(count);
         count = count + 1;
+        System.out.println(count);
+        count += 10;
         System.out.println(count);
     }
 }
@@ -146,21 +285,79 @@ public class Main {
 
 :::expected
 ```
-50
+1
 2
+12
 ```
 :::
 
 :::concepts
-- `area = base * height` は、底辺と高さの積を `area` に入れます。
 - `count = count + 1` は、今の `count` に1を足した結果を、もう一度 `count` に入れます。
   - 数学の「左右が等しい」という意味ではありません。
-  - `count += 1` と短く書くこともできます。
+- `count += 10` は `count = count + 10` を短く書いたものです。
 - 変数を作るときは `int` を付けます。すでにある変数に入れ直すときは付けません。
 :::
 
-:::check
-`count = count + 1;` を `count += 1;` に書き換え、結果が同じことを確かめましょう。
+## エラーを直す {#errors}
+
+1コマ目と同じく、まず実行してエラーを確かめ、直してから再実行しましょう。
+
+:::exercise fix-redefine Main.java fix
+```java
+public class Main {
+    public static void main(String[] args) {
+        int count = 1;
+        int count = count + 1;
+        System.out.println(count);
+    }
+}
+```
+:::
+
+:::exercise fix-name Main.java fix
+```java
+public class Main {
+    public static void main(String[] args) {
+        int base = 5;
+        int height = 10;
+        int area = base * height;
+        System.out.println(aera);
+    }
+}
+```
+:::
+
+:::exercise fix-repeat Main.java fix
+```java
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("★" * 5);
+    }
+}
+```
+:::
+
+次のコードはエラーなく動きますが、三角形の面積が `7.5` ではなく `7` になります。
+正しく `7.5` と表示されるように直しましょう。
+
+:::exercise fix-divide Main.java fix
+```java
+public class Main {
+    public static void main(String[] args) {
+        int base = 3;
+        int height = 5;
+        System.out.println(base * height / 2);
+    }
+}
+```
+:::
+
+:::hint
+- 1つ目：`variable count is already defined` は「`count` はもう作られている」。4行目の `int` を消します。
+- 2つ目：`cannot find symbol` は「その名前が見つからない」。`aera` を `area` に直します。
+- 3つ目：`bad operand types for binary operator '*'` は「`*` を使えない型」。`"★".repeat(5)` にします。
+- 4つ目：`int` 同士の割り算で、小数部分が切り捨てられています。
+  - `base` と `height` の型を `double` に変えます。
 :::
 
 ## 演習問題 {#challenge}
@@ -174,13 +371,13 @@ public class Main {
 :::exercise task1
 :::
 
-### 課題2　三角形の面積
+### 課題2　台形の面積
 
-底辺を `base` に `3`、高さを `height` に `5` として、三角形の面積を求めてください。
-答えは小数を含めて表示します。
+上底を `upper` に `3`、下底を `lower` に `4`、高さを `height` に `5` として、台形の面積を求めてください。
+台形の面積は「(上底 + 下底) × 高さ ÷ 2」です。答えは小数を含めて表示します。
 
 :::expected
-7.5
+17.5
 :::
 
 :::exercise task2
@@ -191,22 +388,43 @@ public class Main {
 半径 `3` を変数 `r` に入れ、円の面積を計算してください。
 円周率には Java の `Math.PI` を使います。
 
+:::expected
+28.274333882308138
+:::
+
 :::exercise task3
 :::
 
 :::hint
 - 課題1：`System.out.println(word.repeat(10));` と書けます。
-- 課題2：`double base = 3;`、`double height = 5;` とし、`base * height / 2` を使います。
+- 課題2：`double upper = 3;` のように3つの変数を作ります。
+  - 足し算を先にするため、`(upper + lower)` を括弧で囲みます。
 - 課題3：円の面積は「半径 × 半径 × 円周率」です。`Math.PI * r * r` と書けます。
+  - 小数の桁が長く表示されますが、正しい結果です。
+  - `3.14` を使うと `28.259999999999998` になります。小数の計算には、このような小さな誤差が出ることがあります。
 :::
 
-余裕があれば、`10,000` 秒が何時間何分何秒かを、整数の `/` と `%` で計算してみましょう。
+余裕があれば、`10000` 秒が何時間何分何秒かを、整数の `/` と `%` で計算してみましょう。
+
+:::expected
+2時間46分40秒
+:::
+
+:::exercise ext1
+:::
+
+:::hint
+- 1時間は `3600` 秒、1分は `60` 秒です。
+- `10000 / 3600` で時間、`10000 % 3600` で残りの秒数が求まります。
+- 残りの秒数を、さらに `/ 60` と `% 60` で分と秒に分けます。
+:::
 
 ## 2コマ目のまとめ {#summary}
 
 - `int` 同士の `/` は整数の商、`%` は余りを求める。
 - `double` を使うと小数を含む計算ができる。
-- `+` は数値なら足し算、文字列なら連結になる。
+- 掛け算・割り算が先に計算される。先にしたい部分は `( )` で囲む。
+- `+` は数値なら足し算、文字列があれば連結になる。
 - `=` は代入、`+=` は今の値に足してから代入する。
 
 次回は「演算子と変数」をさらに練習し、計算や代入を使いこなします。

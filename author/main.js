@@ -215,6 +215,12 @@ function mountField(field) {
 
 function drawSamples() {
   for (const field of model.fields.filter(({ kind }) => kind === "code")) {
+    if (field.fix) {
+      page.querySelector(
+        `[data-exercise="${field.exercise}"] .editor`,
+      ).value = changes.get(field.key) ?? field.value;
+      continue;
+    }
     const canvas = page.querySelector(
       `[data-exercise="${field.exercise}"] .sample-canvas`,
     );

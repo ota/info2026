@@ -26,7 +26,7 @@
         >
         <nav class="lesson-switch" aria-label="第1回のコマ移動"><a href="./lesson01-1.html" aria-current="page">1コマ目</a><a href="./lesson01-2.html">2コマ目</a></nav>
         <div class="side-label side-sections">今回の内容</div>
-        <nav class="side-nav" aria-label="今回の内容"><a href="#goals">今回の目標</a><a href="#about-java">Javaとは</a><a href="#first-code">Hello World</a><a href="#values">数値と文字列を表示する</a><a href="#variables">変数を使う</a><a href="#errors">エラーを確かめる</a><a href="#challenge">演習問題</a><a href="#summary">1コマ目のまとめ</a><a href="#save">保存</a></nav>
+        <nav class="side-nav" aria-label="今回の内容"><a href="#goals">今回の目標</a><a href="#about-java">Javaとは</a><a href="#first-code">Hello World</a><a href="#values">数値と文字列を表示する</a><a href="#print">printとprintln</a><a href="#variables">変数を使う</a><a href="#errors">エラーを直す</a><a href="#challenge">演習問題</a><a href="#summary">1コマ目のまとめ</a><a href="#save">保存</a></nav>
       </aside>
       <main id="top" class="main">
         <header class="topbar">
@@ -46,6 +46,11 @@
 <ul>
 <li>最初の実行は準備に少し時間がかかります。</li>
 <li>終わらないときは「停止する」を押します。</li>
+</ul>
+</li>
+<li>「エラーを直す」の欄には、誤りを含むコードが最初から入っています。
+<ul>
+<li>実行してエラーを確かめ、直してから再実行します。</li>
 </ul>
 </li>
 <li>コードは使っているブラウザに自動保存されます。
@@ -75,8 +80,56 @@
 </ul>
 </li>
 </ul>
+<p>Pythonと比べると、書き方に次の違いがあります。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Python</th>
+<th>Java</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>表示</td>
+<td><code>print(&quot;Hello&quot;)</code></td>
+<td><code>System.out.println(&quot;Hello&quot;);</code></td>
+</tr>
+<tr>
+<td>命令の終わり</td>
+<td>行の終わり</td>
+<td><code>;</code> を付ける</td>
+</tr>
+<tr>
+<td>処理のまとまり</td>
+<td>行頭の字下げ</td>
+<td><code>{</code> と <code>}</code> で囲む</td>
+</tr>
+<tr>
+<td>変数を作る</td>
+<td><code>n = 12</code></td>
+<td><code>int n = 12;</code> のように型を書く</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Javaの字下げは、読みやすくするためのものです。字下げを変えても動作は変わりません。
+<ul>
+<li>それでも、まとまりが分かるように字下げをそろえて書きます。</li>
+</ul>
+</li>
+</ul>
 </section>
 <section id="first-code" class="section"><h2>Hello World</h2><p>まずは次のプログラムを、記号と大文字・小文字に注意して書き写しましょう。</p>
+<ul>
+<li>日本語入力をオフにし、記号は半角で入力します。
+<ul>
+<li><code>(</code> <code>)</code> はShiftと <code>8</code> <code>9</code>、<code>&quot;</code> はShiftと <code>2</code> です。</li>
+<li><code>{</code> <code>}</code> はShiftと、<code>@</code> の右隣・<code>:</code> の右隣のキーです。</li>
+<li><code>;</code> は <code>L</code> の右隣のキーです。</li>
+</ul>
+</li>
+</ul>
 <div class="exercise" data-exercise="first">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
@@ -100,15 +153,55 @@
     </div>
   </div>
 <div class="expected"><code>Hello, World!</code></div>
-<ul class="concepts"><li class="concept"><p><code>public class Main { ... }</code> はプログラムを入れる外側のまとまりです。</p><ul class="concept-details"><li>このまとまりを「クラス」と呼びます。名前は <code>Main</code>、ファイル名は <code>Main.java</code> にします。</li></ul></li>
-<li class="concept"><p><code>public static void main(String[] args) { ... }</code> の中に、最初に実行する処理を書きます。</p><ul class="concept-details"><li>この行は、今回は基本の形としてそのまま使います。</li></ul></li>
-<li class="concept"><p><code>System.out.println(...)</code> は、括弧の中の値を表示して改行します。</p><ul class="concept-details"><li>文字の並びを「文字列」と呼び、半角の二重引用符 <code>&quot;</code> で囲みます。</li><li>命令の最後には半角のセミコロン <code>;</code> を付けます。</li></ul></li>
+<ul class="concepts"><li class="concept"><p>3行目以外は、毎回同じ「基本の形」です。今日の見本はすべてこの形を使います。</p><ul class="concept-details"><li>1〜2行目と最後の2行はそのまま書き、3行目の位置に処理を書きます。</li></ul></li>
+<li class="concept"><p><code>public class Main { ... }</code> はプログラムを入れる外側のまとまりです。</p><ul class="concept-details"><li>このまとまりを「クラス」と呼びます。名前は <code>Main</code>、ファイル名は <code>Main.java</code> にします。</li></ul></li>
+<li class="concept"><p><code>public static void main(String[] args) { ... }</code> の中に、最初に実行する処理を書きます。</p><ul class="concept-details"><li>意味は後の回で学びます。今は基本の形としてそのまま使います。</li></ul></li>
+<li class="concept"><p><code>System.out.println(...)</code> は、括弧の中の値を画面に表示して改行します。</p><ul class="concept-details"><li>文字の並びを「文字列」と呼び、半角の二重引用符 <code>&quot;</code> で囲みます。</li><li>命令の最後には半角のセミコロン <code>;</code> を付けます。</li></ul></li>
 <li class="concept"><p><code>{</code> と <code>}</code> は処理のまとまりを囲みます。</p><ul class="concept-details"><li>内側の行の先頭を空けると、まとまりが分かりやすくなります。</li></ul></li></ul>
 <div class="check"><b>確認</b><p><code>Hello, World!</code> を <code>こんにちは、Java！</code> に書き換えて実行しましょう。
 二重引用符 <code>&quot;</code> は残します。</p>
 </div>
+<div class="check"><b>確認</b><p>3行目の下に <code>System.out.println(&quot;2行目&quot;);</code> を1行足して実行しましょう。
+命令は上から順に実行され、2行表示されます。</p>
+</div>
 </section>
-<section id="values" class="section"><h2>数値と文字列を表示する</h2><p>データの種類を「型」と呼びます。まずは、整数・小数・文字列の違いを見ます。</p>
+<section id="values" class="section"><h2>数値と文字列を表示する</h2><p>表示する値には、数値と文字列があります。二重引用符 <code>&quot;</code> の有無で意味が変わります。</p>
+<div class="exercise" data-exercise="values">
+    <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
+       <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
+    <div class="work">
+      <label for="editor-values">上記のサンプルコードを書き写してください：</label>
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-values" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-values">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-values" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="expected"><pre>7
+7
+3
+1 + 2
+3.5
+</pre>
+</div>
+<ul class="concepts"><li class="concept"><p><code>7</code> は数値、<code>&quot;7&quot;</code> は文字列です。表示は同じでも、データの種類が違います。</p><ul class="concept-details"><li>データの種類を「型」と呼びます。型は次の「変数を使う」で書き方を学びます。</li></ul></li>
+<li class="concept"><p><code>1 + 2</code> は計算され、<code>3</code> が表示されます。</p><ul class="concept-details"><li><code>&quot;1 + 2&quot;</code> は文字列なので、計算されずにそのまま表示されます。</li></ul></li>
+<li class="concept"><p><code>3.5</code> のように小数も表示できます。数値は二重引用符で囲みません。</p></li></ul>
+<div class="check"><b>確認</b><p><code>1 + 2</code> を <code>10 - 4</code> に変えると何が表示されるか、予想してから実行しましょう。</p>
+</div>
+</section>
+<section id="print" class="section"><h2>printとprintln</h2><p><code>println</code> の <code>ln</code> は「line（行）」の略です。<code>print</code> を使うと、表示の後に改行しません。</p>
 <div class="exercise" data-exercise="print-lines">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
@@ -131,36 +224,123 @@
       </div>
     </div>
   </div>
-<div class="expected"><pre>7
-3.5
-こんにちは、Java！
+<div class="expected"><pre>こんにちは、Java！
+ABC
 🐈
 </pre>
 </div>
-<ul class="concepts"><li class="concept"><p><code>7</code> は整数、<code>3.5</code> は小数です。数値は二重引用符で囲みません。</p><ul class="concept-details"><li>Javaでは整数に <code>int</code>、小数に <code>double</code> という型を使います。</li></ul></li>
-<li class="concept"><p><code>&quot;こんにちは、&quot;</code> や <code>&quot;🐈&quot;</code> は文字列です。文字列の型は <code>String</code> と書きます。</p><ul class="concept-details"><li>二重引用符の内側には日本語や絵文字も書けます。</li></ul></li>
-<li class="concept"><p><code>System.out.print(...)</code> は表示した後に改行しません。</p><ul class="concept-details"><li>次の <code>println</code> の内容が同じ行の続きに表示されます。</li></ul></li></ul>
-<div class="check"><b>確認</b><p>最初の <code>print</code> を <code>println</code> に変えると、表示は何行になるでしょうか。
-実際に変えて確認しましょう。</p>
+<ul class="concepts"><li class="concept"><p><code>System.out.print(...)</code> は表示した後に改行しません。</p><ul class="concept-details"><li>次の表示は、同じ行の続きになります。</li></ul></li>
+<li class="concept"><p><code>System.out.println(...)</code> は表示した後に改行します。</p></li>
+<li class="concept"><p>二重引用符の内側には、日本語や絵文字も書けます。</p></li></ul>
+<div class="check"><b>確認</b><p><code>System.out.print(&quot;B&quot;);</code> を <code>println</code> に変えると、表示は何行になるでしょうか。
+予想してから実行しましょう。</p>
 </div>
 </section>
 <section id="variables" class="section"><h2>変数を使う</h2><p>値を入れて、後から使える名前を「変数」と呼びます。Javaでは、変数を作るときに型も書きます。</p>
-<div class="exercise" data-exercise="variables">
+<div class="exercise" data-exercise="variable">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
     <div class="work">
-      <label for="editor-variables">上記のサンプルコードを書き写してください：</label>
+      <label for="editor-variable">上記のサンプルコードを書き写してください：</label>
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
-        <textarea id="editor-variables" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
+        <textarea id="editor-variable" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
       </div>
       <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
       <div class="stdin-panel" hidden>
-        <label for="stdin-variables">プログラムへの入力（1行ずつ送信）</label>
+        <label for="stdin-variable">プログラムへの入力（1行ずつ送信）</label>
         <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
         <div class="stdin-controls">
-          <input id="stdin-variables" class="stdin-input" type="text" autocomplete="off" disabled>
+          <input id="stdin-variable" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="expected"><pre>12
+number
+</pre>
+</div>
+<ul class="concepts"><li class="concept"><p><code>int number = 12;</code> は、整数型の変数 <code>number</code> を作り、<code>12</code> を入れます。</p><ul class="concept-details"><li><code>int</code> は整数の型です。</li></ul></li>
+<li class="concept"><p><code>System.out.println(number)</code> は、変数の中の値 <code>12</code> を表示します。</p><ul class="concept-details"><li><code>&quot;number&quot;</code> と書くと文字列になり、<code>number</code> という文字がそのまま表示されます。</li></ul></li>
+<li class="concept"><p>変数名には英字、数字、<code>_</code> を使えます。ただし、先頭を数字にはできません。</p><ul class="concept-details"><li>大文字と小文字は区別されます。<code>Number</code> と <code>number</code> は別の名前です。</li></ul></li></ul>
+<div class="check"><b>確認</b><p><code>int number = 12;</code> の <code>12</code> を自分の出席番号に変えて実行しましょう。</p>
+</div>
+<p>整数のほかに、小数と文字列の変数も作れます。型によって書く名前が違います。</p>
+<div class="exercise" data-exercise="types">
+    <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
+       <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
+    <div class="work">
+      <label for="editor-types">上記のサンプルコードを書き写してください：</label>
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-types" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-types">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-types" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="expected"><pre>12
+158.5
+山田花子
+</pre>
+</div>
+<table>
+<thead>
+<tr>
+<th>型</th>
+<th>入れる値</th>
+<th>例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>int</code></td>
+<td>整数</td>
+<td><code>12</code>、<code>-3</code></td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td>小数</td>
+<td><code>158.5</code>、<code>3.0</code></td>
+</tr>
+<tr>
+<td><code>String</code></td>
+<td>文字列</td>
+<td><code>&quot;山田花子&quot;</code></td>
+</tr>
+</tbody>
+</table>
+<ul class="concepts"><li class="concept"><p><code>double height = 158.5;</code> は、小数型の変数 <code>height</code> に <code>158.5</code> を入れます。</p></li>
+<li class="concept"><p><code>String name = &quot;山田花子&quot;;</code> は、文字列型の変数 <code>name</code> に氏名を入れます。</p><ul class="concept-details"><li><code>String</code> だけ先頭が大文字です。<code>int</code> と <code>double</code> は小文字です。</li></ul></li></ul>
+<p><code>print</code> と <code>println</code> を組み合わせると、変数の値を文の途中に入れられます。</p>
+<div class="exercise" data-exercise="self-intro">
+    <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
+       <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
+    <div class="work">
+      <label for="editor-self-intro">上記のサンプルコードを書き写してください：</label>
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-self-intro" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-self-intro">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-self-intro" class="stdin-input" type="text" autocomplete="off" disabled>
           <button type="button" class="stdin-send" disabled>送信</button>
           <button type="button" class="stdin-eof" disabled>入力を終了</button>
         </div>
@@ -168,23 +348,144 @@
     </div>
   </div>
 <div class="expected"><code>出席番号 12 番の 山田花子 です。</code></div>
-<ul class="concepts"><li class="concept"><p><code>int number = 12;</code> は、整数型の変数 <code>number</code> に <code>12</code> を入れます。</p></li>
-<li class="concept"><p><code>String name = &quot;山田花子&quot;;</code> は、文字列型の変数 <code>name</code> に氏名を入れます。</p><ul class="concept-details"><li>Javaの <code>String</code> は先頭が大文字です。</li></ul></li>
-<li class="concept"><p><code>System.out.print(number)</code> は、変数の中の値を表示します。</p><ul class="concept-details"><li><code>&quot;number&quot;</code> と書くと、変数の値ではなく <code>number</code> という文字が表示されます。</li></ul></li>
-<li class="concept"><p>変数名には英字、数字、<code>_</code> を使えます。ただし、先頭を数字にはできません。</p></li></ul>
+<ul class="concepts"><li class="concept"><p><code>print</code> で改行せずに続けて表示し、最後だけ <code>println</code> で改行します。</p></li>
+<li class="concept"><p><code>&quot; 番の &quot;</code> のように、文字列の中の空白もそのまま表示されます。</p></li></ul>
 <div class="check"><b>確認</b><p><code>number</code> と <code>name</code> の値を自分の出席番号・氏名に変えて実行しましょう。</p>
 </div>
 </section>
-<section id="errors" class="section"><h2>エラーを確かめる</h2><p>最初の見本で <code>println</code> の行末の <code>;</code> を消し、実行してみましょう。
-エラーを確認したら、<code>;</code> を戻して再実行します。</p>
+<section id="errors" class="section"><h2>エラーを直す</h2><p>誤りがあると、実行結果の欄にエラーが表示されます。</p>
+<div class="expected"><code>Main.java:3:44: ';' expected</code></div>
 <ul>
-<li>エラーが出たら、表示された行とその前後を見ます。
+<li><code>Main.java:3:44</code> は「<code>Main.java</code> の3行目、左から44文字目あたり」という意味です。
 <ul>
-<li><code>;</code>、二重引用符 <code>&quot;</code>、括弧 <code>()</code>・<code>{}</code> の抜けを確かめます。</li>
-<li><code>System</code> と <code>String</code> は先頭が大文字です。</li>
+<li>その後ろにエラーの内容が英語で表示されます。上の例は「<code>;</code> が必要」です。</li>
 </ul>
 </li>
-<li>記号は半角で入力します。文字列の中の日本語や全角記号は使えます。</li>
+<li>誤りのある場所は、表示された行の少し前のこともあります。前後の行も見ます。</li>
+<li>エラーが複数表示されたら、最初のエラーから直して再実行します。</li>
+</ul>
+<p>次のコードには、それぞれ誤りが一つあります。まず実行してエラーを確かめ、直してから再実行しましょう。</p>
+<div class="exercise fix-exercise" data-exercise="fix-semicolon">
+    <div class="sample-head fix-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">エラーを直す</span></div>
+    <div class="work">
+      <label for="editor-fix-semicolon">まず実行してエラーを確かめ、直してから再実行しましょう：</label>
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-fix-semicolon" aria-label="直すコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力">public class Main {
+    public static void main(String[] args) {
+        System.out.println(&quot;Hello, World!&quot;)
+    }
+}</textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-fix-semicolon">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-fix-semicolon" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="exercise fix-exercise" data-exercise="fix-case">
+    <div class="sample-head fix-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">エラーを直す</span></div>
+    <div class="work">
+      <label for="editor-fix-case">まず実行してエラーを確かめ、直してから再実行しましょう：</label>
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-fix-case" aria-label="直すコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力">public class Main {
+    public static void main(String[] args) {
+        system.out.println(&quot;Hello, World!&quot;);
+    }
+}</textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-fix-case">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-fix-case" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="exercise fix-exercise" data-exercise="fix-quote">
+    <div class="sample-head fix-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">エラーを直す</span></div>
+    <div class="work">
+      <label for="editor-fix-quote">まず実行してエラーを確かめ、直してから再実行しましょう：</label>
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-fix-quote" aria-label="直すコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力">public class Main {
+    public static void main(String[] args) {
+        System.out.println(&quot;Hello, World!);
+    }
+}</textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-fix-quote">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-fix-quote" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<p>次の誤りは見た目では分かりにくいものです。エラーは2つ表示されますが、原因は一つです。</p>
+<div class="exercise fix-exercise" data-exercise="fix-space">
+    <div class="sample-head fix-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">エラーを直す</span></div>
+    <div class="work">
+      <label for="editor-fix-space">まず実行してエラーを確かめ、直してから再実行しましょう：</label>
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-fix-space" aria-label="直すコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力">public class Main {
+    public static void main(String[] args) {
+        String　name = &quot;山田花子&quot;;
+        System.out.println(name);
+    }
+}</textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-fix-space">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-fix-space" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<details class="hint"><summary>ヒント</summary><ul>
+<li>1つ目：<code>';' expected</code> は「<code>;</code> が必要」。3行目の行末に <code>;</code> を付けます。</li>
+<li>2つ目：<code>package system does not exist</code> は「<code>system</code> が見つからない」。<code>System</code> と大文字にします。</li>
+<li>3つ目：<code>unclosed string literal</code> は「文字列が閉じていない」。<code>!</code> の後に <code>&quot;</code> を足します。</li>
+<li>4つ目：<code>illegal character: '　'</code> は「使えない文字がある」。<code>　</code> は全角の空白です。
+<ul>
+<li><code>String</code> と <code>name</code> の間を消し、半角の空白を打ち直します。</li>
+</ul>
+</li>
+</ul>
+</details>
+<ul>
+<li>困ったときは、次の順に確かめます。
+<ul>
+<li><code>;</code>、二重引用符 <code>&quot;</code>、括弧 <code>()</code>・<code>{}</code> の抜けはないか。</li>
+<li><code>System</code> と <code>String</code> の先頭は大文字か。</li>
+<li>記号や空白を全角で打っていないか。文字列の中の日本語や全角記号は使えます。</li>
+</ul>
+</li>
 <li>直した後は、エラーが消えるだけでなく、表示結果も確認します。</li>
 </ul>
 </section>
@@ -271,12 +572,40 @@
 <li>課題3：<code>println</code> を3回使います。空白も二重引用符の内側に書きます。</li>
 </ul>
 </details>
+<p>余裕があれば、課題2に身長を加えましょう。
+身長は <code>double</code> の変数 <code>height</code> に入れ、次の2行を表示します。</p>
+<div class="expected"><pre>出席番号 12 番の 山田花子 です。
+身長は 158.5 cm です。
+</pre>
+</div>
+<div class="exercise" data-exercise="ext1">
+
+    <div class="work">
+
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-ext1" aria-label="発展課題1のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-ext1">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-ext1" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 <section id="summary" class="section summary"><h2>1コマ目のまとめ</h2><ul>
 <li><code>main</code> の中に実行する処理を書き、命令の最後に <code>;</code> を付ける。</li>
 <li>文字列は半角の二重引用符 <code>&quot;</code> で囲み、数値は囲まない。</li>
 <li><code>println</code> は改行し、<code>print</code> は改行しない。</li>
-<li>Javaの変数には、<code>int</code> や <code>String</code> などの型を書く。</li>
+<li>Javaの変数には、<code>int</code>・<code>double</code>・<code>String</code> などの型を書く。</li>
+<li>エラーは <code>Main.java:行:列</code> で場所を確かめ、最初のエラーから直す。</li>
 </ul>
 <p>続いて<a href="./lesson01-2.html">2コマ目「演算子と変数」</a>へ進みます。</p>
 </section>

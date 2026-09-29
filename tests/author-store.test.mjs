@@ -265,3 +265,34 @@ test("local editing API checks host, origin and save token", async (t) => {
   assert.equal(saved.status, 200);
   assert.ok(saved.data.source.includes("日本語の保存確認"));
 });
+
+test("fix exercises put editable code with errors into the input, not the sample canvas", async (t) => {
+  const broken = 'public class Main {\n    public static void main(String[] args) {\n        System.out.println("<a>")\n    }\n}';
+  const at = original.lastIndexOf("\n## ");
+  const source =
+    original.slice(0, at) +
+    `\n:::exercise fix-one Main.java fix\n\`\`\`java\n${broken}\n\`\`\`\n:::\n` +
+    original.slice(at);
+  const page = renderLesson(source, template, "lesson01.md");
+  assert.equal(page.samples["fix-one"], undefined);
+  assert.ok(page.exerciseIds.includes("fix-one"));
+  const escaped = broken.replaceAll('"', "&quot;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+  assert.ok(page.html.includes(`aria-label="直すコード"`));
+  assert.ok(page.html.includes(`>${escaped}</textarea>`));
+  assert.throws(
+    () => renderLesson(source.replace("Main.java fix", "Main.java other"), template, "lesson01.md"),
+    /指定が不正/,
+  );
+
+  const { store, file } = await fixture(t, source);
+  const model = await store.load("lesson01");
+  const field = model.fields.find(({ exercise }) => exercise === "fix-one");
+  assert.equal(field.fix, true);
+  assert.equal(field.value, broken);
+  const fixed = broken.replace('("<a>")', '("<b>");');
+  await store.save("lesson01", {
+    revision: model.revision,
+    changes: [{ key: field.key, value: fixed }],
+  });
+  assert.equal(await readFile(file, "utf8"), source.replace(broken, fixed));
+});

@@ -107,7 +107,8 @@ for (const exercise of document.querySelectorAll(".exercise")) {
       saved = localStorage.getItem(`info2026:lesson01:${exercise.dataset.exercise}`);
       if (saved !== null) localStorage.setItem(key, saved);
     }
-    editor.value = saved || "";
+    // Fix exercises start from the code in the page; clearing it restores that code.
+    editor.value = saved || editor.defaultValue;
     saveNote.textContent = saved
       ? "前回の入力を復元しました · この端末に保存"
       : "入力内容はこの端末に自動保存されます";
