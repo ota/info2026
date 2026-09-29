@@ -189,7 +189,7 @@ ABC
 ```java
 public class Main {
     public static void main(String[] args) {
-        int number = 12;
+        int number = 99;
         System.out.println(number);
         System.out.println("number");
     }
@@ -199,22 +199,22 @@ public class Main {
 
 :::expected
 ```
-12
+99
 number
 ```
 :::
 
 :::concepts
-- `int number = 12;` は、整数型の変数 `number` を作り、`12` を入れます。
+- `int number = 99;` は、整数型の変数 `number` を作り、`99` を入れます。
   - `型 名前 = 値;` の順に書きます。`int` は整数の型です。
-- `System.out.println(number)` は、変数の中の値 `12` を表示します。
+- `System.out.println(number)` は、変数の中の値 `99` を表示します。
   - `"number"` と書くと文字列になり、`number` という文字がそのまま表示されます。
 - 変数名には英字、数字、`_` を使えます。ただし、先頭を数字にはできません。
   - 大文字と小文字は区別されます。`Number` と `number` は別の名前です。
 :::
 
 :::check
-`int number = 12;` の `12` を自分の出席番号に変えて実行しましょう。
+`int number = 99;` の `99` を自分の出席番号に変えて実行しましょう。
 :::
 
 整数のほかに、小数と文字列の変数も作れます。型によって書く名前が違います。
@@ -223,9 +223,9 @@ number
 ```java
 public class Main {
     public static void main(String[] args) {
-        int number = 12;
+        int number = 99;
         double height = 158.5;
-        String name = "山田花子";
+        String name = "太田健吾";
         System.out.println(number);
         System.out.println(height);
         System.out.println(name);
@@ -236,9 +236,9 @@ public class Main {
 
 :::expected
 ```
-12
+99
 158.5
-山田花子
+太田健吾
 ```
 :::
 
@@ -246,11 +246,11 @@ public class Main {
 | --- | --- | --- |
 | `int` | 整数 | `12`、`-3` |
 | `double` | 小数 | `158.5`、`3.0` |
-| `String` | 文字列 | `"山田花子"` |
+| `String` | 文字列 | `"太田健吾"` |
 
 :::concepts
 - `double height = 158.5;` は、小数型の変数 `height` に `158.5` を入れます。
-- `String name = "山田花子";` は、文字列型の変数 `name` に氏名を入れます。
+- `String name = "太田健吾";` は、文字列型の変数 `name` に氏名を入れます。
   - `String` だけ先頭が大文字です。`int` と `double` は小文字です。
 :::
 
@@ -260,8 +260,8 @@ public class Main {
 ```java
 public class Main {
     public static void main(String[] args) {
-        int number = 12;
-        String name = "山田花子";
+        int number = 99;
+        String name = "太田健吾";
         System.out.print("出席番号 ");
         System.out.print(number);
         System.out.print(" 番の ");
@@ -273,7 +273,7 @@ public class Main {
 :::
 
 :::expected
-出席番号 12 番の 山田花子 です。
+出席番号 99 番の 太田健吾 です。
 :::
 
 :::concepts
@@ -336,7 +336,7 @@ public class Main {
 ```java
 public class Main {
     public static void main(String[] args) {
-        String　name = "山田花子";
+        String　name = "太田健吾";
         System.out.println(name);
     }
 }
@@ -374,7 +374,7 @@ public class Main {
 数字や名前は自分のものに変えます。
 
 :::expected
-出席番号 12 番の 山田花子 です。
+出席番号 99 番の 太田健吾 です。
 :::
 
 :::exercise task2
@@ -406,7 +406,7 @@ public class Main {
 
 :::expected
 ```
-出席番号 12 番の 山田花子 です。
+出席番号 99 番の 太田健吾 です。
 身長は 158.5 cm です。
 ```
 :::

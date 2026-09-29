@@ -33,7 +33,7 @@ export const samples = {
   "variable": [
     "public class Main {",
     "    public static void main(String[] args) {",
-    "        int number = 12;",
+    "        int number = 99;",
     "        System.out.println(number);",
     "        System.out.println(\"number\");",
     "    }",
@@ -42,9 +42,9 @@ export const samples = {
   "types": [
     "public class Main {",
     "    public static void main(String[] args) {",
-    "        int number = 12;",
+    "        int number = 99;",
     "        double height = 158.5;",
-    "        String name = \"山田花子\";",
+    "        String name = \"太田健吾\";",
     "        System.out.println(number);",
     "        System.out.println(height);",
     "        System.out.println(name);",
@@ -54,8 +54,8 @@ export const samples = {
   "self-intro": [
     "public class Main {",
     "    public static void main(String[] args) {",
-    "        int number = 12;",
-    "        String name = \"山田花子\";",
+    "        int number = 99;",
+    "        String name = \"太田健吾\";",
     "        System.out.print(\"出席番号 \");",
     "        System.out.print(number);",
     "        System.out.print(\" 番の \");",

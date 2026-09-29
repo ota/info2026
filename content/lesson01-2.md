@@ -29,7 +29,7 @@ footer: 後期 第1回・2コマ目 / Javaプログラミング入門
 ## 1コマ目のおさらい {#review}
 
 - 文字列は `"..."` で囲み、数値は囲みません。
-- `int number = 12;` は、整数型の変数 `number` に `12` を入れます。
+- `int number = 99;` は、整数型の変数 `number` に `99` を入れます。
   - 小数は `double`、文字列は `String` の変数に入れます。
 - `System.out.println(...)` は値を表示した後に改行します。
 
@@ -215,8 +215,8 @@ Java入門
 ```java
 public class Main {
     public static void main(String[] args) {
-        int number = 12;
-        String name = "山田花子";
+        int number = 99;
+        String name = "太田健吾";
         System.out.println("出席番号 " + number + " 番の " + name + " です。");
         System.out.println("合計 " + 1 + 2);
         System.out.println("合計 " + (1 + 2));
@@ -227,7 +227,7 @@ public class Main {
 
 :::expected
 ```
-出席番号 12 番の 山田花子 です。
+出席番号 99 番の 太田健吾 です。
 合計 12
 合計 3
 ```

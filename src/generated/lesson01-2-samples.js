@@ -55,8 +55,8 @@ export const samples = {
   "concat": [
     "public class Main {",
     "    public static void main(String[] args) {",
-    "        int number = 12;",
-    "        String name = \"山田花子\";",
+    "        int number = 99;",
+    "        String name = \"太田健吾\";",
     "        System.out.println(\"出席番号 \" + number + \" 番の \" + name + \" です。\");",
     "        System.out.println(\"合計 \" + 1 + 2);",
     "        System.out.println(\"合計 \" + (1 + 2));",

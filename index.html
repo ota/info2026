@@ -262,14 +262,14 @@ ABC
       </div>
     </div>
   </div>
-<div class="expected"><pre>12
+<div class="expected"><pre>99
 number
 </pre>
 </div>
-<ul class="concepts"><li class="concept"><p><code>int number = 12;</code> は、整数型の変数 <code>number</code> を作り、<code>12</code> を入れます。</p><ul class="concept-details"><li><code>型 名前 = 値;</code> の順に書きます。<code>int</code> は整数の型です。</li></ul></li>
-<li class="concept"><p><code>System.out.println(number)</code> は、変数の中の値 <code>12</code> を表示します。</p><ul class="concept-details"><li><code>&quot;number&quot;</code> と書くと文字列になり、<code>number</code> という文字がそのまま表示されます。</li></ul></li>
+<ul class="concepts"><li class="concept"><p><code>int number = 99;</code> は、整数型の変数 <code>number</code> を作り、<code>99</code> を入れます。</p><ul class="concept-details"><li><code>型 名前 = 値;</code> の順に書きます。<code>int</code> は整数の型です。</li></ul></li>
+<li class="concept"><p><code>System.out.println(number)</code> は、変数の中の値 <code>99</code> を表示します。</p><ul class="concept-details"><li><code>&quot;number&quot;</code> と書くと文字列になり、<code>number</code> という文字がそのまま表示されます。</li></ul></li>
 <li class="concept"><p>変数名には英字、数字、<code>_</code> を使えます。ただし、先頭を数字にはできません。</p><ul class="concept-details"><li>大文字と小文字は区別されます。<code>Number</code> と <code>number</code> は別の名前です。</li></ul></li></ul>
-<div class="check"><b>確認</b><p><code>int number = 12;</code> の <code>12</code> を自分の出席番号に変えて実行しましょう。</p>
+<div class="check"><b>確認</b><p><code>int number = 99;</code> の <code>99</code> を自分の出席番号に変えて実行しましょう。</p>
 </div>
 <p>整数のほかに、小数と文字列の変数も作れます。型によって書く名前が違います。</p>
 <div class="exercise" data-exercise="types">
@@ -294,9 +294,9 @@ number
       </div>
     </div>
   </div>
-<div class="expected"><pre>12
+<div class="expected"><pre>99
 158.5
-山田花子
+太田健吾
 </pre>
 </div>
 <table>
@@ -321,12 +321,12 @@ number
 <tr>
 <td><code>String</code></td>
 <td>文字列</td>
-<td><code>&quot;山田花子&quot;</code></td>
+<td><code>&quot;太田健吾&quot;</code></td>
 </tr>
 </tbody>
 </table>
 <ul class="concepts"><li class="concept"><p><code>double height = 158.5;</code> は、小数型の変数 <code>height</code> に <code>158.5</code> を入れます。</p></li>
-<li class="concept"><p><code>String name = &quot;山田花子&quot;;</code> は、文字列型の変数 <code>name</code> に氏名を入れます。</p><ul class="concept-details"><li><code>String</code> だけ先頭が大文字です。<code>int</code> と <code>double</code> は小文字です。</li></ul></li></ul>
+<li class="concept"><p><code>String name = &quot;太田健吾&quot;;</code> は、文字列型の変数 <code>name</code> に氏名を入れます。</p><ul class="concept-details"><li><code>String</code> だけ先頭が大文字です。<code>int</code> と <code>double</code> は小文字です。</li></ul></li></ul>
 <p><code>print</code> と <code>println</code> を組み合わせると、変数の値を文の途中に入れられます。</p>
 <div class="exercise" data-exercise="self-intro">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
@@ -350,7 +350,7 @@ number
       </div>
     </div>
   </div>
-<div class="expected"><code>出席番号 12 番の 山田花子 です。</code></div>
+<div class="expected"><code>出席番号 99 番の 太田健吾 です。</code></div>
 <ul class="concepts"><li class="concept"><p><code>print</code> で改行せずに続けて表示し、最後だけ <code>println</code> で改行します。</p></li>
 <li class="concept"><p><code>&quot; 番の &quot;</code> のように、文字列の中の空白もそのまま表示されます。</p></li></ul>
 <div class="check"><b>確認</b><p><code>number</code> と <code>name</code> の値を自分の出席番号・氏名に変えて実行しましょう。</p>
@@ -451,7 +451,7 @@ number
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-fix-space" aria-label="直すコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力">public class Main {
     public static void main(String[] args) {
-        String　name = &quot;山田花子&quot;;
+        String　name = &quot;太田健吾&quot;;
         System.out.println(name);
     }
 }</textarea>
@@ -519,7 +519,7 @@ number
 <h3 class="task-title">課題2 <span>変数で自己紹介</span></h3>
 <p>出席番号を <code>number</code>、氏名を <code>name</code> という変数に入れ、次の形で表示してください。
 数字や名前は自分のものに変えます。</p>
-<div class="expected"><code>出席番号 12 番の 山田花子 です。</code></div>
+<div class="expected"><code>出席番号 99 番の 太田健吾 です。</code></div>
 <div class="exercise" data-exercise="task2">
 
     <div class="work">
@@ -577,7 +577,7 @@ number
 </details>
 <p>余裕があれば、課題2に身長を加えましょう。
 身長は <code>double</code> の変数 <code>height</code> に入れ、次の2行を表示します。</p>
-<div class="expected"><pre>出席番号 12 番の 山田花子 です。
+<div class="expected"><pre>出席番号 99 番の 太田健吾 です。
 身長は 158.5 cm です。
 </pre>
 </div>
