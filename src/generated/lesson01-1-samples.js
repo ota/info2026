@@ -65,3 +65,12 @@ export const samples = {
     "}"
   ]
 };
+export const outputs = {
+  "first": "Hello, World!",
+  "values": "7\n7\n3\n1 + 2\n3.5",
+  "print-lines": "こんにちは、Java！\nABC\n🐈",
+  "variable": "99\nnumber",
+  "types": "99\n3.14\n太田健吾",
+  "self-intro": "出席番号 99 番の 太田健吾 です。",
+  "task3": "  *\n ***\n*****"
+};

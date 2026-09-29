@@ -75,13 +75,14 @@
 <p>まずは見本を見ずに、<code>Hello</code> と1行表示するプログラムを書いてみましょう。<br>
 思い出せないときは、<a href="./lesson01-1.html#first-code">1コマ目のHello World</a>を見て確かめます。</p>
 <div class="expected"><code>Hello</code></div>
-<div class="exercise" data-exercise="warmup">
+<div class="exercise" data-exercise="warmup" data-kind="task" data-label="課題：1コマ目のおさらい">
 
     <div class="work">
 
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-warmup" aria-label="warmupのコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力"></textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -107,7 +108,7 @@
 </ul>
 </li>
 </ul>
-<div class="exercise" data-exercise="arithmetic">
+<div class="exercise" data-exercise="arithmetic" data-kind="sample" data-label="見本：数値の計算">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
     <div class="work">
@@ -115,7 +116,8 @@
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-arithmetic" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
       </div>
-      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="pass-note" hidden></div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="diff-btn">見本と比べる</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
       <div class="stdin-panel" hidden>
@@ -138,7 +140,7 @@
 <li class="concept"><p>表示は上から順に、足し算・引き算・掛け算の結果です。</p></li></ul>
 <p>次は割り算です。<br>
 整数同士の割り算には、Pythonと違う点があります。</p>
-<div class="exercise" data-exercise="division">
+<div class="exercise" data-exercise="division" data-kind="sample" data-label="見本：数値の計算（2つ目）">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
     <div class="work">
@@ -146,7 +148,8 @@
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-division" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
       </div>
-      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="pass-note" hidden></div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="diff-btn">見本と比べる</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
       <div class="stdin-panel" hidden>
@@ -172,13 +175,14 @@ Javaの整数同士では <code>3</code> になります。</li><li>C言語で�
 後の「条件分岐」で、偶数・奇数の判定に使います。</li></ul></li></ul>
 <div class="check"><b>確認</b><div class="check-body"><p><strong>下の欄にコピーして、<code>a</code> を <code>10</code>、<code>b</code> を <code>3</code> に変えます。<br>
 割り算の答えと余りを確認しましょう。</strong></p>
-</div></div><div class="exercise try-exercise" data-exercise="division-try" data-copy-from="division">
+</div></div><div class="exercise try-exercise" data-exercise="division-try" data-kind="try" data-label="確認：数値の計算" data-copy-from="division">
 
     <div class="work">
       <label for="editor-division-try">上のコードをコピーしてから書き換え、実行しましょう：</label>
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-division-try" aria-label="確認用のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 「上のコードをコピー」を押してから書き換えます"></textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="copy-btn">上のコードをコピー</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -194,7 +198,7 @@ Javaの整数同士では <code>3</code> になります。</li><li>C言語で�
     </div>
   </div>
 <p>小数を含む割り算では、答えも小数になります。</p>
-<div class="exercise" data-exercise="decimal">
+<div class="exercise" data-exercise="decimal" data-kind="sample" data-label="見本：数値の計算（3つ目）">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
     <div class="work">
@@ -202,7 +206,8 @@ Javaの整数同士では <code>3</code> になります。</li><li>C言語で�
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-decimal" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
       </div>
-      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="pass-note" hidden></div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="diff-btn">見本と比べる</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
       <div class="stdin-panel" hidden>
@@ -226,7 +231,7 @@ Javaの整数同士では <code>3</code> になります。</li><li>C言語で�
 <li class="concept"><p>小数の答えがほしいときは、<code>double</code> の変数を使うか、<code>2.0</code> のように小数で書きます。</p></li></ul>
 <p>式に演算子が複数あるときは、数学と同じく掛け算・割り算が先です。<br>
 累乗には <code>Math.pow</code> を使います。</p>
-<div class="exercise" data-exercise="order">
+<div class="exercise" data-exercise="order" data-kind="sample" data-label="見本：数値の計算（4つ目）">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
     <div class="work">
@@ -234,7 +239,8 @@ Javaの整数同士では <code>3</code> になります。</li><li>C言語で�
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-order" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
       </div>
-      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="pass-note" hidden></div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="diff-btn">見本と比べる</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
       <div class="stdin-panel" hidden>
@@ -260,7 +266,7 @@ Javaの整数同士では <code>3</code> になります。</li><li>C言語で�
 </section>
 <section id="strings" class="section"><h2>文字列と数値</h2><p>Javaでも、文字列同士は <code>+</code> でつなげられます。<br>
 ただし、数値の足し算とは結果が違います。</p>
-<div class="exercise" data-exercise="strings">
+<div class="exercise" data-exercise="strings" data-kind="sample" data-label="見本：文字列と数値">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
     <div class="work">
@@ -268,7 +274,8 @@ Javaの整数同士では <code>3</code> になります。</li><li>C言語で�
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-strings" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
       </div>
-      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="pass-note" hidden></div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="diff-btn">見本と比べる</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
       <div class="stdin-panel" hidden>
@@ -292,7 +299,7 @@ Javaの整数同士では <code>3</code> になります。</li><li>C言語で�
 <li class="concept"><p><code>&quot;★&quot;.repeat(5)</code> は、文字列を5回繰り返します。</p><ul class="concept-details"><li><code>文字列.repeat(回数)</code> の形で書きます。</li><li>Pythonの文字列で使った <code>*</code> は、Javaの文字列には使えません。</li></ul></li></ul>
 <p>文字列と数値も <code>+</code> でつなげます。<br>
 Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaではつながります。</p>
-<div class="exercise" data-exercise="concat">
+<div class="exercise" data-exercise="concat" data-kind="sample" data-label="見本：文字列と数値（2つ目）">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
     <div class="work">
@@ -300,7 +307,8 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-concat" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
       </div>
-      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="pass-note" hidden></div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="diff-btn">見本と比べる</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
       <div class="stdin-panel" hidden>
@@ -322,13 +330,14 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
 <ul class="concepts"><li class="concept"><p><code>+</code> の片方が文字列なら、もう片方の数値も文字列としてつながります。</p><ul class="concept-details"><li>1コマ目で <code>print</code> と <code>println</code> を5回使った自己紹介が、<code>println</code> 1回で書けます。</li><li>5行目は、C言語なら <code>printf(&quot;出席番号 %d 番の %s です。\n&quot;, number, name);</code> と書く内容です。</li></ul></li>
 <li class="concept"><p><code>+</code> は左から順に処理されます。</p><ul class="concept-details"><li><code>&quot;合計 &quot; + 1</code> で先に <code>&quot;合計 1&quot;</code> となり、続けて <code>2</code> がつながります。</li><li>足し算を先にしたいときは <code>(1 + 2)</code> のように括弧で囲みます。</li></ul></li></ul>
 <div class="check"><b>確認</b><div class="check-body"><p><strong>下の欄にコピーして、<code>number</code> と <code>name</code> を自分の出席番号・氏名に変えて実行しましょう。</strong></p>
-</div></div><div class="exercise try-exercise" data-exercise="concat-try" data-copy-from="concat">
+</div></div><div class="exercise try-exercise" data-exercise="concat-try" data-kind="try" data-label="確認：文字列と数値" data-copy-from="concat">
 
     <div class="work">
       <label for="editor-concat-try">上のコードをコピーしてから書き換え、実行しましょう：</label>
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-concat-try" aria-label="確認用のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 「上のコードをコピー」を押してから書き換えます"></textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="copy-btn">上のコードをコピー</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -346,7 +355,7 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
 </section>
 <section id="variables" class="section"><h2>代入と面積</h2><p>変数へ値を入れる <code>=</code> を「代入」と呼びます。<br>
 <code>=</code> の右側には計算を書くこともできます。</p>
-<div class="exercise" data-exercise="area">
+<div class="exercise" data-exercise="area" data-kind="sample" data-label="見本：代入と面積">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
     <div class="work">
@@ -354,7 +363,8 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-area" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
       </div>
-      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="pass-note" hidden></div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="diff-btn">見本と比べる</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
       <div class="stdin-panel" hidden>
@@ -372,13 +382,14 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
 <ul class="concepts"><li class="concept"><p><code>int area = base * height;</code> は、先に右側の <code>base * height</code> を計算します。</p><ul class="concept-details"><li>その結果 <code>50</code> を、変数 <code>area</code> に入れます。</li></ul></li></ul>
 <div class="check"><b>確認</b><div class="check-body"><p><strong>下の欄にコピーして、<code>base</code> と <code>height</code> の値を変えて実行しましょう。<br>
 面積が変わることを確かめます。</strong></p>
-</div></div><div class="exercise try-exercise" data-exercise="area-try" data-copy-from="area">
+</div></div><div class="exercise try-exercise" data-exercise="area-try" data-kind="try" data-label="確認：代入と面積" data-copy-from="area">
 
     <div class="work">
       <label for="editor-area-try">上のコードをコピーしてから書き換え、実行しましょう：</label>
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-area-try" aria-label="確認用のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 「上のコードをコピー」を押してから書き換えます"></textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="copy-btn">上のコードをコピー</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -394,7 +405,7 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
     </div>
   </div>
 <p>代入を繰り返すと、変数の中の値が変わります。</p>
-<div class="exercise" data-exercise="count">
+<div class="exercise" data-exercise="count" data-kind="sample" data-label="見本：代入と面積（2つ目）">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
     <div class="work">
@@ -402,7 +413,8 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-count" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
       </div>
-      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="pass-note" hidden></div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="diff-btn">見本と比べる</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
       <div class="stdin-panel" hidden>
@@ -427,7 +439,7 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
 すでにある変数に入れ直すときは付けません。</p></li></ul>
 </section>
 <section id="errors" class="section"><h2>エラーを直す</h2><p>1コマ目と同じく、まず実行してエラーを確かめ、直してから再実行しましょう。</p>
-<div class="exercise fix-exercise" data-exercise="fix-redefine">
+<div class="exercise fix-exercise" data-exercise="fix-redefine" data-kind="fix" data-label="エラーを直す（1つ目）">
     <div class="sample-head fix-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">エラーを直す</span></div>
     <div class="work">
       <label for="editor-fix-redefine">まず実行してエラーを確かめ、直してから再実行しましょう：</label>
@@ -440,6 +452,7 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
     }
 }</textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="reset-btn">最初のコードに戻す</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -454,7 +467,7 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
       </div>
     </div>
   </div>
-<div class="exercise fix-exercise" data-exercise="fix-name">
+<div class="exercise fix-exercise" data-exercise="fix-name" data-kind="fix" data-label="エラーを直す（2つ目）">
     <div class="sample-head fix-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">エラーを直す</span></div>
     <div class="work">
       <label for="editor-fix-name">まず実行してエラーを確かめ、直してから再実行しましょう：</label>
@@ -468,6 +481,7 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
     }
 }</textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="reset-btn">最初のコードに戻す</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -482,7 +496,7 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
       </div>
     </div>
   </div>
-<div class="exercise fix-exercise" data-exercise="fix-repeat">
+<div class="exercise fix-exercise" data-exercise="fix-repeat" data-kind="fix" data-label="エラーを直す（3つ目）">
     <div class="sample-head fix-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">エラーを直す</span></div>
     <div class="work">
       <label for="editor-fix-repeat">まず実行してエラーを確かめ、直してから再実行しましょう：</label>
@@ -493,6 +507,7 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
     }
 }</textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="reset-btn">最初のコードに戻す</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -509,7 +524,8 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
   </div>
 <p>次のコードはエラーなく動きますが、三角形の面積が <code>7.5</code> ではなく <code>7</code> になります。<br>
 正しく <code>7.5</code> と表示されるように直しましょう。</p>
-<div class="exercise fix-exercise" data-exercise="fix-divide">
+<div class="expected"><code>7.5</code></div>
+<div class="exercise fix-exercise" data-exercise="fix-divide" data-kind="fix" data-label="エラーを直す（4つ目）">
     <div class="sample-head fix-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">エラーを直す</span></div>
     <div class="work">
       <label for="editor-fix-divide">まず実行してエラーを確かめ、直してから再実行しましょう：</label>
@@ -522,6 +538,7 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
     }
 }</textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="reset-btn">最初のコードに戻す</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -564,13 +581,14 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
 <section id="challenge" class="section challenge-section"><h2>演習問題</h2><p>各課題で <code>Main</code> クラスと <code>main</code> を含むプログラム全体を書きます。</p>
 <h3 class="task-title">課題1 <span>好きな文字列を10回</span></h3>
 <p>好きな短い文字列を <code>String word</code> に入れ、<code>repeat(10)</code> で10回続けて表示してください。</p>
-<div class="exercise" data-exercise="task1">
+<div class="exercise" data-exercise="task1" data-kind="task" data-label="課題1 好きな文字列を10回">
 
     <div class="work">
 
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-task1" aria-label="課題1のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力"></textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -590,13 +608,14 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
 台形の面積は「(上底 + 下底) × 高さ ÷ 2」です。<br>
 答えは小数を含めて表示します。</p>
 <div class="expected"><code>17.5</code></div>
-<div class="exercise" data-exercise="task2">
+<div class="exercise" data-exercise="task2" data-kind="task" data-label="課題2 台形の面積">
 
     <div class="work">
 
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-task2" aria-label="課題2のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力"></textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -615,13 +634,14 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
 <p>半径 <code>3</code> を変数 <code>r</code> に入れ、円の面積を計算してください。<br>
 円周率には Java の <code>Math.PI</code> を使います。</p>
 <div class="expected"><code>28.274333882308138</code></div>
-<div class="exercise" data-exercise="task3">
+<div class="exercise" data-exercise="task3" data-kind="task" data-label="課題3 円の面積">
 
     <div class="work">
 
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-task3" aria-label="課題3のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力"></textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -658,7 +678,7 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
 <h3 class="task-title">発展1 <span>数字の文字列を整数に変える</span></h3>
 <p>数字だけの文字列を、計算に使える整数に変えられます。<br>
 次の見本を書き写しましょう。</p>
-<div class="exercise" data-exercise="parse">
+<div class="exercise" data-exercise="parse" data-kind="sample" data-label="発展1 数字の文字列を整数に変える" data-bonus>
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
     <div class="work">
@@ -666,7 +686,8 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-parse" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
       </div>
-      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="pass-note" hidden></div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="diff-btn">見本と比べる</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
       <div class="stdin-panel" hidden>
@@ -689,13 +710,14 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
 <h3 class="task-title">発展2 <span>秒を時間・分・秒に換算</span></h3>
 <p><code>10000</code> 秒が何時間何分何秒かを、整数の <code>/</code> と <code>%</code> で計算してください。</p>
 <div class="expected"><code>2時間46分40秒</code></div>
-<div class="exercise" data-exercise="ext1">
+<div class="exercise" data-exercise="ext1" data-kind="task" data-label="発展2 秒を時間・分・秒に換算" data-bonus>
 
     <div class="work">
 
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-ext1" aria-label="発展1のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力"></textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -735,6 +757,7 @@ Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaで�
 </section>
           <section id="save" class="section submission">
             <h2>Moodle提出用ファイル保存</h2>
+            <div id="progress" class="progress-panel" aria-live="polite"></div>
             <form id="export-form">
               <div class="identity-fields">
                 <label for="attendance-number">

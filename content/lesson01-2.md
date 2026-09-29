@@ -38,7 +38,7 @@ footer: 後期 第1回・2コマ目 / Javaプログラミング入門
 まずは見本を見ずに、`Hello` と1行表示するプログラムを書いてみましょう。
 思い出せないときは、[1コマ目のHello World](./lesson01-1.html#first-code)を見て確かめます。
 
-:::expected
+:::expected warmup
 Hello
 :::
 
@@ -357,6 +357,10 @@ public class Main {
 次のコードはエラーなく動きますが、三角形の面積が `7.5` ではなく `7` になります。
 正しく `7.5` と表示されるように直しましょう。
 
+:::expected fix-divide
+7.5
+:::
+
 :::exercise fix-divide Main.java fix
 ```java
 public class Main {
@@ -396,7 +400,7 @@ public class Main {
 上底を `upper` に `3`、下底を `lower` に `4`、高さを `height` に `5` として、台形の面積を求めてください。
 台形の面積は「(上底 + 下底) × 高さ ÷ 2」です。答えは小数を含めて表示します。
 
-:::expected
+:::expected task2
 17.5
 :::
 
@@ -408,7 +412,7 @@ public class Main {
 半径 `3` を変数 `r` に入れ、円の面積を計算してください。
 円周率には Java の `Math.PI` を使います。
 
-:::expected
+:::expected task3
 28.274333882308138
 :::
 
@@ -462,7 +466,7 @@ public class Main {
 
 `10000` 秒が何時間何分何秒かを、整数の `/` と `%` で計算してください。
 
-:::expected
+:::expected ext1
 2時間46分40秒
 :::
 

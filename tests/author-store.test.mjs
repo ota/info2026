@@ -333,11 +333,28 @@ test("a check with a source exercise adds a try input that copies from it", () =
   const page = renderLesson(withChecks("first"), template, "lesson01.md");
   assert.ok(page.exerciseIds.includes("first-try"));
   assert.ok(page.exerciseIds.includes("first-try2"));
-  assert.ok(page.html.includes('data-exercise="first-try" data-copy-from="first"'));
+  assert.match(page.html, /data-exercise="first-try" data-kind="try" [^>]*data-copy-from="first"/);
   assert.ok(page.html.includes('<button type="button" class="copy-btn">上のコードをコピー</button>'));
   assert.equal(page.samples["first-try"], undefined);
   assert.throws(
     () => renderLesson(withChecks("missing"), template, "lesson01.md"),
     /コピー元 missing が見つかりません/,
+  );
+});
+
+test("exercises carry their kind, and expected blocks bind answers", () => {
+  const source =
+    original.trimEnd() +
+    "\n\n:::expected\n直後の出力例\n:::\n\n本文です。\n\n:::expected\n後の出力例\n:::\n\n## 演習問題 {#challenge}\n\n### 課題1　固定の答え\n\n:::expected task1\n```\n  *\n***\n```\n:::\n\n:::exercise task1\n:::\n\n## 発展課題（余裕がある人のみ） {#extension}\n\n:::exercise ext1\n:::\n";
+  const page = renderLesson(source, template, "lesson01.md");
+  assert.match(page.html, /data-exercise="first" data-kind="sample" data-label="見本：コード入力欄"/);
+  assert.match(page.html, /data-exercise="task1" data-kind="task" data-label="課題1 固定の答え"/);
+  assert.match(page.html, /data-exercise="ext1" data-kind="task" [^>]*data-bonus/);
+  assert.equal(page.outputs.task1, "  *\n***");
+  // The sample's answer is the block right after it, not a later one.
+  assert.equal(page.outputs.first, "直後の出力例");
+  assert.throws(
+    () => renderLesson(original.trimEnd() + "\n\n:::expected nothing\nx\n:::\n", template, "lesson01.md"),
+    /出力例の対象 nothing が見つかりません/,
   );
 });

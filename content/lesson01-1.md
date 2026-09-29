@@ -403,7 +403,7 @@ public class Main {
 
 半角の空白と `*` を使い、次の3行を表示してください。`*` はShiftと `:` のキーです。
 
-:::expected
+:::expected task3
 ```
   *
  ***

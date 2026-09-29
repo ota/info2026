@@ -16,6 +16,11 @@ async function finished() {
     status:e.querySelector('.status').textContent,exit:e.querySelector('.exit-code').textContent};})()`);
 }
 async function run(code) { await start(code); return finished(); }
+async function runIn(box, code) {
+  const saved = ex;
+  ex = box;
+  try { return await run(code); } finally { ex = saved; }
+}
 // Mark the current document first, so waiting cannot pass on the page that
 // is about to be replaced by the navigation or reload.
 async function load(method, params = {}, ready = `!!${ex}?.querySelector('.save-note')`) {
@@ -57,6 +62,9 @@ try {
     await send("Network.setBlockedURLs", { urls: ["*://teavm.org/*", "*://cjrtnc.leaningtech.com/*"] });
   }
   await load("Page.navigate", { url });
+  // Start from empty storage so earlier runs cannot affect the results.
+  await evaluate("localStorage.clear()");
+  await load("Page.reload");
   assert.equal(await evaluate(`${ex}.querySelector('.run-btn').disabled`), false);
   assert.equal(await evaluate("document.body.dataset.lesson"), "lesson01-1");
   assert.equal(await evaluate("document.querySelectorAll('.lesson-switch a').length"), 2);
@@ -125,6 +133,41 @@ try {
   ex = exBefore;
   assert.equal(tryResult.output, valuesSample.expected.replace("\n3\n", "\n6\n"));
   console.log("Check try input copy button: OK");
+  // Compare with the sample: differing lines and the first differing character are marked.
+  const valuesBox = "document.querySelector('[data-exercise=values]')";
+  await setValue(valuesEditor, valuesSample.code.replace("println(7);", "println(7):"));
+  await evaluate(`${valuesBox}.querySelector('.diff-btn').click()`);
+  assert.match(await evaluate(`${valuesBox}.querySelector('.status').textContent`), /3行目：「:」のところが、見本では「;」です。/);
+  assert.equal(await evaluate(`${valuesBox}.querySelector('.gutter .diff-num').textContent`), "3");
+  assert.equal(await evaluate(`${valuesBox}.querySelector('.code-highlight .diff-char').textContent`), ":");
+  await setValue(valuesEditor, valuesSample.code);
+  assert.equal(await evaluate(`${valuesBox}.querySelector('.gutter .diff-num')`), null);
+  await evaluate(`${valuesBox}.querySelector('.diff-btn').click()`);
+  assert.equal(await evaluate(`${valuesBox}.querySelector('.status').textContent`), "見本と同じです 🎉");
+  // Running the sample exactly passes; editing it afterwards clears the pass.
+  const progressText = () => evaluate("document.querySelector('#progress .progress-count').textContent");
+  // Start from a not-yet-passed state, whatever earlier runs recorded.
+  await setValue(valuesEditor, valuesSample.code + "\n// 未完了");
+  await new Promise((resolve) => setTimeout(resolve, 100));
+  const before = await progressText();
+  const passRun = await runIn(valuesBox, valuesSample.code);
+  assert.match(passRun.status, /^✅ 合格/);
+  assert.equal(await evaluate(`${valuesBox}.querySelector('.pass-note').hidden`), false);
+  await until(`document.querySelector('#progress .progress-count').textContent !== ${JSON.stringify(before)}`);
+  const differentRun = await runIn(valuesBox, valuesSample.code.replace("println(3.5)", "println(4.5)"));
+  assert.match(differentRun.status, /見本と違うところがあります/);
+  assert.equal(await evaluate(`${valuesBox}.querySelector('.pass-note').hidden`), true);
+  await runIn(valuesBox, valuesSample.code);
+  await load("Page.reload");
+  assert.equal(await evaluate(`${valuesBox}.querySelector('.pass-note').textContent`), "✅ 合格");
+  // A task with a fixed answer passes only when the output matches.
+  const task3Box = "document.querySelector('[data-exercise=task3]')";
+  const wrongTask = await runIn(task3Box, main('System.out.println("*");'));
+  assert.match(wrongTask.status, /出力例と違います/);
+  const rightTask = await runIn(task3Box, main('System.out.println("  *");System.out.println(" ***");System.out.println("*****");'));
+  assert.match(rightTask.status, /^✅ 合格：出力例と同じ結果です。/);
+  assert.match(await evaluate("document.querySelector('#progress').textContent"), /達成状況\d+%/);
+  console.log("Compare with sample, pass marks and progress panel: OK");
   console.log("First period fix exercises start from broken code and pass after repair: OK");
   for (const [body, expectedOutput] of [
     ['System.out.println("こんにちは、Java！");', "こんにちは、Java！\n"],
@@ -190,6 +233,9 @@ try {
   const html=await readFile(`${directory}/${file}`,"utf8");
   assert.match(html,/Hello, World!/);
   assert.match(html,/class="tok-keyword"/);
+  assert.match(html,/達成率（この端末での目安）/);
+  assert.match(html,/<div id="progress" class="progress-panel"[^>]*><div class="progress-head">/);
+  assert.match(html,/✅ 合格/);
   assert.doesNotMatch(html,/<button[^>]*class="reset-btn|<pre class="code-highlight/);
   assert.match(html,/確認用/);
   assert.match(html,/data:image\/png;base64/);
@@ -233,6 +279,11 @@ try {
     "fix-repeat": ['"★" * 5', '"★".repeat(5)', "★★★★★\n", /bad operand types/],
     "fix-divide": ["int base = 3;\n        int height = 5;", "double base = 3;\n        double height = 5;", "7.5\n"],
   });
+  // The division fix passes only after the output becomes 7.5.
+  const divideBox = "document.querySelector('[data-exercise=fix-divide]')";
+  const divideCode = secondList.find(({ id }) => id === "fix-divide").code;
+  assert.match((await runIn(divideBox, divideCode)).status, /最初のコードのまま/);
+  assert.match((await runIn(divideBox, divideCode.replace("/ 2)", "/ 2.0)"))).status, /^✅ 合格：エラーを直せました。/);
   assert.ok(await evaluate("localStorage.getItem('info2026:lesson01-2:arithmetic')"));
   await evaluate("document.querySelector('#attendance-number').value='12';document.querySelector('#student-name').value='確認用';document.querySelector('.export-btn').click()");
   await until("document.querySelector('#export-status').textContent.includes('ダウンロードを開始')");

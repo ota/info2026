@@ -149,7 +149,7 @@ Shiftと押すと <code>{</code> <code>}</code> になります。</li>
 </ul>
 </li>
 </ul>
-<div class="exercise" data-exercise="first">
+<div class="exercise" data-exercise="first" data-kind="sample" data-label="見本：Hello World">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
     <div class="work">
@@ -157,7 +157,8 @@ Shiftと押すと <code>{</code> <code>}</code> になります。</li>
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-first" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
       </div>
-      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="pass-note" hidden></div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="diff-btn">見本と比べる</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
       <div class="stdin-panel" hidden>
@@ -185,13 +186,14 @@ Shiftと押すと <code>{</code> <code>}</code> になります。</li>
 二重引用符 <code>&quot;</code> は残します。<br>
 日本語を打ち終えたら、日本語入力をオフに戻します。<br>
 戻し忘れると <code>”</code> や <code>；</code> が全角になり、エラーになります。</p>
-</div></div><div class="exercise try-exercise" data-exercise="first-try" data-copy-from="first">
+</div></div><div class="exercise try-exercise" data-exercise="first-try" data-kind="try" data-label="確認：Hello World" data-copy-from="first">
 
     <div class="work">
       <label for="editor-first-try">上のコードをコピーしてから書き換え、実行しましょう：</label>
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-first-try" aria-label="確認用のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 「上のコードをコピー」を押してから書き換えます"></textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="copy-btn">上のコードをコピー</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -208,13 +210,14 @@ Shiftと押すと <code>{</code> <code>}</code> になります。</li>
   </div>
 <div class="check"><b>確認</b><div class="check-body"><p><strong>下の欄にコピーして、3行目の下に <code>System.out.println(&quot;2行目&quot;);</code> を1行足して実行しましょう。</strong><br>
 命令は上から順に実行され、2行表示されます。</p>
-</div></div><div class="exercise try-exercise" data-exercise="first-try2" data-copy-from="first">
+</div></div><div class="exercise try-exercise" data-exercise="first-try2" data-kind="try" data-label="確認：Hello World（2つ目）" data-copy-from="first">
 
     <div class="work">
       <label for="editor-first-try2">上のコードをコピーしてから書き換え、実行しましょう：</label>
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-first-try2" aria-label="確認用のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 「上のコードをコピー」を押してから書き換えます"></textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="copy-btn">上のコードをコピー</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -232,7 +235,7 @@ Shiftと押すと <code>{</code> <code>}</code> になります。</li>
 </section>
 <section id="values" class="section"><h2>数値と文字列を表示する</h2><p>表示する値には、数値と文字列があります。<br>
 二重引用符 <code>&quot;</code> の有無で意味が変わります。</p>
-<div class="exercise" data-exercise="values">
+<div class="exercise" data-exercise="values" data-kind="sample" data-label="見本：数値と文字列を表示する">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
     <div class="work">
@@ -240,7 +243,8 @@ Shiftと押すと <code>{</code> <code>}</code> になります。</li>
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-values" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
       </div>
-      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="pass-note" hidden></div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="diff-btn">見本と比べる</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
       <div class="stdin-panel" hidden>
@@ -269,13 +273,14 @@ Shiftと押すと <code>{</code> <code>}</code> になります。</li>
 数値は二重引用符で囲みません。</p></li></ul>
 <div class="check"><b>確認</b><div class="check-body"><p><strong>下の欄にコピーして、<code>1 + 2</code> を <code>10 - 4</code> に変えます。<br>
 何が表示されるか、予想してから実行しましょう。</strong></p>
-</div></div><div class="exercise try-exercise" data-exercise="values-try" data-copy-from="values">
+</div></div><div class="exercise try-exercise" data-exercise="values-try" data-kind="try" data-label="確認：数値と文字列を表示する" data-copy-from="values">
 
     <div class="work">
       <label for="editor-values-try">上のコードをコピーしてから書き換え、実行しましょう：</label>
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-values-try" aria-label="確認用のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 「上のコードをコピー」を押してから書き換えます"></textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="copy-btn">上のコードをコピー</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -293,7 +298,7 @@ Shiftと押すと <code>{</code> <code>}</code> になります。</li>
 </section>
 <section id="print" class="section"><h2>printとprintln</h2><p><code>println</code> の <code>ln</code> は「line（行）」の略です。<br>
 <code>print</code> を使うと、表示の後に改行しません。</p>
-<div class="exercise" data-exercise="print-lines">
+<div class="exercise" data-exercise="print-lines" data-kind="sample" data-label="見本：printとprintln">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
     <div class="work">
@@ -301,7 +306,8 @@ Shiftと押すと <code>{</code> <code>}</code> になります。</li>
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-print-lines" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
       </div>
-      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="pass-note" hidden></div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="diff-btn">見本と比べる</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
       <div class="stdin-panel" hidden>
@@ -326,13 +332,14 @@ ABC
 <div class="check"><b>確認</b><div class="check-body"><p><strong>下の欄にコピーして、<code>System.out.print(&quot;B&quot;);</code> を <code>println</code> に変えます。<br>
 表示は何行になるでしょうか。</strong></p>
 <p><strong>予想してから実行しましょう。</strong></p>
-</div></div><div class="exercise try-exercise" data-exercise="print-lines-try" data-copy-from="print-lines">
+</div></div><div class="exercise try-exercise" data-exercise="print-lines-try" data-kind="try" data-label="確認：printとprintln" data-copy-from="print-lines">
 
     <div class="work">
       <label for="editor-print-lines-try">上のコードをコピーしてから書き換え、実行しましょう：</label>
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-print-lines-try" aria-label="確認用のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 「上のコードをコピー」を押してから書き換えます"></textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="copy-btn">上のコードをコピー</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -351,7 +358,7 @@ ABC
 <section id="variables" class="section"><h2>変数を使う</h2><p>値を入れて、後から使える名前を「変数」と呼びます。<br>
 Javaでは、変数を作るときに型も書きます。<br>
 <code>=</code> は、Shiftと <code>-</code> のキーで入力します。</p>
-<div class="exercise" data-exercise="variable">
+<div class="exercise" data-exercise="variable" data-kind="sample" data-label="見本：変数を使う">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
     <div class="work">
@@ -359,7 +366,8 @@ Javaでは、変数を作るときに型も書きます。<br>
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-variable" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
       </div>
-      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="pass-note" hidden></div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="diff-btn">見本と比べる</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
       <div class="stdin-panel" hidden>
@@ -385,13 +393,14 @@ number
 ただし、先頭を数字にはできません。</p><ul class="concept-details"><li>大文字と小文字は区別されます。<br>
 <code>Number</code> と <code>number</code> は別の名前です。</li></ul></li></ul>
 <div class="check"><b>確認</b><div class="check-body"><p><strong>下の欄にコピーして、<code>int number = 99;</code> の <code>99</code> を自分の出席番号に変えて実行しましょう。</strong></p>
-</div></div><div class="exercise try-exercise" data-exercise="variable-try" data-copy-from="variable">
+</div></div><div class="exercise try-exercise" data-exercise="variable-try" data-kind="try" data-label="確認：変数を使う" data-copy-from="variable">
 
     <div class="work">
       <label for="editor-variable-try">上のコードをコピーしてから書き換え、実行しましょう：</label>
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-variable-try" aria-label="確認用のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 「上のコードをコピー」を押してから書き換えます"></textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="copy-btn">上のコードをコピー</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -408,7 +417,7 @@ number
   </div>
 <p>整数のほかに、小数と文字列の変数も作れます。<br>
 型によって書く名前が違います。</p>
-<div class="exercise" data-exercise="types">
+<div class="exercise" data-exercise="types" data-kind="sample" data-label="見本：変数を使う（2つ目）">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
     <div class="work">
@@ -416,7 +425,8 @@ number
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-types" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
       </div>
-      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="pass-note" hidden></div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="diff-btn">見本と比べる</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
       <div class="stdin-panel" hidden>
@@ -466,7 +476,7 @@ Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <c
 <li class="concept"><p><code>String name = &quot;太田健吾&quot;;</code> は、文字列型の変数 <code>name</code> に氏名を入れます。</p><ul class="concept-details"><li><code>String</code> だけ先頭が大文字です。<br>
 <code>int</code> と <code>double</code> は小文字です。</li><li>Cの <code>char name[]</code> にあたります。</li></ul></li></ul>
 <p><code>print</code> と <code>println</code> を組み合わせると、変数の値を文の途中に入れられます。</p>
-<div class="exercise" data-exercise="self-intro">
+<div class="exercise" data-exercise="self-intro" data-kind="sample" data-label="見本：変数を使う（3つ目）">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
     <div class="work">
@@ -474,7 +484,8 @@ Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <c
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-self-intro" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
       </div>
-      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="pass-note" hidden></div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="diff-btn">見本と比べる</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
       <div class="stdin-panel" hidden>
@@ -493,13 +504,14 @@ Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <c
 <li class="concept"><p><code>&quot; 番の &quot;</code> のように、文字列の中の空白もそのまま表示されます。</p></li>
 <li class="concept"><p>C言語では、<code>printf</code> と書式指定子で1行にまとめて書けました。</p><ul class="concept-details"><li>Javaで1行にまとめる方法は、2コマ目で学びます。</li></ul></li></ul>
 <div class="check"><b>確認</b><div class="check-body"><p><strong>下の欄にコピーして、<code>number</code> と <code>name</code> の値を自分の出席番号・氏名に変えて実行しましょう。</strong></p>
-</div></div><div class="exercise try-exercise" data-exercise="self-intro-try" data-copy-from="self-intro">
+</div></div><div class="exercise try-exercise" data-exercise="self-intro-try" data-kind="try" data-label="確認：変数を使う（2つ目）" data-copy-from="self-intro">
 
     <div class="work">
       <label for="editor-self-intro-try">上のコードをコピーしてから書き換え、実行しましょう：</label>
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-self-intro-try" aria-label="確認用のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 「上のコードをコピー」を押してから書き換えます"></textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="copy-btn">上のコードをコピー</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -530,7 +542,7 @@ Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <c
 </ul>
 <p>次のコードには、それぞれ誤りが一つあります。<br>
 まず実行してエラーを確かめ、直してから再実行しましょう。</p>
-<div class="exercise fix-exercise" data-exercise="fix-semicolon">
+<div class="exercise fix-exercise" data-exercise="fix-semicolon" data-kind="fix" data-label="エラーを直す（1つ目）">
     <div class="sample-head fix-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">エラーを直す</span></div>
     <div class="work">
       <label for="editor-fix-semicolon">まず実行してエラーを確かめ、直してから再実行しましょう：</label>
@@ -541,6 +553,7 @@ Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <c
     }
 }</textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="reset-btn">最初のコードに戻す</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -555,7 +568,7 @@ Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <c
       </div>
     </div>
   </div>
-<div class="exercise fix-exercise" data-exercise="fix-case">
+<div class="exercise fix-exercise" data-exercise="fix-case" data-kind="fix" data-label="エラーを直す（2つ目）">
     <div class="sample-head fix-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">エラーを直す</span></div>
     <div class="work">
       <label for="editor-fix-case">まず実行してエラーを確かめ、直してから再実行しましょう：</label>
@@ -566,6 +579,7 @@ Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <c
     }
 }</textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="reset-btn">最初のコードに戻す</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -580,7 +594,7 @@ Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <c
       </div>
     </div>
   </div>
-<div class="exercise fix-exercise" data-exercise="fix-quote">
+<div class="exercise fix-exercise" data-exercise="fix-quote" data-kind="fix" data-label="エラーを直す（3つ目）">
     <div class="sample-head fix-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">エラーを直す</span></div>
     <div class="work">
       <label for="editor-fix-quote">まず実行してエラーを確かめ、直してから再実行しましょう：</label>
@@ -591,6 +605,7 @@ Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <c
     }
 }</textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="reset-btn">最初のコードに戻す</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -607,7 +622,7 @@ Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <c
   </div>
 <p>次の誤りは見た目では分かりにくいものです。<br>
 エラーは2つ表示されますが、原因は一つです。</p>
-<div class="exercise fix-exercise" data-exercise="fix-space">
+<div class="exercise fix-exercise" data-exercise="fix-space" data-kind="fix" data-label="エラーを直す（4つ目）">
     <div class="sample-head fix-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">エラーを直す</span></div>
     <div class="work">
       <label for="editor-fix-space">まず実行してエラーを確かめ、直してから再実行しましょう：</label>
@@ -619,6 +634,7 @@ Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <c
     }
 }</textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="reset-btn">最初のコードに戻す</button><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -663,13 +679,14 @@ Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <c
 <section id="challenge" class="section challenge-section"><h2>演習問題</h2><p>各課題では、<code>public class Main</code> から最後の <code>}</code> までプログラム全体を入力します。</p>
 <h3 class="task-title">課題1 <span>好きな文字列</span></h3>
 <p><code>Hello, World!</code> 以外の好きな文字列を1行表示してください。</p>
-<div class="exercise" data-exercise="task1">
+<div class="exercise" data-exercise="task1" data-kind="task" data-label="課題1 好きな文字列">
 
     <div class="work">
 
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-task1" aria-label="課題1のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力"></textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -688,13 +705,14 @@ Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <c
 <p>出席番号を <code>number</code>、氏名を <code>name</code> という変数に入れ、次の形で表示してください。<br>
 数字や名前は自分のものに変えます。</p>
 <div class="expected"><code>出席番号 99 番の 太田健吾 です。</code></div>
-<div class="exercise" data-exercise="task2">
+<div class="exercise" data-exercise="task2" data-kind="task" data-label="課題2 変数で自己紹介">
 
     <div class="work">
 
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-task2" aria-label="課題2のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力"></textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -717,13 +735,14 @@ Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <c
 *****
 </pre>
 </div>
-<div class="exercise" data-exercise="task3">
+<div class="exercise" data-exercise="task3" data-kind="task" data-label="課題3 山形模様">
 
     <div class="work">
 
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-task3" aria-label="課題3のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力"></textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -754,13 +773,14 @@ Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <c
 円周率は 3.14 です。
 </pre>
 </div>
-<div class="exercise" data-exercise="ext1">
+<div class="exercise" data-exercise="ext1" data-kind="task" data-label="発展1 円周率を加えた自己紹介" data-bonus>
 
     <div class="work">
 
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-ext1" aria-label="発展1のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力"></textarea>
       </div>
+      <div class="pass-note" hidden></div>
       <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
@@ -792,6 +812,7 @@ Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <c
 </section>
           <section id="save" class="section submission">
             <h2>Moodle提出用ファイル保存</h2>
+            <div id="progress" class="progress-panel" aria-live="polite"></div>
             <form id="export-form">
               <div class="identity-fields">
                 <label for="attendance-number">

@@ -94,3 +94,19 @@ export const samples = {
     "}"
   ]
 };
+export const outputs = {
+  "warmup": "Hello",
+  "arithmetic": "9\n5\n14",
+  "division": "3\n1",
+  "decimal": "7.0\n3.5\n3.5",
+  "order": "14\n20\n256.0",
+  "strings": "Java入門\n3\n12\n★★★★★",
+  "concat": "出席番号 99 番の 太田健吾 です。\n合計 12\n合計 3",
+  "area": "面積は 50",
+  "count": "1\n2\n12",
+  "fix-divide": "7.5",
+  "task2": "17.5",
+  "task3": "28.274333882308138",
+  "parse": "123\n15",
+  "ext1": "2時間46分40秒"
+};

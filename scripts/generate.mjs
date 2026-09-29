@@ -73,6 +73,10 @@ markdown.core.ruler.push("sentence_breaks", (state) => {
 markdown.renderer.rules.table_open = () => '<div class="table-scroll"><table>\n';
 markdown.renderer.rules.table_close = () => "</table></div>\n";
 
+// The literal text of an expected-output block, without a code fence.
+const expectedText = (body) =>
+  body.trim().match(/^```[^\n]*\n([\s\S]*?)\n```$/)?.[1] ?? body.trim();
+
 const escapeHtml = (value) =>
   String(value).replace(
     /[&<>"']/g,
@@ -173,6 +177,20 @@ function exerciseHtml(argument, body, samples, usedIds, path, context, { copyFro
     throw new Error(`${path}: ${id} の見本コードがありません`);
   }
   const safeId = escapeHtml(id);
+  // Kind, a readable name and whether it is optional drive the progress panel.
+  const kind = sample ? "sample" : fix ? "fix" : copyFrom ? "try" : "task";
+  const lesson = context.lesson;
+  const section = context.section ?? { id: "", title: "" };
+  const count = `${section.id}:${kind}`;
+  lesson.counts[count] = (lesson.counts[count] ?? 0) + 1;
+  const nth = lesson.counts[count];
+  const nthText = nth > 1 ? `（${nth}つ目）` : "";
+  const title = context.heading
+    ? context.heading.replace(/\s+/, " ")
+    : kind === "fix"
+      ? `エラーを直す（${nth}つ目）`
+      : `${{ sample: "見本", try: "確認", task: "課題" }[kind]}：${section.title}${nthText}`;
+  const bonus = section.id === "extension";
   const label = sample
     ? "上記のサンプルコードを書き写してください："
     : fix
@@ -186,14 +204,15 @@ function exerciseHtml(argument, body, samples, usedIds, path, context, { copyFro
     : fix
       ? `<div class="sample-head fix-head"><span class="file-icon">J</span> ${escapeHtml(filename)}${codeField ? `<button type="button" class="author-code-button" data-author-code="${codeField.key}">直すコードを編集</button>` : '<span class="sample-tag">エラーを直す</span>'}</div>`
       : "";
-  return `<div class="exercise${fix ? " fix-exercise" : ""}${copyFrom ? " try-exercise" : ""}" data-exercise="${safeId}"${copyFrom ? ` data-copy-from="${escapeHtml(copyFrom)}"` : ""}>
+  return `<div class="exercise${fix ? " fix-exercise" : ""}${copyFrom ? " try-exercise" : ""}" data-exercise="${safeId}" data-kind="${kind}" data-label="${escapeHtml(title)}"${bonus ? " data-bonus" : ""}${copyFrom ? ` data-copy-from="${escapeHtml(copyFrom)}"` : ""}>
     ${sampleHtml}
     <div class="work">
       ${label ? `<label for="editor-${safeId}">${label}</label>` : ""}
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-${safeId}" aria-label="${sample ? "サンプルコード" : fix ? "直すコード" : copyFrom ? "確認用のコード" : escapeHtml(id.replace(/^task(\d+)$/, "課題$1").replace(/^ext(\d+)$/, "発展$1")) + "のコード"}" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="${sample ? "// サンプルコードを見ながら、ここに入力" : copyFrom ? "// 「上のコードをコピー」を押してから書き換えます" : "// 自分で考えて入力"}">${escapeHtml(initial)}</textarea>
       </div>
-      <div class="work-footer"><div class="buttons">${fix ? '<button type="button" class="reset-btn">最初のコードに戻す</button>' : ""}${copyFrom ? '<button type="button" class="copy-btn">上のコードをコピー</button>' : ""}<button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="pass-note" hidden></div>
+      <div class="work-footer"><div class="buttons">${sample ? '<button type="button" class="diff-btn">見本と比べる</button>' : ""}${fix ? '<button type="button" class="reset-btn">最初のコードに戻す</button>' : ""}${copyFrom ? '<button type="button" class="copy-btn">上のコードをコピー</button>' : ""}<button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
       <div class="stdin-panel" hidden>
@@ -284,6 +303,8 @@ function directiveHtml(name, argument, body, samples, usedIds, path, context) {
   }
   if (name === "notice") return `<div class="lesson-notice">${rich()}</div>`;
   if (name === "expected") {
+    if (argument && !/^[a-z][a-z0-9-]*$/.test(argument))
+      throw new Error(`${path}: 出力例の対象IDが不正です: ${argument}`);
     const value = body.trim().startsWith("```")
       ? markdown
           .render(body)
@@ -303,10 +324,22 @@ function renderBody(body, samples, usedIds, path, context) {
   // source fragment separately so that editable ranges have exact offsets.
   let authorHtml = "";
   let cursor = 0;
+  let lastSample = null;
   const withPlaceholders = body.replace(
     /^:::(\w[\w-]*)([^\n]*)\n([\s\S]*?)^:::\s*$/gm,
     (full, name, argument, content, offset) => {
       const token = `LESSONBLOCK${blocks.length}END`;
+      // An expected block right after a sample is that sample's answer;
+      // ":::expected ID" makes it the answer of exercise ID.
+      if (name === "expected") {
+        const target =
+          argument.trim() ||
+          (lastSample && !body.slice(lastSample.end, offset).trim()
+            ? lastSample.id
+            : "");
+        if (target) context.lesson.outputs[target] = expectedText(content);
+      }
+      const heading = [...body.slice(0, offset).matchAll(/^### (.+)$/gm)].at(-1)?.[1];
       const html = directiveHtml(
         name,
         argument.trim(),
@@ -317,8 +350,16 @@ function renderBody(body, samples, usedIds, path, context) {
         {
           editor: context.editor,
           start: context.start + offset + 3 + name.length + argument.length + 1,
+          lesson: context.lesson,
+          section: context.section,
+          heading,
         },
       );
+      const id = argument.trim().split(/\s+/)[0];
+      lastSample =
+        name === "exercise" && samples[id]
+          ? { id, end: offset + full.length }
+          : null;
       blocks.push([token, html]);
       if (context.editor) {
         authorHtml +=
@@ -344,13 +385,15 @@ function renderBody(body, samples, usedIds, path, context) {
   return html;
 }
 
-function renderSection(section, samples, usedIds, path, editor) {
+function renderSection(section, samples, usedIds, path, editor, lesson) {
+  const where = { lesson, section: { id: section.id, title: section.title } };
   let body = section.body;
   let after = "";
   if (section.id === "goals") {
     const howto = body.match(/\n:::howto[^\n]*\n[\s\S]*?\n:::\s*$/);
     if (howto) {
       after = renderBody(howto[0].trim(), samples, usedIds, path, {
+        ...where,
         editor,
         start:
           section.bodyStart +
@@ -362,6 +405,7 @@ function renderSection(section, samples, usedIds, path, editor) {
     }
   }
   let html = renderBody(body, samples, usedIds, path, {
+    ...where,
     editor,
     start: section.bodyStart,
   });
@@ -394,8 +438,12 @@ export function renderLesson(
   const sections = splitSections(body, path, bodyStart);
   const samples = {};
   const usedIds = new Set();
+  const lesson = { outputs: {}, counts: {} };
   const editor = editable ? new EditorFields(markdown, source) : undefined;
-  const content = `<h1>${escapeHtml(meta.title)}</h1>\n${sections.map((section) => renderSection(section, samples, usedIds, path, editor)).join("\n")}`;
+  const content = `<h1>${escapeHtml(meta.title)}</h1>\n${sections.map((section) => renderSection(section, samples, usedIds, path, editor, lesson)).join("\n")}`;
+  for (const id of Object.keys(lesson.outputs))
+    if (!usedIds.has(id))
+      throw new Error(`${path}: 出力例の対象 ${id} が見つかりません`);
   const nav =
     sections
       .map(({ id, title }) => `<a href="#${id}">${escapeHtml(title)}</a>`)
@@ -435,6 +483,7 @@ export function renderLesson(
     meta,
     sectionIds: sections.map(({ id }) => id),
     exerciseIds: [...usedIds],
+    outputs: lesson.outputs,
   };
 }
 
@@ -458,7 +507,7 @@ export async function generateAll() {
     })),
   );
   const outputs = [];
-  for (const { path, html, samples } of rendered) {
+  for (const { path, html, samples, outputs: answers } of rendered) {
     const slug = path.slice(0, -3);
     const output = join(root, `${slug}.html`);
     await writeFile(output, html);
@@ -472,7 +521,7 @@ export async function generateAll() {
     }
     await writeFile(
       join(generatedDir, `${slug}-samples.js`),
-      `// Generated from content/${path}\nexport const samples = ${JSON.stringify(samples, null, 2)};\n`,
+      `// Generated from content/${path}\nexport const samples = ${JSON.stringify(samples, null, 2)};\nexport const outputs = ${JSON.stringify(answers, null, 2)};\n`,
     );
     outputs.push(output);
   }

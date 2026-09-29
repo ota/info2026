@@ -1,7 +1,8 @@
 import "./style.css";
 import { createSubmissionFile } from "./export.js";
 import { drawSample } from "./sample.js";
-import { highlightHtml } from "./highlight.js";
+import { escapeHtml, highlightHtml } from "./highlight.js";
+import { compareToSample, normalizeOutput, renderProgress, sameCode } from "./progress.js";
 import { javaRuntimeAvailable, javaRuntimeMessage, javaRuntimeNotice, isCheerpJ, runJava, stopJava, sendJavaInput } from "./java-runtime.js";
 
 const sampleModules = import.meta.glob("./generated/*-samples.js", {
@@ -14,6 +15,21 @@ if (import.meta.hot) {
   });
 }
 const samples = sampleModules[`./generated/${lesson}-samples.js`]?.samples ?? {};
+// Expected output of each sample and of tasks whose answer is fixed.
+const outputs = sampleModules[`./generated/${lesson}-samples.js`]?.outputs ?? {};
+const progressEntries = [];
+const progressPanel = document.querySelector("#progress");
+let progressFrame;
+function updateProgress() {
+  if (!progressPanel) return;
+  cancelAnimationFrame(progressFrame);
+  progressFrame = requestAnimationFrame(() =>
+    renderProgress(
+      progressPanel,
+      progressEntries.map(({ evaluate, ...entry }) => ({ ...entry, done: evaluate().done })),
+    ),
+  );
+}
 
 const sampleCanvases = [];
 for (const [name, lines] of Object.entries(samples)) {
@@ -51,7 +67,7 @@ let running = false;
 function setAllRunButtonsDisabled(disabled) {
   for (const button of document.querySelectorAll(".run-btn"))
     button.disabled = disabled || !javaRuntimeAvailable;
-  for (const button of document.querySelectorAll(".reset-btn, .copy-btn"))
+  for (const button of document.querySelectorAll(".reset-btn, .copy-btn, .diff-btn"))
     button.disabled = disabled;
 }
 
@@ -165,6 +181,102 @@ for (const exercise of document.querySelectorAll(".exercise")) {
       },
       () => editor.value.trim() && source.value.trim() && editor.value !== source.value,
     );
+  // The last run of each input is kept with the code, so an input counts as
+  // done only while its code is unchanged since a successful run.
+  const id = exercise.dataset.exercise;
+  const kind = exercise.dataset.kind;
+  const expected = outputs[id];
+  const runKey = `${key}:run`;
+  const readRun = () => {
+    try {
+      return JSON.parse(localStorage.getItem(runKey));
+    } catch {
+      return null;
+    }
+  };
+  const writeRun = (record) => {
+    try {
+      localStorage.setItem(runKey, JSON.stringify(record));
+    } catch {
+      /* Without storage the result still shows until the page is reloaded. */
+    }
+  };
+  const evaluate = () => {
+    const code = editor.value;
+    const run = readRun();
+    if (!code.trim()) return { done: false, reason: "empty" };
+    if (!run || run.code !== code) return { done: false, reason: "not-run" };
+    if (!run.ok) return { done: false, reason: "error" };
+    if (kind === "sample" && !sameCode(code, samples[id].join("\n")))
+      return { done: false, reason: "sample-diff" };
+    if (kind === "fix" && sameCode(code, editor.defaultValue))
+      return { done: false, reason: "unchanged" };
+    if (kind === "try" && source && sameCode(code, source.value))
+      return { done: false, reason: "unchanged" };
+    if (run.match === false) return { done: false, reason: "output" };
+    return { done: true };
+  };
+  const passText = {
+    sample: "見本と同じコードで、正しく実行できました。",
+    fix: "エラーを直せました。",
+    try: "書き換えて実行できました。",
+    task: expected === undefined ? "エラーなく実行できました。" : "出力例と同じ結果です。",
+  }[kind];
+  const feedback = {
+    "sample-diff": "実行できましたが、見本と違うところがあります。「見本と比べる」で確かめましょう。",
+    unchanged:
+      kind === "try"
+        ? "コピーしたままです。確認の指示どおりに書き換えてから実行しましょう。"
+        : "最初のコードのままです。直してから実行しましょう。",
+    output: "実行できましたが、出力例と違います。空白や記号も確かめましょう。",
+  };
+  const passNote = exercise.querySelector(".pass-note");
+  const showPass = () => {
+    passNote.hidden = !evaluate().done;
+    passNote.textContent = passNote.hidden ? "" : "✅ 合格";
+  };
+  progressEntries.push({
+    id,
+    kind,
+    label: exercise.dataset.label,
+    bonus: exercise.hasAttribute("data-bonus"),
+    evaluate,
+  });
+  // Lines that differ from the sample, marked until the code is edited.
+  let diffMarks = null;
+  const markLine = (line, column) =>
+    `<span class="diff-line">${escapeHtml(line.slice(0, column))}<mark class="diff-char">${escapeHtml(line[column] ?? " ")}</mark>${escapeHtml(line.slice(column + 1))}</span>`;
+  exercise.querySelector(".diff-btn")?.addEventListener("click", () => {
+    if (running) return;
+    status.classList.remove("error", "pass");
+    if (!editor.value.trim()) {
+      status.textContent = "まずコードを入力してください。";
+      status.classList.add("error");
+      return;
+    }
+    const { marks, messages } = compareToSample(editor.value, samples[id]);
+    diffMarks = marks.size ? marks : null;
+    updateGutter();
+    if (!messages.length) {
+      status.textContent = "見本と同じです 🎉";
+      return;
+    }
+    status.replaceChildren(`見本と違うところが${messages.length}か所あります。`);
+    status.classList.add("error");
+    const list = document.createElement("ul");
+    list.className = "diff-list";
+    for (const text of messages.slice(0, 6)) {
+      const item = document.createElement("li");
+      item.textContent = text;
+      list.append(item);
+    }
+    if (messages.length > 6) {
+      const item = document.createElement("li");
+      item.textContent = `ほか${messages.length - 6}か所`;
+      list.append(item);
+    }
+    status.append(list);
+  });
   const saveNote = document.createElement("div");
   saveNote.className = "save-note";
   saveNote.setAttribute("role", "status");
@@ -173,11 +285,22 @@ for (const exercise of document.querySelectorAll(".exercise")) {
   const updateGutter = () => {
     const minimum = exercise.classList.contains("try-exercise") ? 4 : 8;
     const count = Math.max(minimum, editor.value.split("\n").length);
-    gutter.innerHTML = Array.from(
-      { length: count },
-      (_, index) => index + 1,
+    gutter.innerHTML = Array.from({ length: count }, (_, index) =>
+      diffMarks?.has(index + 1)
+        ? `<span class="diff-num">${index + 1}</span>`
+        : index + 1,
     ).join("<br>");
-    highlight.innerHTML = highlightHtml(editor.value) + "\n ";
+    highlight.innerHTML =
+      (diffMarks
+        ? editor.value
+            .split("\n")
+            .map((line, index) =>
+              diffMarks.has(index + 1)
+                ? markLine(line, diffMarks.get(index + 1))
+                : highlightHtml(line),
+            )
+            .join("\n")
+        : highlightHtml(editor.value)) + "\n ";
     syncScroll();
   };
   try {
@@ -197,8 +320,12 @@ for (const exercise of document.querySelectorAll(".exercise")) {
     saveNote.classList.add("save-error");
   }
   updateGutter();
+  showPass();
   editor.addEventListener("input", () => {
+    diffMarks = null;
     updateGutter();
+    showPass();
+    updateProgress();
     output.hidden = true;
     inputPanel.hidden = true;
     inputHistory.textContent = "";
@@ -277,7 +404,7 @@ for (const exercise of document.querySelectorAll(".exercise")) {
     inputHistory.hidden = true;
     inputPanel.hidden = true;
     input.value = "";
-    status.classList.remove("error");
+    status.classList.remove("error", "pass");
     status.textContent = "Java実行環境を準備中…";
     const codeAtRun = editor.value;
     try {
@@ -296,6 +423,7 @@ for (const exercise of document.querySelectorAll(".exercise")) {
         return;
       }
       if (result.stopped) {
+        writeRun({ code: codeAtRun, ok: false, match: null });
         outputText.textContent = result.output || "（出力なし）";
         output.hidden = false;
         exitCode.textContent = "停止";
@@ -316,17 +444,32 @@ for (const exercise of document.querySelectorAll(".exercise")) {
         ? "終了コード: " + (result.exitCode ?? "コンパイルエラー")
         : "終了コード: 0";
       output.hidden = false;
+      writeRun({
+        code: codeAtRun,
+        ok: !failed,
+        match:
+          failed || expected === undefined
+            ? null
+            : normalizeOutput(result.output || "") === normalizeOutput(expected),
+      });
+      const verdict = evaluate();
       if (failed) {
         status.textContent = "エラーを確認して直してみましょう。";
         status.classList.add("error");
+      } else if (verdict.done) {
+        status.textContent = `✅ 合格：${passText}`;
+        status.classList.add("pass");
       } else {
-        status.textContent = "実行できました。出力を確認してください。";
+        status.textContent =
+          feedback[verdict.reason] ?? "実行できました。出力を確認してください。";
       }
     } catch (error) {
       status.textContent = error.message;
       status.classList.add("error");
       if (!output.hidden) exitCode.textContent = "実行中断";
     } finally {
+      showPass();
+      updateProgress();
       running = false;
       editor.readOnly = false;
       stopButton.hidden = true;
@@ -335,6 +478,8 @@ for (const exercise of document.querySelectorAll(".exercise")) {
     }
   });
 }
+
+updateProgress();
 
 const exportForm = document.querySelector("#export-form");
 exportForm.addEventListener("submit", async (event) => {

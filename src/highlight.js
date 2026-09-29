@@ -28,7 +28,7 @@ export function tokenizeLine(line) {
   return parts;
 }
 
-const escapeHtml = (text) =>
+export const escapeHtml = (text) =>
   text.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" })[c]);
 
 export function highlightHtml(code) {
