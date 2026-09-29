@@ -1,7 +1,7 @@
 :root {
   font-family: "DM Sans", "Noto Sans JP", sans-serif;
-  color: #1f2925;
-  background: #f6f4ee;
+  color: #1e242a;
+  background: #f4f7fb;
   font-synthesis: none;
 }
 * {
@@ -35,8 +35,8 @@ code,
 }
 code {
   font-size: 0.91em;
-  color: #176c54;
-  background: #eaf1e9;
+  color: #173f6c;
+  background: #e9edf1;
   padding: 0.11em 0.32em;
   border-radius: 4px;
 }
@@ -46,8 +46,8 @@ code {
   min-height: 100vh;
 }
 .sidebar {
-  background: #eaece4;
-  border-right: 1px solid #d8ddd2;
+  background: #e4e8ec;
+  border-right: 1px solid #d1d7de;
   min-height: 100vh;
   padding: 30px 20px;
   position: sticky;
@@ -72,18 +72,18 @@ code {
   height: 33px;
   border-radius: 8px;
   color: #fff;
-  background: #28775a;
+  background: #284d77;
   font-size: 16px;
 }
 .brand small {
-  color: #799083;
+  color: #718398;
   font-weight: 400;
   font-size: 12px;
 }
 .side-label {
   font-size: 12px;
   letter-spacing: 0.15em;
-  color: #829087;
+  color: #76889c;
   font-weight: 800;
   margin: 55px 8px 14px;
 }
@@ -92,8 +92,8 @@ code {
   align-items: center;
   gap: 11px;
   text-decoration: none;
-  background: #d5e6d7;
-  color: #185b43;
+  background: #d5dde6;
+  color: #18375b;
   padding: 12px 11px;
   border-radius: 9px;
   font-size: 14px;
@@ -102,7 +102,7 @@ code {
 }
 .current-lesson span {
   font-family: "DM Mono", monospace;
-  background: #398968;
+  background: #395e89;
   color: white;
   border-radius: 5px;
   padding: 4px 5px;
@@ -118,33 +118,33 @@ code {
 }
 .side-nav a {
   font-size: 14px;
-  color: #63746a;
+  color: #5a6a7d;
   text-decoration: none;
   padding: 9px 10px;
   border-radius: 6px;
 }
 .side-nav a:hover,
 .side-nav a:focus {
-  background: #e0e7dd;
-  color: #1f5c44;
+  background: #dde2e7;
+  color: #1f3b5c;
 }
 .main {
   min-width: 0;
 }
 .topbar {
   height: 65px;
-  border-bottom: 1px solid #e4e5de;
+  border-bottom: 1px solid #dde1e6;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 52px;
   font-size: 13px;
   font-weight: 700;
-  color: #75837a;
+  color: #687b90;
 }
 .slash {
   padding: 0 10px;
-  color: #b7c0b7;
+  color: #b1bbc6;
 }
 .lesson {
   max-width: 940px;
@@ -166,7 +166,7 @@ h1 {
   scroll-margin-top: 28px;
   margin: 0 0 42px;
   padding-bottom: 42px;
-  border-bottom: 1px solid #dce4da;
+  border-bottom: 1px solid #dadfe4;
 }
 .section h2 {
   font-size: 32px;
@@ -174,26 +174,26 @@ h1 {
   line-height: 1.4;
   margin: 0 0 22px;
   padding: 12px 18px;
-  border-left: 5px solid #348b65;
+  border-left: 5px solid #345d8b;
   border-radius: 0 9px 9px 0;
-  background: #e8f0e6;
+  background: #e6ebf0;
   font-weight: 800;
 }
 .section > p {
-  color: #5e6c63;
+  color: #556475;
   line-height: 1.95;
   font-size: 16px;
   margin: 0 0 25px;
 }
 .section a {
-  color: #227455;
+  color: #224874;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
 }
 .fact-list {
   margin: 0;
   padding-left: 1.35em;
-  color: #52665a;
+  color: #4d5b6b;
   font-size: 16px;
   line-height: 1.85;
 }
@@ -201,7 +201,7 @@ h1 {
   margin-top: 10px;
 }
 .fact-list li::marker {
-  color: #348b65;
+  color: #345d8b;
 }
 .about-language-layout {
   display: grid;
@@ -212,7 +212,7 @@ h1 {
 .language-points {
   margin: 0;
   padding-left: 1.35em;
-  color: #334e3e;
+  color: #33404e;
   font-size: 16px;
   font-weight: 600;
   line-height: 1.8;
@@ -221,12 +221,12 @@ h1 {
   margin-top: 16px;
 }
 .language-points > li::marker {
-  color: #348b65;
+  color: #345d8b;
 }
 .language-points ul {
   margin: 5px 0 0;
   padding-left: 1.4em;
-  color: #5c6e61;
+  color: #556475;
   font-size: 15px;
   font-weight: 400;
   line-height: 1.8;
@@ -236,12 +236,12 @@ h1 {
   margin-top: 5px;
 }
 .language-points ul li::marker {
-  color: #7eaa8e;
+  color: #7e93aa;
 }
 .language-logo {
   margin: 0;
   padding: 18px 14px 12px;
-  border: 1px solid #dce4da;
+  border: 1px solid #dadfe4;
   border-radius: 12px;
   background: #fff;
   text-align: center;
@@ -253,7 +253,7 @@ h1 {
 }
 .language-logo figcaption {
   margin-top: 8px;
-  color: #63766a;
+  color: #5b6b7e;
   font-size: 12px;
 }
 .goal-grid {
@@ -264,8 +264,8 @@ h1 {
 }
 .goal {
   background: #fff;
-  border: 1px solid #e4e8df;
-  box-shadow: 0 6px 22px #163a2310;
+  border: 1px solid #dfe3e8;
+  box-shadow: 0 6px 22px #16273a10;
   border-radius: 12px;
   min-height: 138px;
   padding: 17px;
@@ -274,7 +274,7 @@ h1 {
   gap: 8px;
 }
 .goal b {
-  color: #61a17d;
+  color: #345d8b;
   font-size: 12px;
 }
 .goal strong {
@@ -283,20 +283,20 @@ h1 {
 .goal span {
   font-size: 14px;
   line-height: 1.7;
-  color: #6b7c70;
+  color: #617286;
 }
 .howto {
   display: flex;
   gap: 18px;
-  background: #e9f1e7;
-  border: 1px solid #d9e8d6;
+  background: #e7ecf1;
+  border: 1px solid #d6dee8;
   border-radius: 12px;
   padding: 24px 26px;
   margin: 0 0 84px;
 }
 .howto-icon {
   font-size: 22px;
-  color: #348663;
+  color: #345a86;
 }
 .howto h3 {
   font-size: 17px;
@@ -305,7 +305,7 @@ h1 {
 .howto ul {
   font-size: 14px;
   line-height: 1.85;
-  color: #52705d;
+  color: #516071;
   margin: 0;
   padding-left: 1.3em;
 }
@@ -313,7 +313,7 @@ h1 {
   margin-top: 4px;
 }
 .howto li::marker {
-  color: #348b65;
+  color: #345d8b;
 }
 .concepts {
   margin: 15px 0;
@@ -324,40 +324,40 @@ h1 {
   padding-left: 0.2em;
 }
 .concept::marker {
-  color: #358063;
+  color: #355880;
 }
 .concept p {
   font-size: 15px;
   line-height: 1.8;
   margin: 0;
-  color: #54665a;
+  color: #4e5c6c;
 }
 .concept-details {
   margin: 2px 0 0;
   padding-left: 1.4em;
-  color: #54665a;
+  color: #4e5c6c;
   font-size: 15px;
   line-height: 1.8;
 }
 .concept-details li::marker {
-  color: #358063;
+  color: #355880;
 }
 .section > p.syntax-tip {
   margin: 18px 0 0;
   font-size: 14px;
-  color: #657568;
+  color: #5c6c7e;
 }
 .exercise {
-  border: 1px solid #dde4db;
+  border: 1px solid #dadfe5;
   border-radius: 12px;
   overflow: hidden;
   background: white;
   margin: 30px 0 23px;
-  box-shadow: 0 8px 32px #1b39220a;
+  box-shadow: 0 8px 32px #1b29390a;
 }
 .sample-head {
-  background: #23352d;
-  color: #ecf3eb;
+  background: #232b35;
+  color: #ebeff3;
   font-size: 13px;
   display: flex;
   align-items: center;
@@ -369,19 +369,19 @@ h1 {
   place-items: center;
   width: 18px;
   height: 18px;
-  background: #398b65;
+  background: #395f8b;
   border-radius: 4px;
   color: #fff;
   font-weight: 500;
 }
 .sample-tag {
   margin-left: auto;
-  color: #a2bdaa;
+  color: #a2afbd;
   font-size: 12px;
 }
 .sample-scroll {
   overflow-x: auto;
-  background: #1c2924;
+  background: #1c2229;
 }
 .sample-canvas {
   display: block;
@@ -398,21 +398,21 @@ h1 {
 }
 .editor-wrap {
   display: flex;
-  background: #f7f9f6;
-  border: 1px solid #dce5da;
+  background: #f6f7f9;
+  border: 1px solid #dadfe5;
   border-radius: 8px;
   overflow: hidden;
   min-height: 230px;
 }
 .editor-wrap:focus-within {
-  border-color: #3b9771;
-  box-shadow: 0 0 0 3px #3b977122;
+  border-color: #3b6697;
+  box-shadow: 0 0 0 3px #3b669722;
 }
 .gutter {
   font-size: 14px;
   line-height: 27px;
-  color: #a6b5a8;
-  background: #f0f5ee;
+  color: #a0adbb;
+  background: #eef1f5;
   min-width: 40px;
   text-align: right;
   padding: 13px 9px 13px 0;
@@ -426,7 +426,7 @@ h1 {
   outline: 0;
   resize: vertical;
   background: transparent;
-  color: #254637;
+  color: #253446;
   font-size: 15px;
   line-height: 27px;
   tab-size: 4;
@@ -434,14 +434,14 @@ h1 {
   overflow: auto;
 }
 .editor::placeholder {
-  color: #b2bfb3;
+  color: #adb8c4;
 }
 .save-note {
   display: flex;
   align-items: center;
   gap: 7px;
   margin-top: 9px;
-  color: #47745b;
+  color: #475c74;
   font-size: 12px;
   min-height: 18px;
 }
@@ -451,7 +451,7 @@ h1 {
   height: 7px;
   flex: 0 0 7px;
   border-radius: 50%;
-  background: #43a875;
+  background: #4372a8;
 }
 .save-note.save-error {
   color: #b3483c;
@@ -479,9 +479,9 @@ h1 {
   cursor: pointer;
 }
 .run-btn {
-  background: #27845e;
+  background: #275284;
   color: #fff;
-  box-shadow: 0 3px 7px #277f5b25;
+  box-shadow: 0 3px 7px #27507f25;
 }
 .stop-btn {
   background: #a54438;
@@ -490,7 +490,7 @@ h1 {
 .stdin-panel {
   margin-top: 16px;
   padding: 14px;
-  border: 1px solid #d9e6d9;
+  border: 1px solid #d9dfe6;
   border-radius: 8px;
 }
 .stdin-panel label { display: block; font-size: 14px; }
@@ -508,7 +508,7 @@ h1 {
 }
 .status {
   font-size: 13px;
-  color: #397a5c;
+  color: #39577a;
   min-height: 0;
   margin-top: 0;
 }
@@ -519,21 +519,21 @@ h1 {
   color: #b3483c;
 }
 .output {
-  background: #eaf1e9;
-  border: 1px solid #d9e6d9;
+  background: #e9edf1;
+  border: 1px solid #d9dfe6;
   border-radius: 8px;
   margin-top: 17px;
   overflow: hidden;
-  color: #254936;
+  color: #253649;
   font-size: 14px;
 }
 .output[hidden] {
   display: none;
 }
 .output-head {
-  background: #dcebdd;
+  background: #dce3eb;
   padding: 9px 13px;
-  color: #54745e;
+  color: #546374;
   display: flex;
   justify-content: space-between;
   font-size: 12px;
@@ -569,7 +569,7 @@ h1 {
   color: #625d4a;
 }
 .type-table {
-  border: 1px solid #e0e6de;
+  border: 1px solid #dde2e7;
   border-radius: 9px;
   overflow: hidden;
   background: #fff;
@@ -579,18 +579,18 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   padding: 12px 18px;
-  border-bottom: 1px solid #e7ebe5;
+  border-bottom: 1px solid #e4e8ec;
   align-items: center;
   font-size: 14px;
-  color: #5a6d5e;
+  color: #546273;
 }
 .type-table > div:last-child {
   border: 0;
 }
 .type-table > div:first-child {
-  background: #eef3ec;
+  background: #eceff3;
   font-size: 13px;
-  color: #5b7863;
+  color: #59687a;
 }
 .type-table code {
   justify-self: start;
@@ -599,24 +599,24 @@ h1 {
   width: 100%;
   border-collapse: collapse;
   margin: 25px 0 14px;
-  border: 1px solid #e0e6de;
+  border: 1px solid #dde2e7;
   background: #fff;
   font-size: 14px;
-  color: #5a6d5e;
+  color: #546273;
 }
 .section th,
 .section td {
   padding: 12px 18px;
-  border-bottom: 1px solid #e7ebe5;
+  border-bottom: 1px solid #e4e8ec;
   text-align: left;
 }
 .section th {
-  background: #eef3ec;
-  color: #5b7863;
+  background: #eceff3;
+  color: #59687a;
 }
 .section > p.small-copy {
   font-size: 14px;
-  color: #849087;
+  color: #77899d;
 }
 .lesson-notice {
   margin: 0 0 25px;
@@ -634,22 +634,22 @@ h1 {
   display: flex;
   align-items: center;
   gap: 18px;
-  background: #e6f0e6;
-  border: 1px solid #d6e7d6;
+  background: #e6ebf0;
+  border: 1px solid #d6dee7;
   border-radius: 9px;
   padding: 12px 18px;
   font-size: 14px;
-  color: #617b65;
+  color: #5c6d80;
   margin-top: 20px;
 }
 .expected code {
   background: transparent;
-  color: #28714f;
+  color: #284a71;
   font-size: 15px;
 }
 .expected pre {
   margin: 0;
-  color: #28714f;
+  color: #284a71;
   font-size: 15px;
   line-height: 1.4;
 }
@@ -657,12 +657,12 @@ h1 {
   margin-top: 18px;
 }
 .hint {
-  border: 1px solid #dfe7dc;
+  border: 1px solid #dce1e7;
   border-radius: 8px;
   background: #fff;
   padding: 12px 18px;
   font-size: 14px;
-  color: #5c6b60;
+  color: #546273;
 }
 .hint summary {
   cursor: pointer;
@@ -683,7 +683,7 @@ h1 {
 }
 .submission form {
   padding: 25px;
-  border: 1px solid #dce4da;
+  border: 1px solid #dadfe4;
   border-radius: 12px;
   background: #fff;
 }
@@ -702,20 +702,20 @@ h1 {
 .identity-fields input {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid #cbd8cd;
+  border: 1px solid #cad1d9;
   border-radius: 7px;
-  background: #fbfcfa;
-  color: #1f2925;
+  background: #fafbfc;
+  color: #1e242a;
   font-size: 16px;
 }
 .identity-fields input:focus {
-  outline: 2px solid #3b9771;
+  outline: 2px solid #3b6697;
   outline-offset: 2px;
 }
 .export-note {
   margin: 18px 0;
   padding-left: 1.4em;
-  color: #63746a;
+  color: #5a6a7d;
   font-size: 14px;
   line-height: 1.8;
 }
@@ -726,7 +726,7 @@ h1 {
   padding: 11px 18px;
   border: 0;
   border-radius: 7px;
-  background: #27845e;
+  background: #275284;
   color: #fff;
   font-size: 15px;
   font-weight: 800;
@@ -741,7 +741,7 @@ h1 {
 }
 .export-status {
   margin: 12px 0 0;
-  color: #397a5c;
+  color: #39577a;
   font-size: 14px;
 }
 .export-status:empty {
@@ -759,22 +759,22 @@ h1 {
   position: relative;
   padding: 9px 0 9px 26px;
   font-size: 15px;
-  color: #56675b;
+  color: #4f5d6e;
 }
 .summary li::before {
   content: "✓";
   position: absolute;
   left: 0;
-  color: #339269;
+  color: #335f92;
   font-weight: 800;
 }
 .page-footer {
-  border-top: 1px solid #e2e7df;
+  border-top: 1px solid #dfe3e7;
   padding-top: 20px;
   display: flex;
   justify-content: space-between;
   font-size: 12px;
-  color: #9aa69d;
+  color: #919faf;
 }
 .report-code {
   flex: 1;
@@ -783,7 +783,7 @@ h1 {
   margin: 0;
   padding: 13px 15px;
   overflow: auto;
-  color: #254637;
+  color: #253446;
   font-family: "DM Mono", monospace;
   font-size: 15px;
   line-height: 27px;
@@ -792,7 +792,7 @@ h1 {
 .report-meta {
   margin-top: 35px;
   padding-top: 30px;
-  border-top: 1px solid #dce4da;
+  border-top: 1px solid #dadfe4;
 }
 .report-meta h2 {
   margin: 0 0 16px;
@@ -806,12 +806,12 @@ h1 {
   grid-template-columns: 170px minmax(0, 1fr);
   gap: 14px;
   padding: 8px 0;
-  border-bottom: 1px solid #e4e9e2;
+  border-bottom: 1px solid #e1e5ea;
   font-size: 14px;
   line-height: 1.7;
 }
 .report-meta dt {
-  color: #647469;
+  color: #5b6b7d;
 }
 .report-meta dd {
   min-width: 0;
@@ -829,7 +829,7 @@ h1 {
     padding: 16px 20px;
     display: block;
     border-right: 0;
-    border-bottom: 1px solid #d8ddd2;
+    border-bottom: 1px solid #d1d7de;
   }
   .brand {
     display: inline-flex;
@@ -917,7 +917,7 @@ h1 {
 }
 .expected pre {
   margin: 0;
-  color: #28714f;
+  color: #284a71;
   line-height: 1.4;
 }
 .challenge-section .exercise {

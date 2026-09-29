@@ -1,9 +1,9 @@
 function tokenColor(token) {
   if (token.startsWith("#")) return "#b693e8";
   if (token.startsWith('"') || token.startsWith("'")) return "#f0af8e";
-  if (/^(public|private|protected|static|final|class|new|int|long|float|double|boolean|char|return|void|if|else|for|while|import|package|try|catch|throw|throws|true|false|null)$/.test(token)) return "#86c9b4";
+  if (/^(public|private|protected|static|final|class|new|int|long|float|double|boolean|char|return|void|if|else|for|while|import|package|try|catch|throw|throws|true|false|null)$/.test(token)) return "#86a5c9";
   if (/^\d/.test(token)) return "#e0ca80";
-  return "#e4eee8";
+  return "#e4e9ee";
 }
 
 export function drawSample(canvas, lines) {
@@ -23,15 +23,15 @@ export function drawSample(canvas, lines) {
   canvas.style.height = height + "px";
   const ctx = canvas.getContext("2d");
   ctx.scale(ratio, ratio);
-  ctx.fillStyle = "#1c2924";
+  ctx.fillStyle = "#1c2229";
   ctx.fillRect(0, 0, width, height);
-  ctx.fillStyle = "#273a31";
+  ctx.fillStyle = "#27303a";
   ctx.fillRect(0, 0, 58, height);
   ctx.font = font;
   ctx.textBaseline = "top";
   lines.forEach((line, index) => {
     const y = 19 + index * 27;
-    ctx.fillStyle = "#80998a";
+    ctx.fillStyle = "#7a8b9f";
     ctx.textAlign = "right";
     ctx.fillText(String(index + 1), 43, y);
     ctx.textAlign = "left";
@@ -41,7 +41,7 @@ export function drawSample(canvas, lines) {
     let last = 0;
     for (const match of line.matchAll(tokenPattern)) {
       const plain = line.slice(last, match.index);
-      ctx.fillStyle = "#e4eee8";
+      ctx.fillStyle = "#e4e9ee";
       ctx.fillText(plain, x, y);
       x += ctx.measureText(plain).width;
       ctx.fillStyle = tokenColor(match[0]);
@@ -49,7 +49,7 @@ export function drawSample(canvas, lines) {
       x += ctx.measureText(match[0]).width;
       last = match.index + match[0].length;
     }
-    ctx.fillStyle = "#e4eee8";
+    ctx.fillStyle = "#e4e9ee";
     ctx.fillText(line.slice(last), x, y);
   });
 }

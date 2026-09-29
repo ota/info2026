@@ -2,9 +2,9 @@
   position: sticky;
   top: 0;
   z-index: 30;
-  background: #fffef9;
-  border-bottom: 1px solid #cdd9cb;
-  box-shadow: 0 2px 12px #2039290d;
+  background: #ffffff;
+  border-bottom: 1px solid #cbd2d9;
+  box-shadow: 0 2px 12px #202c390d;
 }
 .author-toolbar-main,
 .author-format {
@@ -25,7 +25,7 @@
 }
 .author-toolbar-main a {
   margin-left: auto;
-  color: #28775a;
+  color: #284d77;
   font-size: 14px;
 }
 .author-mode button {
@@ -35,17 +35,17 @@
 .author-toolbar button,
 .author-notice button,
 .author-dialog-head button {
-  border: 1px solid #cbd8cd;
+  border: 1px solid #cad1d9;
   border-radius: 6px;
   background: white;
-  color: #264e38;
+  color: #26394e;
   padding: 7px 11px;
   font-size: 14px;
 }
 .author-toolbar .author-primary {
-  background: #27845e;
+  background: #275284;
   color: white;
-  border-color: #27845e;
+  border-color: #275284;
 }
 .author-mode button:disabled {
   opacity: 0.45;
@@ -54,7 +54,7 @@
 #author-status,
 .author-help {
   font-size: 13px;
-  color: #647469;
+  color: #5b6b7d;
 }
 .author-help {
   margin-left: auto;
@@ -94,11 +94,11 @@
 }
 .author-mode .author-code-button {
   margin-left: auto;
-  background: #365a46;
-  border: 1px solid #789d84;
+  background: #36475a;
+  border: 1px solid #78899d;
   border-radius: 5px;
   padding: 5px 9px;
-  color: #f4fff3;
+  color: #f3f9ff;
   font-size: 13px;
 }
 .author-mode .sample-canvas {
@@ -118,11 +118,11 @@
 }
 .author-field .ProseMirror:hover,
 .author-inline .ProseMirror:hover {
-  outline-color: #9ab8a1;
+  outline-color: #9aa8b8;
 }
 .author-field .ProseMirror-focused,
 .author-inline .ProseMirror-focused {
-  outline: 2px solid #348b65;
+  outline: 2px solid #345d8b;
   background: #ffffff88;
 }
 .author-field.is-dirty,
@@ -145,7 +145,7 @@
   font: inherit;
 }
 .author-mode .section > .author-field > .ProseMirror > p {
-  color: #5e6c63;
+  color: #556475;
   line-height: 1.95;
   font-size: 16px;
   margin: 0 0 25px;
@@ -159,10 +159,10 @@
 .author-mode .challenge-section .ProseMirror h3 {
   font-size: 18px;
   margin: 28px 0 12px;
-  color: #304e3a;
+  color: #303e4e;
 }
 .author-mode .ProseMirror-selectednode {
-  outline: 2px solid #348b65;
+  outline: 2px solid #345d8b;
 }
 .author-mode .ProseMirror-gapcursor {
   display: none;
@@ -173,13 +173,13 @@
 #author-code-dialog {
   width: min(900px, calc(100vw - 32px));
   padding: 22px;
-  border: 1px solid #b8cbbc;
+  border: 1px solid #b8c1cb;
   border-radius: 12px;
-  color: #274934;
-  background: #f6f4ee;
+  color: #273749;
+  background: #f4f7fb;
 }
 #author-code-dialog::backdrop {
-  background: #102b2080;
+  background: #101d2b80;
 }
 .author-dialog-head {
   display: flex;
@@ -197,9 +197,9 @@
   width: 100%;
   height: min(60vh, 540px);
   padding: 18px;
-  background: #1c2924;
-  color: #e4eee8;
-  border: 1px solid #476653;
+  background: #1c2229;
+  color: #e4e9ee;
+  border: 1px solid #475566;
   border-radius: 7px;
   resize: vertical;
   font-family: "DM Mono", monospace;
