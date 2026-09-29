@@ -1,3 +1,4 @@
+import { highlightHtml } from "./highlight.js";
 import stylesheet from "./style.css?raw";
 
 function readAsDataUrl(blob) {
@@ -88,7 +89,9 @@ export async function createSubmissionFile({ attendanceNumber, studentName }) {
     const editor = exercise.querySelector(".editor");
     const code = document.createElement("pre");
     code.className = "report-code";
-    code.textContent = editor.value || "（未入力）";
+    if (editor.value) code.innerHTML = highlightHtml(editor.value);
+    else code.textContent = "（未入力）";
+    copy.querySelector(".code-highlight")?.remove();
     copy.querySelector(".editor").replaceWith(code);
     copy.querySelector(".work label")?.removeAttribute("for");
     copy.querySelector(".work-footer")?.remove();

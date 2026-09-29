@@ -146,7 +146,7 @@ function exerciseHtml(argument, body, samples, usedIds, path, context) {
       <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
         <textarea id="editor-${safeId}" aria-label="${sample ? "サンプルコード" : fix ? "直すコード" : escapeHtml(id.replace(/^task(\d+)$/, "課題$1").replace(/^ext(\d+)$/, "発展課題$1")) + "のコード"}" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="${sample ? "// サンプルコードを見ながら、ここに入力" : "// 自分で考えて入力"}">${escapeHtml(initial)}</textarea>
       </div>
-      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="work-footer"><div class="buttons">${fix ? '<button type="button" class="reset-btn">最初のコードに戻す</button>' : ""}<button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
       <div class="status" role="status" aria-live="polite"></div>
       <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
       <div class="stdin-panel" hidden>

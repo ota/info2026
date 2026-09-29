@@ -465,6 +465,61 @@ h1 {
   white-space: pre;
   overflow: auto;
 }
+.code-area {
+  position: relative;
+  display: flex;
+  flex: 1;
+  min-width: 0;
+}
+/* Must match .editor exactly: same font, size, line height, padding, tabs. */
+.code-highlight {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 13px 15px 80px;
+  overflow: hidden;
+  color: #253446;
+  font-family: "DM Mono", monospace;
+  font-size: 15px;
+  line-height: 27px;
+  tab-size: 4;
+  white-space: pre;
+  pointer-events: none;
+}
+.code-highlight::after {
+  content: "";
+  display: inline-block;
+  width: 80px;
+}
+.editor.has-highlight {
+  position: relative;
+  color: transparent;
+  caret-color: #253446;
+}
+.composing .editor.has-highlight {
+  color: #253446;
+}
+.composing .code-highlight {
+  visibility: hidden;
+}
+.editor.has-highlight::selection {
+  background: #3b669740;
+}
+.tok-keyword {
+  color: #2d5f9a;
+}
+.tok-string {
+  color: #a4482a;
+}
+.tok-number {
+  color: #8a5a00;
+}
+.tok-comment {
+  color: #6f7f90;
+}
+.tok-directive {
+  color: #7a4cb8;
+}
 .editor::placeholder {
   color: #adb8c4;
 }
@@ -514,6 +569,14 @@ h1 {
   background: #275284;
   color: #fff;
   box-shadow: 0 3px 7px #27507f25;
+}
+.reset-btn {
+  background: #e7ebf0;
+  color: #3d5169;
+}
+.reset-btn.confirming {
+  background: #f3e1dc;
+  color: #9a3b2f;
 }
 .stop-btn {
   background: #a54438;

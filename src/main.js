@@ -1,6 +1,7 @@
 import "./style.css";
 import { createSubmissionFile } from "./export.js";
 import { drawSample } from "./sample.js";
+import { highlightHtml } from "./highlight.js";
 import { javaRuntimeAvailable, javaRuntimeMessage, javaRuntimeNotice, isCheerpJ, runJava, stopJava, sendJavaInput } from "./java-runtime.js";
 
 const sampleModules = import.meta.glob("./generated/*-samples.js", {
@@ -45,6 +46,8 @@ let running = false;
 function setAllRunButtonsDisabled(disabled) {
   for (const button of document.querySelectorAll(".run-btn"))
     button.disabled = disabled || !javaRuntimeAvailable;
+  for (const button of document.querySelectorAll(".reset-btn"))
+    button.disabled = disabled;
 }
 
 for (const exercise of document.querySelectorAll(".exercise")) {
@@ -54,6 +57,20 @@ for (const exercise of document.querySelectorAll(".exercise")) {
     exercise.dataset.exercise;
   const editor = exercise.querySelector(".editor");
   const gutter = exercise.querySelector(".gutter");
+  // Colored copy of the code behind the transparent textarea. The textarea
+  // stays the real input, so paste blocking, IME and autosave are unchanged.
+  const codeArea = document.createElement("div");
+  codeArea.className = "code-area";
+  const highlight = document.createElement("pre");
+  highlight.className = "code-highlight";
+  highlight.setAttribute("aria-hidden", "true");
+  editor.before(codeArea);
+  codeArea.append(highlight, editor);
+  editor.classList.add("has-highlight");
+  const syncScroll = () => {
+    gutter.scrollTop = highlight.scrollTop = editor.scrollTop;
+    highlight.scrollLeft = editor.scrollLeft;
+  };
   const status = exercise.querySelector(".status");
   const output = exercise.querySelector(".output");
   const outputText = output.querySelector("pre");
@@ -88,6 +105,32 @@ for (const exercise of document.querySelectorAll(".exercise")) {
     }
   });
   stopButton.addEventListener("click", stopJava);
+  // Fix exercises: restore the broken starting code after a second press,
+  // so one accidental click does not discard the student's repairs.
+  const resetButton = exercise.querySelector(".reset-btn");
+  let resetTimer;
+  const resetLabel = resetButton?.textContent;
+  resetButton?.addEventListener("click", () => {
+    if (running) return;
+    if (!resetTimer) {
+      resetButton.textContent = "もう一度押すと戻します";
+      resetButton.classList.add("confirming");
+      resetTimer = setTimeout(() => {
+        resetTimer = undefined;
+        resetButton.textContent = resetLabel;
+        resetButton.classList.remove("confirming");
+      }, 4000);
+      return;
+    }
+    clearTimeout(resetTimer);
+    resetTimer = undefined;
+    resetButton.textContent = resetLabel;
+    resetButton.classList.remove("confirming");
+    editor.value = editor.defaultValue;
+    editor.dispatchEvent(new Event("input", { bubbles: true }));
+    status.classList.remove("error");
+    status.textContent = "最初のコードに戻しました。";
+  });
   const saveNote = document.createElement("div");
   saveNote.className = "save-note";
   saveNote.setAttribute("role", "status");
@@ -99,7 +142,8 @@ for (const exercise of document.querySelectorAll(".exercise")) {
       { length: count },
       (_, index) => index + 1,
     ).join("<br>");
-    gutter.scrollTop = editor.scrollTop;
+    highlight.innerHTML = highlightHtml(editor.value) + "\n ";
+    syncScroll();
   };
   try {
     let saved = localStorage.getItem(key);
@@ -135,9 +179,11 @@ for (const exercise of document.querySelectorAll(".exercise")) {
       saveNote.classList.add("save-error");
     }
   });
-  editor.addEventListener("scroll", () => {
-    gutter.scrollTop = editor.scrollTop;
-  });
+  editor.addEventListener("scroll", syncScroll);
+  // While the IME is composing, show the textarea's own text so the
+  // composition (and its underline or background) stays readable.
+  editor.addEventListener("compositionstart", () => codeArea.classList.add("composing"));
+  editor.addEventListener("compositionend", () => codeArea.classList.remove("composing"));
   const blockPaste = (event) => {
     event.preventDefault();
     status.textContent =

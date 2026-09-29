@@ -16,6 +16,13 @@ async function finished() {
     status:e.querySelector('.status').textContent,exit:e.querySelector('.exit-code').textContent};})()`);
 }
 async function run(code) { await start(code); return finished(); }
+// Mark the current document first, so waiting cannot pass on the page that
+// is about to be replaced by the navigation or reload.
+async function load(method, params = {}, ready = `!!${ex}?.querySelector('.save-note')`) {
+  await evaluate("window.__replaced = true");
+  await send(method, params);
+  await until(`!window.__replaced && ${ready}`);
+}
 // Samples are compared with the expected block written right after them.
 // Fix exercises must fail as written and pass after the listed repair.
 function exercises(source) {
@@ -49,14 +56,12 @@ try {
     await send("Network.enable");
     await send("Network.setBlockedURLs", { urls: ["*://teavm.org/*", "*://cjrtnc.leaningtech.com/*"] });
   }
-  await send("Page.navigate", { url });
-  await until(`!!${ex}?.querySelector('.save-note')`);
+  await load("Page.navigate", { url });
   assert.equal(await evaluate(`${ex}.querySelector('.run-btn').disabled`), false);
   assert.equal(await evaluate("document.body.dataset.lesson"), "lesson01-1");
   assert.equal(await evaluate("document.querySelectorAll('.lesson-switch a').length"), 2);
   await evaluate("localStorage.setItem('info2026:lesson01:first','旧ページの入力');localStorage.removeItem('info2026:lesson01-1:first')");
-  await send("Page.reload");
-  await until(`${ex}?.querySelector('.editor').value === '旧ページの入力'`);
+  await load("Page.reload", {}, `${ex}?.querySelector('.editor').value === '旧ページの入力'`);
   assert.equal(await evaluate(`${ex}.querySelector('.editor').value`), "旧ページの入力");
   assert.equal(await evaluate("localStorage.getItem('info2026:lesson01-1:first')"), "旧ページの入力");
   const source = await readFile(new URL("../../content/lesson01-1.md", import.meta.url), "utf8");
@@ -76,9 +81,22 @@ try {
     "fix-space": ["String\u3000name", "String name", "山田花子\n", /illegal character: '\\u3000'/],
     "fix-quote": ['World!);', 'World!");', "Hello, World!\n", /unclosed string literal/],
   });
-  await send("Page.reload");
-  await until(`!!${ex}?.querySelector('.save-note')`);
+  await load("Page.reload");
   assert.equal(await evaluate("document.querySelector('[data-exercise=fix-case] .editor').value.includes('system.')"), true);
+  // The reset button needs two presses and then restores and saves the starting code.
+  const fixBox = "document.querySelector('[data-exercise=fix-case]')";
+  await evaluate(`(() => {const e=${fixBox}.querySelector('.editor');e.value='壊れた';e.dispatchEvent(new Event('input',{bubbles:true}));${fixBox}.querySelector('.reset-btn').click();})()`);
+  assert.equal(await evaluate(`${fixBox}.querySelector('.editor').value`), "壊れた");
+  assert.equal(await evaluate(`${fixBox}.querySelector('.reset-btn').textContent`), "もう一度押すと戻します");
+  await evaluate(`${fixBox}.querySelector('.reset-btn').click()`);
+  const startCode = firstList.find(({ id }) => id === "fix-case").code;
+  assert.equal(await evaluate(`${fixBox}.querySelector('.editor').value`), startCode);
+  assert.equal(await evaluate("localStorage.getItem('info2026:lesson01-1:fix-case')"), startCode);
+  assert.equal(await evaluate(`${fixBox}.querySelector('.reset-btn').textContent`), "最初のコードに戻す");
+  assert.equal(await evaluate(`${fixBox}.querySelector('.code-highlight').textContent.includes('system.')`), true);
+  assert.equal(await evaluate("document.querySelectorAll('.reset-btn').length"), 4);
+  assert.equal(await evaluate("document.querySelector('[data-exercise=first] .reset-btn')"), null);
+  console.log("Fix exercise reset button: OK");
   console.log("First period fix exercises start from broken code and pass after repair: OK");
   for (const [body, expectedOutput] of [
     ['System.out.println("こんにちは、Java！");', "こんにちは、Java！\n"],
@@ -124,8 +142,7 @@ try {
   console.log("Stop/rerun, output limit/recovery: OK");
 
   assert.equal(await evaluate(`${ex}.querySelector('.editor').dispatchEvent(new Event('paste',{cancelable:true}))`), false);
-  await send("Page.reload");
-  await until(`!!${ex}?.querySelector('.save-note')`);
+  await load("Page.reload");
   assert.equal(await evaluate(`${ex}.querySelector('.editor').value`), samples[0]);
   await run(samples[0]);
   // Exercise the actual download button in both dev and static builds.
@@ -144,6 +161,8 @@ try {
   assert.match(file,/^info2026_01-1_12_.*\.html$/);
   const html=await readFile(`${directory}/${file}`,"utf8");
   assert.match(html,/Hello, World!/);
+  assert.match(html,/class="tok-keyword"/);
+  assert.doesNotMatch(html,/<button[^>]*class="reset-btn|<pre class="code-highlight/);
   assert.match(html,/確認用/);
   assert.match(html,/data:image\/png;base64/);
   assert.doesNotMatch(html,/<script/);
@@ -151,9 +170,8 @@ try {
   await evaluate(`${ex}.querySelector('.output').scrollIntoView({block:'center'})`);
   await screenshot(process.env.SCREENSHOT || "/tmp/info2026-teavm-runtime.png");
   const secondUrl = new URL("lesson01-2.html", url).href;
-  await send("Page.navigate", { url: secondUrl });
   ex = "document.querySelector('[data-exercise=arithmetic]')";
-  await until(`location.href === ${JSON.stringify(secondUrl)} && !!${ex}?.querySelector('.save-note')`);
+  await load("Page.navigate", { url: secondUrl }, `location.href === ${JSON.stringify(secondUrl)} && !!${ex}?.querySelector('.save-note')`);
   assert.equal(await evaluate("document.body.dataset.lesson"), "lesson01-2");
   assert.equal(await evaluate("document.querySelectorAll('.lesson-switch a').length"), 2);
   assert.equal(await evaluate("localStorage.getItem('info2026:lesson01-1:first')"), samples[0]);
