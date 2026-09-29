@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.local/
+slides.txt
+references/*
+!references/README.md

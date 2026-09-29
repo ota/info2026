@@ -1,0 +1,30 @@
+Java execution for info2026 lesson 1
+
+This directory contains a source-built teavm-javac compiler and TeaVM class library.
+The compiler compiles Java source to bytecode, then TeaVM converts it to WebAssembly.
+
+teavm-javac and TeaVM
+Copyright Alexey Andreev and contributors.
+Licensed under the Apache License, Version 2.0.
+https://github.com/konsoletyper/teavm-javac
+https://github.com/konsoletyper/teavm
+
+OpenJDK compiler components
+Copyright Oracle and OpenJDK contributors; individual source files retain their notices.
+GNU General Public License, version 2, with the Classpath Exception where designated.
+https://github.com/openjdk/jdk25u
+
+Other incorporated dependencies, their versions and license notices are listed in:
+  manifest.json
+  THIRD-PARTY-LICENSES.txt
+
+Corresponding sources and build instructions are supplied alongside the binaries:
+  sources.zip
+  SOURCE-BUILD.md
+
+Files here were built from the revisions recorded in manifest.json.
+The upstream Java compiler source has not been modified.
+worker.js is the info2026 adapter and is not an upstream TeaVM file.
+
+Do not remove this notice, THIRD-PARTY-LICENSES.txt, sources.zip, SOURCE-BUILD.md
+or manifest.json when distributing the runtime.

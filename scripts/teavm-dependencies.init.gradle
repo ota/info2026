@@ -1,0 +1,28 @@
+// Build-time inventory of the artifacts incorporated in compiler/classlib output.
+import groovy.json.JsonOutput
+
+allprojects {
+    afterEvaluate { project ->
+        if (project.path == ':compiler') {
+            tasks.register('lessonDependencySources') {
+                doLast {
+                    def artifacts = ['runtimeClasspath', 'classlibInput', 'classlibAuxInput']
+                        .collectMany { project.configurations.getByName(it).resolvedConfiguration.resolvedArtifacts }
+                        .findAll { it.id.componentIdentifier instanceof org.gradle.api.artifacts.component.ModuleComponentIdentifier }
+                        .unique { it.moduleVersion.id.toString() }
+                    def rows = artifacts.collect { artifact ->
+                        def id = artifact.moduleVersion.id
+                        def configuration = project.configurations.detachedConfiguration(
+                            project.dependencies.create("${id.group}:${id.name}:${id.version}:sources"))
+                        configuration.transitive = false
+                        def sources = configuration.resolve().first()
+                        [group: id.group, name: id.name, version: id.version,
+                            binary: artifact.file.absolutePath, sources: sources.absolutePath]
+                    }
+                    def destination = new File(project.rootDir, 'lesson-dependencies.json')
+                    destination.text = JsonOutput.prettyPrint(JsonOutput.toJson(rows)) + '\n'
+                }
+            }
+        }
+    }
+}

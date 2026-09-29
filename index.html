@@ -1,0 +1,329 @@
+<!-- Generated from content/lessonXX.md. Edit the Markdown source. -->
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f4ee" />
+    <title>第1回｜Javaプログラミング入門 — 2I情報処理基礎演習</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body data-lesson="lesson01" data-number="01">
+    <div class="shell">
+      <aside class="sidebar" aria-label="教材の目次">
+        <div class="brand">
+          <span class="brand-icon">&gt;_</span
+          ><span>情報処理基礎演習<small> / 2026</small></span>
+        </div>
+        <div class="side-label">後期 · Q3</div>
+        <a class="current-lesson" href="#top" aria-current="page"
+          ><span>01</span>第1回　Javaプログラミング入門</a
+        >
+        <div class="side-label side-sections">今回の内容</div>
+        <nav class="side-nav" aria-label="今回の内容"><a href="#goals">今回の目標</a><a href="#about-java">Javaとは</a><a href="#first-code">Hello World</a><a href="#print">改行と表示の順番</a><a href="#errors">エラーの直し方</a><a href="#challenge">演習問題</a><a href="#summary">今日のまとめ</a><a href="#save">保存</a></nav>
+      </aside>
+      <main id="top" class="main">
+        <header class="topbar">
+          <span>2年 情報コース <span class="slash">/</span> 後期 第1回</span>
+        </header>
+        <article class="lesson">
+          <p class="runtime-availability lesson-notice" hidden></p>
+<h1>第1回　Javaプログラミング入門</h1>
+<section id="goals" class="section"><h2>今回の目標</h2><div class="goal-grid"><div class="goal"><b>01</b><strong>Javaの書き方を知る</strong><span>プログラムの基本の形を確認する。</span></div><div class="goal"><b>02</b><strong>文字列を表示する</strong><span>表示する内容や改行を変える。</span></div><div class="goal"><b>03</b><strong>エラーを直す</strong><span>記号や大文字・小文字を確認する。</span></div></div>
+</section><section class="howto" aria-labelledby="howto-title"><div class="howto-icon">⌨</div><div><h3 id="howto-title">演習の進め方</h3><ul>
+<li>サンプルコードを見て、すぐ下の入力欄に自分で打ち込みます。
+<ul>
+<li>入力欄への貼り付けはできません。</li>
+</ul>
+</li>
+<li>「実行する」を押して、表示された結果を確認します。
+<ul>
+<li>最初の実行では、準備に時間がかかることがあります。</li>
+<li>終わらないときは「停止する」を押します。</li>
+</ul>
+</li>
+<li>入力内容は、使っているブラウザに自動保存されます。
+<ul>
+<li>同じブラウザでこのページを開くと、入力を続けられます。</li>
+</ul>
+</li>
+<li>最後に出席番号と氏名を入力し、提出用ファイルを保存します。
+<ul>
+<li>保存したHTMLファイルをMoodleに提出します。</li>
+</ul>
+</li>
+</ul>
+</div></section>
+
+<section id="about-java" class="section"><h2>Javaとは</h2><ul>
+<li>Javaは、コンピュータに処理の手順を伝える「プログラミング言語」の一つです。
+<ul>
+<li>前期のPythonに続いて、後期はJavaでプログラムを作ります。</li>
+</ul>
+</li>
+<li>プログラムを書いた文字の並びを「ソースコード」と呼びます。
+<ul>
+<li>Javaのソースコードは、名前の末尾が <code>.java</code> のファイルに保存します。</li>
+</ul>
+</li>
+<li>ソースコードを実行用の形式へ変換することを「コンパイル」と呼びます。
+<ul>
+<li>書き方に誤りがあると、コンパイル時にエラーが出ます。</li>
+<li>変換したプログラムは、Javaの実行環境で動かします。</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="first-code" class="section"><h2>Hello World</h2><p>まずは「Hello, World!」と表示するプログラムを書き写しましょう。</p>
+<div class="exercise" data-exercise="first">
+    <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
+       <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
+    <div class="work">
+      <label for="editor-first">上記のサンプルコードを書き写してください：</label>
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-first" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-first">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-first" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<p>このプログラムを実行すると、次のように表示されます。</p>
+<div class="expected"><code>Hello, World!</code></div>
+<ul class="concepts"><li class="concept"><p><code>public class Main { ... }</code> は、プログラムを入れる外側のまとまりです。</p><ul class="concept-details"><li>このまとまりを「クラス」と呼びます。ここでは <code>Main</code> という名前を付けています。</li><li>このコードのファイル名は、クラス名に合わせて <code>Main.java</code> にします。</li></ul></li>
+<li class="concept"><p><code>public static void main(String[] args) { ... }</code> の中に、最初に実行する処理を書きます。</p><ul class="concept-details"><li>今回は、この行を基本の形としてそのまま使います。</li><li>クラス名の <code>Main</code> と、この行の <code>main</code> は、大文字・小文字が異なります。</li></ul></li>
+<li class="concept"><p><code>System.out.println(...)</code> は、括弧の中の内容を表示して改行します。</p><ul class="concept-details"><li>文字の並びを「文字列」と呼び、半角の二重引用符 <code>&quot;</code> で囲みます。</li><li>表示する命令の最後には、半角のセミコロン <code>;</code> を付けます。</li></ul></li>
+<li class="concept"><p><code>{</code> と <code>}</code> は、処理のまとまりを囲みます。</p><ul class="concept-details"><li>内側の行は、行頭に空白を入れるとまとまりが分かりやすくなります。</li></ul></li></ul>
+<div class="check"><b>確認</b><p><code>Hello, World!</code> を <code>こんにちは、Java！</code> に書き換えてみましょう。
+二重引用符 <code>&quot;</code> は残します。</p>
+</div>
+</section>
+<section id="print" class="section"><h2>改行と表示の順番</h2><ul>
+<li>処理は、<code>main</code> の中に書いた順に上から実行されます。</li>
+<li><code>System.out.print(...)</code> は、表示した後に改行しません。
+<ul>
+<li><code>println</code> は改行し、<code>print</code> は改行しない、という違いがあります。</li>
+</ul>
+</li>
+<li><code>//</code> から行末までは「コメント」です。
+<ul>
+<li>人が読むための説明で、処理としては実行されません。</li>
+</ul>
+</li>
+</ul>
+<div class="exercise" data-exercise="print-lines">
+    <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
+       <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
+    <div class="work">
+      <label for="editor-print-lines">上記のサンプルコードを書き写してください：</label>
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-print-lines" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-print-lines">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-print-lines" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="expected"><pre>こんにちは。Javaを学びます。
+よろしくお願いします。
+</pre>
+</div>
+<div class="check"><b>確認</b><p>最初の <code>print</code> を <code>println</code> に変えると、表示は何行になるでしょうか。</p>
+</div>
+</section>
+<section id="errors" class="section"><h2>エラーの直し方</h2><ul>
+<li>コンパイル時にエラーが出たら、示された行とその前後を確認します。
+<ul>
+<li>セミコロン <code>;</code> や二重引用符 <code>&quot;</code> が抜けていないか確認します。</li>
+<li>開く括弧 <code>(</code>・<code>{</code> と、閉じる括弧 <code>)</code>・<code>}</code> が対応しているか確認します。</li>
+<li><code>System</code> の先頭は大文字、<code>println</code> の最後は小文字の <code>l</code> と <code>n</code> です。</li>
+</ul>
+</li>
+<li>プログラムの記号には半角を使います。
+<ul>
+<li>二重引用符の内側には、日本語や全角の記号も書けます。</li>
+</ul>
+</li>
+<li>一つずつ直し、もう一度コンパイルして実行します。
+<ul>
+<li>実行できても、表示内容が目的どおりか確認します。</li>
+</ul>
+</li>
+</ul>
+<div class="check"><b>確認</b><p>最初のサンプルで <code>println</code> の行末の <code>;</code> を一度消し、エラーを確認しましょう。
+確認したら、<code>;</code> を戻して再び実行します。</p>
+</div>
+</section>
+<section id="challenge" class="section challenge-section"><h2>演習問題</h2><p>次の課題では、<code>public class Main</code> から最後の <code>}</code> まで、プログラム全体を入力します。</p>
+<h3 class="task-title">課題1 <span>好きな文字列を表示する</span></h3>
+<p>「Hello, World!」以外の好きな文字列を1行表示してください。</p>
+<div class="exercise" data-exercise="task1">
+
+    <div class="work">
+
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-task1" aria-label="課題1のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-task1">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-task1" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<h3 class="task-title">課題2 <span>自己紹介を表示する</span></h3>
+<p>出席番号と氏名を1行目、好きなことを2行目に表示してください。
+次の例の内容を、自分のものに変えます。</p>
+<div class="expected"><pre>出席番号 12 番の 山田花子 です。
+好きなことは読書です。
+</pre>
+</div>
+<div class="exercise" data-exercise="task2">
+
+    <div class="work">
+
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-task2" aria-label="課題2のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-task2">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-task2" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<h3 class="task-title">課題3 <span>山形模様を表示する</span></h3>
+<p>半角の空白と <code>*</code> を使い、次の模様を表示してください。</p>
+<div class="expected"><pre>  *
+ ***
+*****
+</pre>
+</div>
+<div class="exercise" data-exercise="task3">
+
+    <div class="work">
+
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-task3" aria-label="課題3のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-task3">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-task3" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<details class="hint"><summary>ヒント</summary><ul>
+<li>課題1：最初のサンプルの、二重引用符で囲んだ内容を変えます。</li>
+<li>課題2：<code>System.out.println(...)</code> を2回使います。</li>
+<li>課題3：<code>System.out.println(...)</code> を3回使います。
+<ul>
+<li>空白も、二重引用符の内側に書きます。</li>
+</ul>
+</li>
+</ul>
+</details>
+</section>
+<section id="summary" class="section summary"><h2>今日のまとめ</h2><ul>
+<li><code>main</code> の中に、実行する処理を書く。</li>
+<li>文字列は半角の二重引用符 <code>&quot;</code> で囲む。</li>
+<li><code>System.out.println(...)</code> は表示して改行し、<code>System.out.print(...)</code> は改行しない。</li>
+<li>エラーが出たら、記号と大文字・小文字を確認する。</li>
+</ul>
+<p>次回は「演算子と変数」です。値を覚えたり、計算したりする方法を学びます。</p>
+</section>
+          <section id="save" class="section submission">
+            <h2>Moodle提出用ファイル保存</h2>
+            <form id="export-form">
+              <div class="identity-fields">
+                <label for="attendance-number">
+                  出席番号
+                  <input
+                    id="attendance-number"
+                    name="attendance-number"
+                    type="text"
+                    inputmode="numeric"
+                    autocomplete="off"
+                    required
+                  />
+                </label>
+                <label for="student-name">
+                  氏名
+                  <input
+                    id="student-name"
+                    name="student-name"
+                    type="text"
+                    autocomplete="off"
+                    required
+                  />
+                </label>
+              </div>
+              <ul class="export-note">
+                <li>出席番号と氏名を入力し、「保存」ボタンを押してください。</li>
+                <li>保存したファイルを、Moodleに提出してください。</li>
+              </ul>
+              <button type="submit" class="export-btn">
+                保存
+              </button>
+              <p
+                id="export-status"
+                class="export-status"
+                role="status"
+                aria-live="polite"
+              ></p>
+            </form>
+          </section>
+          <footer class="page-footer">
+            情報処理基礎演習 <span>後期 第1回 / Javaプログラミング入門</span>
+            <small class="runtime-credit">Java実行: <a href="https://teavm.org/" target="_blank" rel="noopener noreferrer">TeaVM</a> / teavm-javac · <a href="./teavm/NOTICE.txt" target="_blank" rel="noopener noreferrer">ライセンス・ソース</a></small>
+          </footer>
+        </article>
+      </main>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

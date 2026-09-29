@@ -1,0 +1,31 @@
+{
+  "name": "info2026",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node scripts/generate.mjs",
+    "setup:java": "node scripts/setup-java.mjs",
+    "build:java-bridge": "node scripts/build-java-bridge.mjs",
+    "build:evaluation": "node scripts/verify-teavm.mjs && vite build --mode evaluation --base=/info2026/ --outDir .local/pages-evaluation/info2026",
+    "preview:evaluation": "vite preview --host 127.0.0.1 --port 5175 --base=/info2026/ --outDir .local/pages-evaluation/info2026",
+    "dev": "vite --host 127.0.0.1 --port 5174",
+    "dev:cheerpj": "vite --mode cheerpj --host 127.0.0.1 --port 5176",
+    "edit": "vite --host 127.0.0.1 --port 5174 --open /__editor/lesson01",
+    "test": "node --test tests/*.test.mjs",
+    "build": "node scripts/verify-teavm.mjs && vite build",
+    "preview": "vite preview",
+    "build:pages": "node scripts/verify-teavm.mjs && vite build --base=/info2026/"
+  },
+  "devDependencies": {
+    "markdown-it": "^15.0.2",
+    "prosemirror-commands": "^1.7.2",
+    "prosemirror-history": "^1.5.0",
+    "prosemirror-keymap": "^1.2.3",
+    "prosemirror-markdown": "^1.13.8",
+    "prosemirror-model": "^1.25.12",
+    "prosemirror-schema-list": "^1.5.1",
+    "prosemirror-state": "^1.4.4",
+    "prosemirror-view": "^1.42.6",
+    "vite": "8.3.1"
+  }
+}
