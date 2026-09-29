@@ -17,7 +17,8 @@ const fail = (status, message) => Object.assign(new Error(message), { status });
 export function createLessonStore(root) {
   const queues = new Map();
   async function load(slug) {
-    if (!/^lesson\d+$/.test(slug)) throw fail(404, "教材が見つかりません。");
+    if (!/^lesson\d+(?:-\d+)?$/.test(slug))
+      throw fail(404, "教材が見つかりません。");
     const path = join(root, "content", `${slug}.md`);
     let raw;
     try {
@@ -146,8 +147,14 @@ export function lessonEditorPlugin(root) {
         try {
           if (!isLocalRequest(request))
             throw fail(403, "編集画面はこのPCから開いてください。");
-          const api = pathname.match(/^\/__editor\/api\/(lesson\d+)$/);
-          const page = pathname.match(/^\/__editor(?:\/(lesson\d+))?\/?$/);
+          const api = pathname.match(/^\/__editor\/api\/(lesson\d+(?:-\d+)?)$/);
+          const page = pathname.match(/^\/__editor(?:\/(lesson\d+(?:-\d+)?))?\/?$/);
+          if (pathname === "/__editor/lesson01" || pathname === "/__editor/lesson01/") {
+            response.statusCode = 302;
+            response.setHeader("Location", "/__editor/lesson01-1");
+            response.end();
+            return;
+          }
           if (api && request.method === "GET") {
             return json(200, { ...(await store.load(api[1])), token });
           }

@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f4f7fb" />
-    <title>第1回｜Javaプログラミング入門 — 2I情報処理基礎演習</title>
+    <title>第1回①｜Javaプログラミング入門 — 2I情報処理基礎演習</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,7 +13,7 @@
       rel="stylesheet"
     />
   </head>
-  <body data-lesson="lesson01" data-number="01">
+  <body data-lesson="lesson01-1" data-number="01-1">
     <div class="shell">
       <aside class="sidebar" aria-label="教材の目次">
         <div class="brand">
@@ -22,50 +22,47 @@
         </div>
         <div class="side-label">後期 · Q3</div>
         <a class="current-lesson" href="#top" aria-current="page"
-          ><span>01</span>第1回　Javaプログラミング入門</a
+          ><span>01-1</span>第1回・1コマ目　Javaプログラミング入門</a
         >
+        <nav class="lesson-switch" aria-label="第1回のコマ移動"><a href="./lesson01-1.html" aria-current="page">1コマ目</a><a href="./lesson01-2.html">2コマ目</a></nav>
         <div class="side-label side-sections">今回の内容</div>
-        <nav class="side-nav" aria-label="今回の内容"><a href="#goals">今回の目標</a><a href="#about-java">Javaとは</a><a href="#first-code">Hello World</a><a href="#print">改行と表示の順番</a><a href="#errors">エラーの直し方</a><a href="#challenge">演習問題</a><a href="#summary">今日のまとめ</a><a href="#save">保存</a></nav>
+        <nav class="side-nav" aria-label="今回の内容"><a href="#goals">今回の目標</a><a href="#about-java">Javaとは</a><a href="#first-code">Hello World</a><a href="#values">数値と文字列を表示する</a><a href="#variables">変数を使う</a><a href="#errors">エラーを確かめる</a><a href="#challenge">演習問題</a><a href="#summary">1コマ目のまとめ</a><a href="#save">保存</a></nav>
       </aside>
       <main id="top" class="main">
         <header class="topbar">
-          <span>2年 情報コース <span class="slash">/</span> 後期 第1回</span>
+          <span>2年 情報コース <span class="slash">/</span> 後期 第1回・1コマ目</span>
         </header>
         <article class="lesson">
           <p class="runtime-availability lesson-notice" hidden></p>
-<h1>第1回　Javaプログラミング入門</h1>
-<section id="goals" class="section"><h2>今回の目標</h2><div class="goal-grid"><div class="goal"><b>01</b><strong>Javaの書き方を知る</strong><span>プログラムの基本の形を確認する。</span></div><div class="goal"><b>02</b><strong>文字列を表示する</strong><span>表示する内容や改行を変える。</span></div><div class="goal"><b>03</b><strong>エラーを直す</strong><span>記号や大文字・小文字を確認する。</span></div></div>
+<h1>第1回・1コマ目　Javaプログラミング入門</h1>
+<section id="goals" class="section"><h2>今回の目標</h2><div class="goal-grid"><div class="goal"><b>01</b><strong>Javaを実行する</strong><span>基本の形を書き写し、実行結果を確かめる。</span></div><div class="goal"><b>02</b><strong>値を表示する</strong><span>文字列や数値を表示し、改行を使い分ける。</span></div><div class="goal"><b>03</b><strong>変数を使う</strong><span>出席番号と氏名を変数に入れて表示する。</span></div></div>
 </section><section class="howto" aria-labelledby="howto-title"><div class="howto-icon">⌨</div><div><h3 id="howto-title">演習の進め方</h3><ul>
-<li>サンプルコードを見て、すぐ下の入力欄に自分で打ち込みます。
+<li>見本コードを見ながら、その下の入力欄に自分で打ち込みます。
 <ul>
 <li>入力欄への貼り付けはできません。</li>
 </ul>
 </li>
-<li>「実行する」を押して、表示された結果を確認します。
+<li>「実行する」を押し、表示された結果を確かめます。
 <ul>
-<li>最初の実行では、準備に時間がかかることがあります。</li>
+<li>最初の実行は準備に少し時間がかかります。</li>
 <li>終わらないときは「停止する」を押します。</li>
 </ul>
 </li>
-<li>入力内容は、使っているブラウザに自動保存されます。
+<li>コードは使っているブラウザに自動保存されます。
 <ul>
-<li>同じブラウザでこのページを開くと、入力を続けられます。</li>
+<li>同じブラウザで開き直すと、入力を続けられます。</li>
 </ul>
 </li>
-<li>最後に出席番号と氏名を入力し、提出用ファイルを保存します。
+<li>最後に出席番号と氏名を入力し、提出用HTMLを保存します。
 <ul>
-<li>保存したHTMLファイルをMoodleに提出します。</li>
+<li>保存したファイルをMoodleへ提出します。</li>
 </ul>
 </li>
 </ul>
 </div></section>
 
 <section id="about-java" class="section"><h2>Javaとは</h2><ul>
-<li>Javaは、コンピュータに処理の手順を伝える「プログラミング言語」の一つです。
-<ul>
-<li>前期のPythonに続いて、後期はJavaでプログラムを作ります。</li>
-</ul>
-</li>
+<li>前期に学んだPythonと同じく、Javaはコンピュータに処理の手順を伝える「プログラミング言語」です。</li>
 <li>プログラムを書いた文字の並びを「ソースコード」と呼びます。
 <ul>
 <li>Javaのソースコードは、名前の末尾が <code>.java</code> のファイルに保存します。</li>
@@ -73,13 +70,13 @@
 </li>
 <li>ソースコードを実行用の形式へ変換することを「コンパイル」と呼びます。
 <ul>
-<li>書き方に誤りがあると、コンパイル時にエラーが出ます。</li>
-<li>変換したプログラムは、Javaの実行環境で動かします。</li>
+<li>書き方に誤りがあると、コンパイル時にエラーが表示されます。</li>
+<li>この教材では、入力欄の下の「実行する」でコンパイルと実行を行います。</li>
 </ul>
 </li>
 </ul>
 </section>
-<section id="first-code" class="section"><h2>Hello World</h2><p>まずは「Hello, World!」と表示するプログラムを書き写しましょう。</p>
+<section id="first-code" class="section"><h2>Hello World</h2><p>まずは次のプログラムを、記号と大文字・小文字に注意して書き写しましょう。</p>
 <div class="exercise" data-exercise="first">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
@@ -102,29 +99,16 @@
       </div>
     </div>
   </div>
-<p>このプログラムを実行すると、次のように表示されます。</p>
 <div class="expected"><code>Hello, World!</code></div>
-<ul class="concepts"><li class="concept"><p><code>public class Main { ... }</code> は、プログラムを入れる外側のまとまりです。</p><ul class="concept-details"><li>このまとまりを「クラス」と呼びます。ここでは <code>Main</code> という名前を付けています。</li><li>このコードのファイル名は、クラス名に合わせて <code>Main.java</code> にします。</li></ul></li>
-<li class="concept"><p><code>public static void main(String[] args) { ... }</code> の中に、最初に実行する処理を書きます。</p><ul class="concept-details"><li>今回は、この行を基本の形としてそのまま使います。</li><li>クラス名の <code>Main</code> と、この行の <code>main</code> は、大文字・小文字が異なります。</li></ul></li>
-<li class="concept"><p><code>System.out.println(...)</code> は、括弧の中の内容を表示して改行します。</p><ul class="concept-details"><li>文字の並びを「文字列」と呼び、半角の二重引用符 <code>&quot;</code> で囲みます。</li><li>表示する命令の最後には、半角のセミコロン <code>;</code> を付けます。</li></ul></li>
-<li class="concept"><p><code>{</code> と <code>}</code> は、処理のまとまりを囲みます。</p><ul class="concept-details"><li>内側の行は、行頭に空白を入れるとまとまりが分かりやすくなります。</li></ul></li></ul>
-<div class="check"><b>確認</b><p><code>Hello, World!</code> を <code>こんにちは、Java！</code> に書き換えてみましょう。
+<ul class="concepts"><li class="concept"><p><code>public class Main { ... }</code> はプログラムを入れる外側のまとまりです。</p><ul class="concept-details"><li>このまとまりを「クラス」と呼びます。名前は <code>Main</code>、ファイル名は <code>Main.java</code> にします。</li></ul></li>
+<li class="concept"><p><code>public static void main(String[] args) { ... }</code> の中に、最初に実行する処理を書きます。</p><ul class="concept-details"><li>この行は、今回は基本の形としてそのまま使います。</li></ul></li>
+<li class="concept"><p><code>System.out.println(...)</code> は、括弧の中の値を表示して改行します。</p><ul class="concept-details"><li>文字の並びを「文字列」と呼び、半角の二重引用符 <code>&quot;</code> で囲みます。</li><li>命令の最後には半角のセミコロン <code>;</code> を付けます。</li></ul></li>
+<li class="concept"><p><code>{</code> と <code>}</code> は処理のまとまりを囲みます。</p><ul class="concept-details"><li>内側の行の先頭を空けると、まとまりが分かりやすくなります。</li></ul></li></ul>
+<div class="check"><b>確認</b><p><code>Hello, World!</code> を <code>こんにちは、Java！</code> に書き換えて実行しましょう。
 二重引用符 <code>&quot;</code> は残します。</p>
 </div>
 </section>
-<section id="print" class="section"><h2>改行と表示の順番</h2><ul>
-<li>処理は、<code>main</code> の中に書いた順に上から実行されます。</li>
-<li><code>System.out.print(...)</code> は、表示した後に改行しません。
-<ul>
-<li><code>println</code> は改行し、<code>print</code> は改行しない、という違いがあります。</li>
-</ul>
-</li>
-<li><code>//</code> から行末までは「コメント」です。
-<ul>
-<li>人が読むための説明で、処理としては実行されません。</li>
-</ul>
-</li>
-</ul>
+<section id="values" class="section"><h2>数値と文字列を表示する</h2><p>データの種類を「型」と呼びます。まずは、整数・小数・文字列の違いを見ます。</p>
 <div class="exercise" data-exercise="print-lines">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
@@ -147,39 +131,66 @@
       </div>
     </div>
   </div>
-<div class="expected"><pre>こんにちは。Javaを学びます。
-よろしくお願いします。
+<div class="expected"><pre>7
+3.5
+こんにちは、Java！
+🐈
 </pre>
 </div>
-<div class="check"><b>確認</b><p>最初の <code>print</code> を <code>println</code> に変えると、表示は何行になるでしょうか。</p>
+<ul class="concepts"><li class="concept"><p><code>7</code> は整数、<code>3.5</code> は小数です。数値は二重引用符で囲みません。</p><ul class="concept-details"><li>Javaでは整数に <code>int</code>、小数に <code>double</code> という型を使います。</li></ul></li>
+<li class="concept"><p><code>&quot;こんにちは、&quot;</code> や <code>&quot;🐈&quot;</code> は文字列です。文字列の型は <code>String</code> と書きます。</p><ul class="concept-details"><li>二重引用符の内側には日本語や絵文字も書けます。</li></ul></li>
+<li class="concept"><p><code>System.out.print(...)</code> は表示した後に改行しません。</p><ul class="concept-details"><li>次の <code>println</code> の内容が同じ行の続きに表示されます。</li></ul></li></ul>
+<div class="check"><b>確認</b><p>最初の <code>print</code> を <code>println</code> に変えると、表示は何行になるでしょうか。
+実際に変えて確認しましょう。</p>
 </div>
 </section>
-<section id="errors" class="section"><h2>エラーの直し方</h2><ul>
-<li>コンパイル時にエラーが出たら、示された行とその前後を確認します。
-<ul>
-<li>セミコロン <code>;</code> や二重引用符 <code>&quot;</code> が抜けていないか確認します。</li>
-<li>開く括弧 <code>(</code>・<code>{</code> と、閉じる括弧 <code>)</code>・<code>}</code> が対応しているか確認します。</li>
-<li><code>System</code> の先頭は大文字、<code>println</code> の最後は小文字の <code>l</code> と <code>n</code> です。</li>
-</ul>
-</li>
-<li>プログラムの記号には半角を使います。
-<ul>
-<li>二重引用符の内側には、日本語や全角の記号も書けます。</li>
-</ul>
-</li>
-<li>一つずつ直し、もう一度コンパイルして実行します。
-<ul>
-<li>実行できても、表示内容が目的どおりか確認します。</li>
-</ul>
-</li>
-</ul>
-<div class="check"><b>確認</b><p>最初のサンプルで <code>println</code> の行末の <code>;</code> を一度消し、エラーを確認しましょう。
-確認したら、<code>;</code> を戻して再び実行します。</p>
+<section id="variables" class="section"><h2>変数を使う</h2><p>値を入れて、後から使える名前を「変数」と呼びます。Javaでは、変数を作るときに型も書きます。</p>
+<div class="exercise" data-exercise="variables">
+    <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
+       <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
+    <div class="work">
+      <label for="editor-variables">上記のサンプルコードを書き写してください：</label>
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-variables" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-variables">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-variables" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="expected"><code>出席番号 12 番の 山田花子 です。</code></div>
+<ul class="concepts"><li class="concept"><p><code>int number = 12;</code> は、整数型の変数 <code>number</code> に <code>12</code> を入れます。</p></li>
+<li class="concept"><p><code>String name = &quot;山田花子&quot;;</code> は、文字列型の変数 <code>name</code> に氏名を入れます。</p><ul class="concept-details"><li>Javaの <code>String</code> は先頭が大文字です。</li></ul></li>
+<li class="concept"><p><code>System.out.print(number)</code> は、変数の中の値を表示します。</p><ul class="concept-details"><li><code>&quot;number&quot;</code> と書くと、変数の値ではなく <code>number</code> という文字が表示されます。</li></ul></li>
+<li class="concept"><p>変数名には英字、数字、<code>_</code> を使えます。ただし、先頭を数字にはできません。</p></li></ul>
+<div class="check"><b>確認</b><p><code>number</code> と <code>name</code> の値を自分の出席番号・氏名に変えて実行しましょう。</p>
 </div>
 </section>
-<section id="challenge" class="section challenge-section"><h2>演習問題</h2><p>次の課題では、<code>public class Main</code> から最後の <code>}</code> まで、プログラム全体を入力します。</p>
-<h3 class="task-title">課題1 <span>好きな文字列を表示する</span></h3>
-<p>「Hello, World!」以外の好きな文字列を1行表示してください。</p>
+<section id="errors" class="section"><h2>エラーを確かめる</h2><p>最初の見本で <code>println</code> の行末の <code>;</code> を消し、実行してみましょう。
+エラーを確認したら、<code>;</code> を戻して再実行します。</p>
+<ul>
+<li>エラーが出たら、表示された行とその前後を見ます。
+<ul>
+<li><code>;</code>、二重引用符 <code>&quot;</code>、括弧 <code>()</code>・<code>{}</code> の抜けを確かめます。</li>
+<li><code>System</code> と <code>String</code> は先頭が大文字です。</li>
+</ul>
+</li>
+<li>記号は半角で入力します。文字列の中の日本語や全角記号は使えます。</li>
+<li>直した後は、エラーが消えるだけでなく、表示結果も確認します。</li>
+</ul>
+</section>
+<section id="challenge" class="section challenge-section"><h2>演習問題</h2><p>各課題では、<code>public class Main</code> から最後の <code>}</code> までプログラム全体を入力します。</p>
+<h3 class="task-title">課題1 <span>好きな文字列</span></h3>
+<p><code>Hello, World!</code> 以外の好きな文字列を1行表示してください。</p>
 <div class="exercise" data-exercise="task1">
 
     <div class="work">
@@ -201,13 +212,10 @@
       </div>
     </div>
   </div>
-<h3 class="task-title">課題2 <span>自己紹介を表示する</span></h3>
-<p>出席番号と氏名を1行目、好きなことを2行目に表示してください。
-次の例の内容を、自分のものに変えます。</p>
-<div class="expected"><pre>出席番号 12 番の 山田花子 です。
-好きなことは読書です。
-</pre>
-</div>
+<h3 class="task-title">課題2 <span>変数で自己紹介</span></h3>
+<p>出席番号を <code>number</code>、氏名を <code>name</code> という変数に入れ、次の形で表示してください。
+数字や名前は自分のものに変えます。</p>
+<div class="expected"><code>出席番号 12 番の 山田花子 です。</code></div>
 <div class="exercise" data-exercise="task2">
 
     <div class="work">
@@ -229,8 +237,8 @@
       </div>
     </div>
   </div>
-<h3 class="task-title">課題3 <span>山形模様を表示する</span></h3>
-<p>半角の空白と <code>*</code> を使い、次の模様を表示してください。</p>
+<h3 class="task-title">課題3 <span>山形模様</span></h3>
+<p>半角の空白と <code>*</code> を使い、次の3行を表示してください。</p>
 <div class="expected"><pre>  *
  ***
 *****
@@ -258,23 +266,19 @@
     </div>
   </div>
 <details class="hint"><summary>ヒント</summary><ul>
-<li>課題1：最初のサンプルの、二重引用符で囲んだ内容を変えます。</li>
-<li>課題2：<code>System.out.println(...)</code> を2回使います。</li>
-<li>課題3：<code>System.out.println(...)</code> を3回使います。
-<ul>
-<li>空白も、二重引用符の内側に書きます。</li>
-</ul>
-</li>
+<li>課題1：最初の見本の二重引用符の内側を変えます。</li>
+<li>課題2：<code>int</code> と <code>String</code> の変数を一つずつ作り、<code>print</code> と <code>println</code> で表示します。</li>
+<li>課題3：<code>println</code> を3回使います。空白も二重引用符の内側に書きます。</li>
 </ul>
 </details>
 </section>
-<section id="summary" class="section summary"><h2>今日のまとめ</h2><ul>
-<li><code>main</code> の中に、実行する処理を書く。</li>
-<li>文字列は半角の二重引用符 <code>&quot;</code> で囲む。</li>
-<li><code>System.out.println(...)</code> は表示して改行し、<code>System.out.print(...)</code> は改行しない。</li>
-<li>エラーが出たら、記号と大文字・小文字を確認する。</li>
+<section id="summary" class="section summary"><h2>1コマ目のまとめ</h2><ul>
+<li><code>main</code> の中に実行する処理を書き、命令の最後に <code>;</code> を付ける。</li>
+<li>文字列は半角の二重引用符 <code>&quot;</code> で囲み、数値は囲まない。</li>
+<li><code>println</code> は改行し、<code>print</code> は改行しない。</li>
+<li>Javaの変数には、<code>int</code> や <code>String</code> などの型を書く。</li>
 </ul>
-<p>次回は「演算子と変数」です。値を覚えたり、計算したりする方法を学びます。</p>
+<p>続いて<a href="./lesson01-2.html">2コマ目「演算子と変数」</a>へ進みます。</p>
 </section>
           <section id="save" class="section submission">
             <h2>Moodle提出用ファイル保存</h2>
@@ -318,7 +322,7 @@
             </form>
           </section>
           <footer class="page-footer">
-            情報処理基礎演習 <span>後期 第1回 / Javaプログラミング入門</span>
+            情報処理基礎演習 <span>後期 第1回・1コマ目 / Javaプログラミング入門</span>
             <small class="runtime-credit">Java実行: <a href="https://teavm.org/" target="_blank" rel="noopener noreferrer">TeaVM</a> / teavm-javac · <a href="./teavm/NOTICE.txt" target="_blank" rel="noopener noreferrer">ライセンス・ソース</a></small>
           </footer>
         </article>

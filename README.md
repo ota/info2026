@@ -1,12 +1,13 @@
 # 2I情報処理基礎演習 — 2026年度Web教材
 
-後期のJava入門のWeb教材です。シラバスに基づく第1回の初稿を作成しています。
+後期のJava入門のWeb教材です。第1回を1コマずつ2ページに分けています。
 計算機基礎演習の表示・編集・保存機能を引き継いでいます。
 
 **第1回用のTeaVM実行環境を接続しました。通常のGitHub Pages用ビルドでもJavaを実行できます。**
 最初に [HANDOFF.md](HANDOFF.md) を読んでください。
 
-- 第1回の公開URL：<https://ota.github.io/info2026/lesson01.html>
+- 第1回・1コマ目：<https://ota.github.io/info2026/lesson01-1.html>
+- 第1回・2コマ目：<https://ota.github.io/info2026/lesson01-2.html>
 - GitHub：<https://github.com/ota/info2026>
 
 シラバスURLは [syllabus.txt](syllabus.txt)、後期16週の構成は [後期教材の構成](docs/後期教材の構成.md) に記録しています。
@@ -22,13 +23,13 @@ npm ci
 npm run edit
 ```
 
-- 教員の編集画面：`http://127.0.0.1:5174/__editor/lesson01`
-- 学生向け表示：`http://127.0.0.1:5174/lesson01.html`
+- 教員の編集画面：`http://127.0.0.1:5174/__editor/lesson01-1` と `/__editor/lesson01-2`
+- 学生向け表示：`http://127.0.0.1:5174/lesson01-1.html` と `/lesson01-2.html`
 - 表示だけを開発する場合：`npm run dev`
 - ポートが使用中なら、起動時に表示されるURLを使います。
 
 実行用ファイルは `public/teavm/` に同梱済みです。初回セットアップやローカルJDKは不要です。
-第1回の文字列表示、エラー表示、停止と再実行に対応しています。
+第1回の文字列表示、四則演算、基本的な変数、エラー表示、停止と再実行に対応しています。
 Scannerの対話入力やGUIは、この版の授業用機能には含めません。
 現在は `Main.java` / `Main` の1ファイル方式です。詳細は [Java実行環境の構築](docs/Java実行環境の構築.md) を参照してください。
 
@@ -44,7 +45,7 @@ Zed側とブラウザ側に同時に変更がある場合、保存を止めて�
 
 | 場所 | 内容 |
 | --- | --- |
-| `content/lesson01.md` | 後期第1回「Javaプログラミング入門」の初稿 |
+| `content/lesson01-1.md`、`content/lesson01-2.md` | 後期第1回の1コマ目・2コマ目の原稿 |
 | `templates/page.html` | 科目名、共通の構造、提出フォーム |
 | `src/style.css` | 教材の見た目 |
 | `src/main.js` | 入力欄、貼り付け禁止、自動保存、実行UI |
@@ -57,12 +58,13 @@ Zed側とブラウザ側に同時に変更がある場合、保存を止めて�
 | `docs/Javaブラウザ実行の調査.md` | 候補の比較と実測結果 |
 | `references/` | 参照資料の扱い。昨年度資料はなし |
 
-`index.html`、`lesson01.html`、`src/generated/` は生成物です。
+`index.html`、`lesson01.html`、`lesson01-1.html`、`lesson01-2.html`、`src/generated/` は生成物です。
+旧 `lesson01.html` とトップページは1コマ目を表示します。
 これらの内容を直すときはMarkdownまたはテンプレートを編集してください。
 
 ## Markdownの記法
 
-- 先頭のメタデータは `content/lesson01.md` の形式に合わせます。
+- 先頭のメタデータは `content/lesson01-1.md` の形式に合わせます。
 - `## 見出し {#id}` が本文の区切りと左側の目次になります。
 - `:::exercise first Main.java` 内の `java` コードフェンスが見本になります。
 - コードを示さない課題は、空の `:::exercise task1` ブロックで作れます。
@@ -94,7 +96,8 @@ PagesのSourceはGitHub Actionsに設定済みです。
 ## 保存機能の範囲
 
 - 入力コードの自動保存は、同じブラウザ・同じオリジン内に限られます。
-  - キーは `info2026:lesson01:first` のように科目・回・演習で分けています。
+  - キーは `info2026:lesson01-1:first` のように科目・コマ・演習で分けています。
+  - 旧 `lesson01` の入力がある場合は、1コマ目で一度だけ復元します。
 - 教員の未保存下書きも、この科目専用のキーを使います。
 - 出席番号と氏名は自動保存しません。
 - 実行結果は再読み込みで復元しません。提出HTMLには表示中の結果を含めます。

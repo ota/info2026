@@ -10,7 +10,7 @@
     "preview:evaluation": "vite preview --host 127.0.0.1 --port 5175 --base=/info2026/ --outDir .local/pages-evaluation/info2026",
     "dev": "vite --host 127.0.0.1 --port 5174",
     "dev:cheerpj": "vite --mode cheerpj --host 127.0.0.1 --port 5176",
-    "edit": "vite --host 127.0.0.1 --port 5174 --open /__editor/lesson01",
+    "edit": "vite --host 127.0.0.1 --port 5174 --open /__editor/lesson01-1",
     "test": "node --test tests/*.test.mjs",
     "build": "node scripts/verify-teavm.mjs && vite build",
     "preview": "vite preview",

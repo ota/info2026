@@ -331,11 +331,18 @@ export function renderLesson(
     FOOTER: meta.footer,
     SLUG: slug,
     NAV: nav,
+    LESSON_SWITCH: ["lesson01-1", "lesson01-2"].includes(slug)
+      ? ["lesson01-1", "lesson01-2"]
+          .map((part, index) =>
+            `<a href="./${part}.html"${slug === part ? ' aria-current="page"' : ""}>${index + 1}コマ目</a>`,
+          )
+          .join("")
+      : "",
     CONTENT: content,
     RUNTIME_NOTICE: editable ? "/teavm/NOTICE.txt" : "./teavm/NOTICE.txt",
   };
   let html = template.replace(/\{\{([A-Z_]+)\}\}/g, (_, key) =>
-    key === "NAV" || key === "CONTENT"
+    key === "NAV" || key === "CONTENT" || key === "LESSON_SWITCH"
       ? replacements[key]
       : escapeHtml(replacements[key] ?? ""),
   );
@@ -356,10 +363,10 @@ export function renderLesson(
 export async function generateAll() {
   const template = await readFile(templatePath, "utf8");
   const paths = (await readdir(contentDir))
-    .filter((name) => /^lesson\d+\.md$/.test(name))
+    .filter((name) => /^lesson\d+(?:-\d+)?\.md$/.test(name))
     .sort();
-  if (!paths.includes("lesson01.md"))
-    throw new Error("content/lesson01.md がありません");
+  if (!paths.includes("lesson01-1.md") || !paths.includes("lesson01-2.md"))
+    throw new Error("content/lesson01-1.md と lesson01-2.md が必要です");
   await mkdir(generatedDir, { recursive: true });
   // Validate every lesson before writing any generated files.
   const rendered = await Promise.all(
@@ -377,10 +384,13 @@ export async function generateAll() {
     const slug = path.slice(0, -3);
     const output = join(root, `${slug}.html`);
     await writeFile(output, html);
-    if (slug === "lesson01") {
+    if (slug === "lesson01-1") {
       const entry = join(root, "index.html");
       await writeFile(entry, html);
       outputs.push(entry);
+      const previousUrl = join(root, "lesson01.html");
+      await writeFile(previousUrl, html);
+      outputs.push(previousUrl);
     }
     await writeFile(
       join(generatedDir, `${slug}-samples.js`),

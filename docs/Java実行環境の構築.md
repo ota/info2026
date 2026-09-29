@@ -5,7 +5,7 @@
 ## 第1回で使う構成
 
 標準の実行環境を **TeaVM + teavm-javac** に変更した。
-ユーザー確認済みの対象は、第1回の文字列表示・改行・エラー確認。
+ユーザーの追加依頼により、第1回の2コマで文字列表示・変数・基本演算・エラー確認を扱う。
 CheerpJの学校利用条件の確認を、明日の第1回の前提にしない。
 
 - Javaのコンパイル・WebAssemblyへの変換・実行を、ブラウザ内で行う。
@@ -25,8 +25,8 @@ npm ci
 npm run edit
 ```
 
-- 学生ページ：`http://127.0.0.1:5174/lesson01.html`
-- 教員編集画面：`http://127.0.0.1:5174/__editor/lesson01`
+- 学生ページ：`http://127.0.0.1:5174/lesson01-1.html` と `/lesson01-2.html`
+- 教員編集画面：`http://127.0.0.1:5174/__editor/lesson01-1` と `/__editor/lesson01-2`
 
 GitHub Pagesと同じ構成を確認するには、次を実行する。
 
@@ -36,17 +36,18 @@ npm run build:pages
 npm run preview -- --host 127.0.0.1 --port 5177 --base=/info2026/
 ```
 
-確認先：`http://127.0.0.1:5177/info2026/lesson01.html`
+確認先：`http://127.0.0.1:5177/info2026/lesson01-1.html` と `/lesson01-2.html`
 
 ビルド前に、実行用ファイルと対応ソースのSHA-256、ライセンス文書の存在を確認する。
-公開先は <https://ota.github.io/info2026/lesson01.html>。
+公開先は <https://ota.github.io/info2026/lesson01-1.html> と <https://ota.github.io/info2026/lesson01-2.html>。
 `ota/info2026` のActions「Deploy GitHub Pages」を手動実行して更新する。
 実行用ファイル・ライセンス・対応ソースは同じPagesサイトから配信する。
 
 ## 確認した範囲と制約
 
-- 第1回の見本2つと課題3問。
-  - Hello World、日本語への変更、自己紹介、空白を使う山形模様。
+- 第1回・1コマ目の見本3つと課題3問、2コマ目の見本3つと課題3問。
+  - Hello World、日本語、型付き変数、自己紹介、空白を使う山形模様。
+  - 四則演算、整数の割り算と余り、文字列の連結・繰り返し、型変換、面積計算。
   - printとprintln、改行なしの出力、絵文字、標準エラー出力。
 - コンパイルエラーのファイル名・行・列、クラス名不一致、mainの書き忘れ、実行時エラー。
 - 無限ループ停止、停止後の再実行、出力過多による停止後の復帰。
@@ -105,7 +106,7 @@ npm run preview -- --host 127.0.0.1 --port 5177 --base=/info2026/
 
 ```sh
 node tests/browser/teavm-runtime.mjs
-LESSON_URL=http://127.0.0.1:5177/info2026/lesson01.html BLOCK_EXTERNAL_RUNTIME=1 node tests/browser/teavm-runtime.mjs
+LESSON_URL=http://127.0.0.1:5177/info2026/lesson01-1.html BLOCK_EXTERNAL_RUNTIME=1 node tests/browser/teavm-runtime.mjs
 ```
 
 保存・競合防止とWorkerの状態管理は `npm test`。

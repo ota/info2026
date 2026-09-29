@@ -62,6 +62,24 @@ test("opening and saving without changes preserves the original bytes", async (t
   await assert.rejects(readdir(join(root, ".local")), { code: "ENOENT" });
 });
 
+test("editing one period keeps the other Markdown source unchanged", async (t) => {
+  const { root, store } = await fixture(t);
+  const firstPath = join(root, "content/lesson01-1.md");
+  const secondPath = join(root, "content/lesson01-2.md");
+  await writeFile(firstPath, original);
+  await writeFile(secondPath, original);
+  const first = await store.load("lesson01-1");
+  const code = first.fields.find(({ exercise }) => exercise === "first");
+  const replacement = code.value.replace("Hello, World!", "Java 1コマ目");
+  await store.save("lesson01-1", {
+    revision: first.revision,
+    changes: [{ key: code.key, value: replacement }],
+  });
+  assert.match(await readFile(firstPath, "utf8"), /Java 1コマ目/);
+  assert.equal(await readFile(secondPath, "utf8"), original);
+  assert.equal((await store.load("lesson01-2")).samples.first.join("\n"), code.value);
+});
+
 test("saves nested bullets, Japanese text and Java whitespace, retaining all untouched source and IDs", async (t) => {
   const { store, root, file } = await fixture(t);
   const model = await store.load("lesson01");

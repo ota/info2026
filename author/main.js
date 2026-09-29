@@ -21,7 +21,7 @@ import { keymap } from "prosemirror-keymap";
 import { drawSample } from "../src/sample.js";
 import { applyFieldChanges } from "../scripts/editor-fields.mjs";
 
-const slug = location.pathname.match(/\/(lesson\d+)\/?$/)?.[1] || "lesson01";
+const slug = location.pathname.match(/\/(lesson\d+(?:-\d+)?)\/?$/)?.[1] || "lesson01-1";
 const api = `/__editor/api/${slug}`;
 const draftKey = `info2026-author:${slug}`;
 const page = document.querySelector("#author-page");

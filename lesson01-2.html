@@ -1,0 +1,311 @@
+<!-- Generated from content/lessonXX.md. Edit the Markdown source. -->
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f7fb" />
+    <title>第1回②｜Javaプログラミング入門 — 2I情報処理基礎演習</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body data-lesson="lesson01-2" data-number="01-2">
+    <div class="shell">
+      <aside class="sidebar" aria-label="教材の目次">
+        <div class="brand">
+          <span class="brand-icon">&gt;_</span
+          ><span>情報処理基礎演習<small> / 2026</small></span>
+        </div>
+        <div class="side-label">後期 · Q3</div>
+        <a class="current-lesson" href="#top" aria-current="page"
+          ><span>01-2</span>第1回・2コマ目　Javaプログラミング入門</a
+        >
+        <nav class="lesson-switch" aria-label="第1回のコマ移動"><a href="./lesson01-1.html">1コマ目</a><a href="./lesson01-2.html" aria-current="page">2コマ目</a></nav>
+        <div class="side-label side-sections">今回の内容</div>
+        <nav class="side-nav" aria-label="今回の内容"><a href="#goals">今回の目標</a><a href="#review">1コマ目のおさらい</a><a href="#arithmetic">数値の計算</a><a href="#strings">文字列と数値</a><a href="#variables">代入と面積</a><a href="#challenge">演習問題</a><a href="#summary">2コマ目のまとめ</a><a href="#save">保存</a></nav>
+      </aside>
+      <main id="top" class="main">
+        <header class="topbar">
+          <span>2年 情報コース <span class="slash">/</span> 後期 第1回・2コマ目</span>
+        </header>
+        <article class="lesson">
+          <p class="runtime-availability lesson-notice" hidden></p>
+<h1>第1回・2コマ目　Javaプログラミング入門</h1>
+<section id="goals" class="section"><h2>今回の目標</h2><div class="goal-grid"><div class="goal"><b>01</b><strong>数値を計算する</strong><span>四則演算と、割り算の答えや余りを確認する。</span></div><div class="goal"><b>02</b><strong>文字列を扱う</strong><span><code>+</code> でつなぎ、数値との違いを見る。</span></div><div class="goal"><b>03</b><strong>変数で計算する</strong><span>面積の計算結果を変数に入れて表示する。</span></div></div>
+</section><section class="howto" aria-labelledby="howto-title"><div class="howto-icon">⌨</div><div><h3 id="howto-title">演習の進め方</h3><ul>
+<li><a href="./lesson01-1.html">1コマ目</a>の <code>Main</code> と <code>main</code> の形を使います。</li>
+<li>見本を入力して「実行する」を押し、表示結果と比べます。
+<ul>
+<li>入力欄への貼り付けはできません。</li>
+</ul>
+</li>
+<li>最後にこのページの出席番号と氏名を入力し、提出用HTMLを保存します。
+<ul>
+<li>1コマ目とは別のファイルです。提出先は授業中の指示に従ってください。</li>
+</ul>
+</li>
+</ul>
+</div></section>
+
+<section id="review" class="section"><h2>1コマ目のおさらい</h2><ul>
+<li>文字列は <code>&quot;...&quot;</code> で囲み、整数は囲みません。</li>
+<li><code>int number = 12;</code> は、整数型の変数 <code>number</code> に <code>12</code> を入れます。</li>
+<li><code>System.out.println(...)</code> は値を表示した後に改行します。</li>
+</ul>
+<div class="check"><b>確認</b><p>1コマ目の課題2で、出席番号や氏名を変数から表示できたか確認しましょう。
+うまく動かなかった場合は、<a href="./lesson01-1.html">1コマ目のページ</a>で直してから進みます。</p>
+</div>
+</section>
+<section id="arithmetic" class="section"><h2>数値の計算</h2><p><code>+</code>、<code>-</code>、<code>*</code>、<code>/</code> は、足し算・引き算・掛け算・割り算を表す「演算子」です。
+<code>%</code> は割り算の余りを求めます。</p>
+<div class="exercise" data-exercise="arithmetic">
+    <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
+       <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
+    <div class="work">
+      <label for="editor-arithmetic">上記のサンプルコードを書き写してください：</label>
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-arithmetic" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-arithmetic">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-arithmetic" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="expected"><pre>9
+5
+14
+3
+1
+3.5
+256.0
+</pre>
+</div>
+<ul class="concepts"><li class="concept"><p><code>int</code> 同士の <code>/</code> は、小数部分を切り捨てた整数になります。<code>7 / 2</code> は <code>3</code> です。</p><ul class="concept-details"><li>前期のPythonで整数の割り算に使った <code>//</code> は、Javaでは使いません。</li></ul></li>
+<li class="concept"><p><code>7.0</code> は小数型 <code>double</code> の値です。<code>7.0 / 2</code> は <code>3.5</code> になります。</p></li>
+<li class="concept"><p><code>%</code> は余りです。<code>7 % 2</code> は <code>1</code> になります。</p></li>
+<li class="concept"><p><code>Math.pow(2, 8)</code> は2の8乗を求めます。結果は小数型なので <code>256.0</code> と表示されます。</p><ul class="concept-details"><li>前期のPythonで累乗に使った <code>**</code> は、Javaでは使いません。</li></ul></li></ul>
+<div class="check"><b>確認</b><p><code>a</code> を <code>10</code>、<code>b</code> を <code>3</code> に変え、割り算の答えと余りを確認しましょう。</p>
+</div>
+</section>
+<section id="strings" class="section"><h2>文字列と数値</h2><p>Javaでも、文字列同士は <code>+</code> でつなげられます。ただし、数値の足し算とは結果が違います。</p>
+<div class="exercise" data-exercise="strings">
+    <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
+       <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
+    <div class="work">
+      <label for="editor-strings">上記のサンプルコードを書き写してください：</label>
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-strings" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-strings">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-strings" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="expected"><pre>Java入門
+3
+12
+★★★★★
+15
+</pre>
+</div>
+<ul class="concepts"><li class="concept"><p><code>1 + 2</code> は整数の足し算、<code>&quot;1&quot; + &quot;2&quot;</code> は文字列をつなぐ処理です。</p></li>
+<li class="concept"><p><code>&quot;★&quot;.repeat(5)</code> は、文字列を5回繰り返します。</p><ul class="concept-details"><li>Pythonの文字列で使った <code>*</code> は、Javaの文字列には使えません。</li></ul></li>
+<li class="concept"><p><code>Integer.parseInt(&quot;12&quot;)</code> は、数字の文字列 <code>&quot;12&quot;</code> を整数に変えます。</p><ul class="concept-details"><li>数字以外の文字列は、整数に変えられません。</li></ul></li></ul>
+<div class="check"><b>確認</b><p><code>&quot;12&quot;</code> を <code>&quot;7&quot;</code> に変えると、最後の行は何と表示されるでしょうか。</p>
+</div>
+</section>
+<section id="variables" class="section"><h2>代入と面積</h2><p>変数へ値を入れる <code>=</code> を「代入」と呼びます。<code>=</code> の右側には計算を書くこともできます。</p>
+<div class="exercise" data-exercise="area">
+    <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
+       <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
+    <div class="work">
+      <label for="editor-area">上記のサンプルコードを書き写してください：</label>
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-area" aria-label="サンプルコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// サンプルコードを見ながら、ここに入力"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-area">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-area" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="expected"><pre>50
+2
+</pre>
+</div>
+<ul class="concepts"><li class="concept"><p><code>area = base * height</code> は、底辺と高さの積を <code>area</code> に入れます。</p></li>
+<li class="concept"><p><code>count = count + 1</code> は、今の <code>count</code> に1を足した結果を、もう一度 <code>count</code> に入れます。</p><ul class="concept-details"><li>数学の「左右が等しい」という意味ではありません。</li><li><code>count += 1</code> と短く書くこともできます。</li></ul></li>
+<li class="concept"><p>変数を作るときは <code>int</code> を付けます。すでにある変数に入れ直すときは付けません。</p></li></ul>
+<div class="check"><b>確認</b><p><code>count = count + 1;</code> を <code>count += 1;</code> に書き換え、結果が同じことを確かめましょう。</p>
+</div>
+</section>
+<section id="challenge" class="section challenge-section"><h2>演習問題</h2><p>各課題で <code>Main</code> クラスと <code>main</code> を含むプログラム全体を書きます。</p>
+<h3 class="task-title">課題1 <span>好きな文字列を10回</span></h3>
+<p>好きな短い文字列を <code>String word</code> に入れ、<code>repeat(10)</code> で10回続けて表示してください。</p>
+<div class="exercise" data-exercise="task1">
+
+    <div class="work">
+
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-task1" aria-label="課題1のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-task1">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-task1" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<h3 class="task-title">課題2 <span>三角形の面積</span></h3>
+<p>底辺を <code>base</code> に <code>3</code>、高さを <code>height</code> に <code>5</code> として、三角形の面積を求めてください。
+答えは小数を含めて表示します。</p>
+<div class="expected"><code>7.5</code></div>
+<div class="exercise" data-exercise="task2">
+
+    <div class="work">
+
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-task2" aria-label="課題2のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-task2">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-task2" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<h3 class="task-title">課題3 <span>円の面積</span></h3>
+<p>半径 <code>3</code> を変数 <code>r</code> に入れ、円の面積を計算してください。
+円周率には Java の <code>Math.PI</code> を使います。</p>
+<div class="exercise" data-exercise="task3">
+
+    <div class="work">
+
+      <div class="editor-wrap"><div class="gutter" aria-hidden="true"></div>
+        <textarea id="editor-task3" aria-label="課題3のコード" class="editor" spellcheck="false" autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="// 自分で考えて入力"></textarea>
+      </div>
+      <div class="work-footer"><div class="buttons"><button type="button" class="run-btn">▶ 実行する</button><button type="button" class="stop-btn" hidden>停止する</button></div></div>
+      <div class="status" role="status" aria-live="polite"></div>
+      <div class="output" hidden><div class="output-head">実行結果 <span class="exit-code"></span></div><pre></pre></div>
+      <div class="stdin-panel" hidden>
+        <label for="stdin-task3">プログラムへの入力（1行ずつ送信）</label>
+        <pre class="stdin-history" aria-label="送信した入力" hidden></pre>
+        <div class="stdin-controls">
+          <input id="stdin-task3" class="stdin-input" type="text" autocomplete="off" disabled>
+          <button type="button" class="stdin-send" disabled>送信</button>
+          <button type="button" class="stdin-eof" disabled>入力を終了</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<details class="hint"><summary>ヒント</summary><ul>
+<li>課題1：<code>System.out.println(word.repeat(10));</code> と書けます。</li>
+<li>課題2：<code>double base = 3;</code>、<code>double height = 5;</code> とし、<code>base * height / 2</code> を使います。</li>
+<li>課題3：円の面積は「半径 × 半径 × 円周率」です。<code>Math.PI * r * r</code> と書けます。</li>
+</ul>
+</details>
+<p>余裕があれば、<code>10,000</code> 秒が何時間何分何秒かを、整数の <code>/</code> と <code>%</code> で計算してみましょう。</p>
+</section>
+<section id="summary" class="section summary"><h2>2コマ目のまとめ</h2><ul>
+<li><code>int</code> 同士の <code>/</code> は整数の商、<code>%</code> は余りを求める。</li>
+<li><code>double</code> を使うと小数を含む計算ができる。</li>
+<li><code>+</code> は数値なら足し算、文字列なら連結になる。</li>
+<li><code>=</code> は代入、<code>+=</code> は今の値に足してから代入する。</li>
+</ul>
+<p>次回は「演算子と変数」をさらに練習し、計算や代入を使いこなします。</p>
+</section>
+          <section id="save" class="section submission">
+            <h2>Moodle提出用ファイル保存</h2>
+            <form id="export-form">
+              <div class="identity-fields">
+                <label for="attendance-number">
+                  出席番号
+                  <input
+                    id="attendance-number"
+                    name="attendance-number"
+                    type="text"
+                    inputmode="numeric"
+                    autocomplete="off"
+                    required
+                  />
+                </label>
+                <label for="student-name">
+                  氏名
+                  <input
+                    id="student-name"
+                    name="student-name"
+                    type="text"
+                    autocomplete="off"
+                    required
+                  />
+                </label>
+              </div>
+              <ul class="export-note">
+                <li>出席番号と氏名を入力し、「保存」ボタンを押してください。</li>
+                <li>保存したファイルを、Moodleに提出してください。</li>
+              </ul>
+              <button type="submit" class="export-btn">
+                保存
+              </button>
+              <p
+                id="export-status"
+                class="export-status"
+                role="status"
+                aria-live="polite"
+              ></p>
+            </form>
+          </section>
+          <footer class="page-footer">
+            情報処理基礎演習 <span>後期 第1回・2コマ目 / Javaプログラミング入門</span>
+            <small class="runtime-credit">Java実行: <a href="https://teavm.org/" target="_blank" rel="noopener noreferrer">TeaVM</a> / teavm-javac · <a href="./teavm/NOTICE.txt" target="_blank" rel="noopener noreferrer">ライセンス・ソース</a></small>
+          </footer>
+        </article>
+      </main>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

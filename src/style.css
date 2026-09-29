@@ -107,6 +107,29 @@ code {
   border-radius: 5px;
   padding: 4px 5px;
   font-size: 12px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.lesson-switch {
+  display: flex;
+  gap: 6px;
+  margin: 11px 0 0;
+}
+.lesson-switch a {
+  flex: 1;
+  padding: 7px 5px;
+  border: 1px solid #cad1d9;
+  border-radius: 6px;
+  color: #345d8b;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+}
+.lesson-switch a[aria-current="page"] {
+  background: #395e89;
+  border-color: #395e89;
+  color: #fff;
 }
 .side-sections {
   margin-top: 43px;
@@ -838,6 +861,10 @@ h1 {
   .current-lesson,
   .side-nav {
     display: none;
+  }
+  .lesson-switch {
+    max-width: 300px;
+    margin-top: 14px;
   }
   .topbar {
     padding: 0 26px;

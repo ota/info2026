@@ -13,7 +13,7 @@ export default defineConfig(async ({ mode }) => {
       watch: {
         ignored: [
           (path) =>
-            /^(?:index|lesson\d+)\.html$/.test(
+            /^(?:index|lesson\d+(?:-\d+)?)\.html$/.test(
               relative(import.meta.dirname, path),
             ),
         ],
@@ -29,7 +29,7 @@ export default defineConfig(async ({ mode }) => {
           server.watcher.add(contentDir);
           server.watcher.on("change", async (path) => {
             if (
-              !/^lesson\d+\.md$/.test(basename(path)) ||
+              !/^lesson\d+(?:-\d+)?\.md$/.test(basename(path)) ||
               !path.startsWith(contentDir)
             )
               return;

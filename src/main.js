@@ -102,7 +102,11 @@ for (const exercise of document.querySelectorAll(".exercise")) {
     gutter.scrollTop = editor.scrollTop;
   };
   try {
-    const saved = localStorage.getItem(key);
+    let saved = localStorage.getItem(key);
+    if (saved === null && lesson === "lesson01-1") {
+      saved = localStorage.getItem(`info2026:lesson01:${exercise.dataset.exercise}`);
+      if (saved !== null) localStorage.setItem(key, saved);
+    }
     editor.value = saved || "";
     saveNote.textContent = saved
       ? "前回の入力を復元しました · この端末に保存"
