@@ -28,6 +28,10 @@ markdown.renderer.rules.link_open = (
   return defaultLinkOpen(tokens, index, options, environment, self);
 };
 
+// Wide tables scroll inside their own box instead of widening the page on phones.
+markdown.renderer.rules.table_open = () => '<div class="table-scroll"><table>\n';
+markdown.renderer.rules.table_close = () => "</table></div>\n";
+
 const escapeHtml = (value) =>
   String(value).replace(
     /[&<>"']/g,

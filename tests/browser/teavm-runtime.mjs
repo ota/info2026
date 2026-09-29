@@ -105,7 +105,7 @@ try {
     ['System.out.print("改行なし😀");', "改行なし😀"],
     ['System.out.print("前");System.err.print("中");System.out.println("後");', "前中後\n"],
     ['System.out.println("1");System.out.println("2");System.out.println("3");', "1\n2\n3\n"],
-    ['int number=99;String name="太田健吾";double height=158.5;System.out.print("出席番号 ");System.out.print(number);System.out.print(" 番の ");System.out.print(name);System.out.println(" です。");System.out.print("身長は ");System.out.print(height);System.out.println(" cm です。");', "出席番号 99 番の 太田健吾 です。\n身長は 158.5 cm です。\n"],
+    ['int number=99;String name="太田健吾";double pi=3.14;System.out.print("出席番号 ");System.out.print(number);System.out.print(" 番の ");System.out.print(name);System.out.println(" です。");System.out.print("円周率は ");System.out.print(pi);System.out.println(" です。");', "出席番号 99 番の 太田健吾 です。\n円周率は 3.14 です。\n"],
   ]) {
     const result = await run(main(body));
     assert.equal(result.output, expectedOutput);

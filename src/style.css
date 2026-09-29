@@ -693,10 +693,13 @@ h1 {
 .type-table code {
   justify-self: start;
 }
+.table-scroll {
+  overflow-x: auto;
+  margin: 25px 0 14px;
+}
 .section table {
   width: 100%;
   border-collapse: collapse;
-  margin: 25px 0 14px;
   border: 1px solid #dde2e7;
   background: #fff;
   font-size: 14px;

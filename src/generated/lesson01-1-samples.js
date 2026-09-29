@@ -43,10 +43,10 @@ export const samples = {
     "public class Main {",
     "    public static void main(String[] args) {",
     "        int number = 99;",
-    "        double height = 158.5;",
+    "        double pi = 3.14;",
     "        String name = \"太田健吾\";",
     "        System.out.println(number);",
-    "        System.out.println(height);",
+    "        System.out.println(pi);",
     "        System.out.println(name);",
     "    }",
     "}"

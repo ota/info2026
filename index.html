@@ -76,17 +76,19 @@
 </li>
 <li>ソースコードを実行用の形式へ変換することを「コンパイル」と呼びます。
 <ul>
+<li>C言語と同じく、Javaも実行の前にコンパイルします。</li>
 <li>書き方に誤りがあると、コンパイル時にエラーが表示されます。</li>
 <li>この教材では、入力欄の下の「実行する」でコンパイルと実行を行います。</li>
 </ul>
 </li>
 </ul>
-<p>Pythonと比べると、書き方に次の違いがあります。</p>
-<table>
+<p>前期のPythonや、別の授業で学んでいるC言語と比べると、書き方に次の違いがあります。</p>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th></th>
 <th>Python</th>
+<th>C言語</th>
 <th>Java</th>
 </tr>
 </thead>
@@ -94,26 +96,35 @@
 <tr>
 <td>表示</td>
 <td><code>print(&quot;Hello&quot;)</code></td>
+<td><code>printf(&quot;Hello\n&quot;);</code></td>
 <td><code>System.out.println(&quot;Hello&quot;);</code></td>
 </tr>
 <tr>
 <td>命令の終わり</td>
 <td>行の終わり</td>
 <td><code>;</code> を付ける</td>
+<td><code>;</code> を付ける</td>
 </tr>
 <tr>
 <td>処理のまとまり</td>
 <td>行頭の字下げ</td>
 <td><code>{</code> と <code>}</code> で囲む</td>
+<td><code>{</code> と <code>}</code> で囲む</td>
 </tr>
 <tr>
 <td>変数を作る</td>
 <td><code>n = 12</code></td>
-<td><code>int n = 12;</code> のように、データの種類（型）も書く</td>
+<td><code>int n = 12;</code></td>
+<td><code>int n = 12;</code></td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <ul>
+<li>JavaはC言語と書き方がよく似ています。
+<ul>
+<li><code>;</code> と <code>{ }</code> を使うこと、変数を作るときにデータの種類（型）も書くことは、Cと同じです。</li>
+</ul>
+</li>
 <li>Javaの字下げは、読みやすくするためのものです。字下げを変えても動作は変わりません。
 <ul>
 <li>それでも、まとまりが分かるように字下げをそろえて書きます。</li>
@@ -156,7 +167,7 @@
 <div class="expected"><code>Hello, World!</code></div>
 <ul class="concepts"><li class="concept"><p>3行目以外は、毎回同じ「基本の形」です。今日の見本はすべてこの形を使います。</p><ul class="concept-details"><li>1〜2行目と最後の2行はそのまま書き、3行目の位置に処理を書きます。</li><li>処理が増えたら、3行目の位置に行を増やして書きます。</li></ul></li>
 <li class="concept"><p><code>public class Main { ... }</code> はプログラムを入れる外側のまとまりです。</p><ul class="concept-details"><li>このまとまりを「クラス」と呼びます。名前は <code>Main</code>、ファイル名は <code>Main.java</code> にします。</li><li>この教材の入力欄は <code>Main.java</code> として実行されます。<code>Main</code> の部分は変えません。</li></ul></li>
-<li class="concept"><p><code>public static void main(String[] args) { ... }</code> の中に、最初に実行する処理を書きます。</p><ul class="concept-details"><li>意味は後の回で学びます。今は基本の形としてそのまま使います。</li></ul></li>
+<li class="concept"><p><code>public static void main(String[] args) { ... }</code> の中に、最初に実行する処理を書きます。</p><ul class="concept-details"><li>意味は後の回で学びます。今は基本の形としてそのまま使います。</li><li>C言語の <code>int main(void)</code> と同じく、<code>main</code> から実行が始まります。</li><li>Cで書いた <code>#include &lt;stdio.h&gt;</code> と <code>return 0;</code> は、Javaでは書きません。</li></ul></li>
 <li class="concept"><p><code>System.out.println(...)</code> は、括弧の中の値を画面に表示して改行します。</p><ul class="concept-details"><li>文字の並びを「文字列」と呼び、半角の二重引用符 <code>&quot;</code> で囲みます。</li><li>命令の最後には半角のセミコロン <code>;</code> を付けます。</li></ul></li>
 <li class="concept"><p><code>{</code> と <code>}</code> は処理のまとまりを囲みます。</p><ul class="concept-details"><li>内側の行の先頭を空けると、まとまりが分かりやすくなります。</li></ul></li></ul>
 <div class="check"><b>確認</b><p><code>Hello, World!</code> を <code>こんにちは、Java！</code> に書き換えて実行しましょう。
@@ -232,7 +243,7 @@ ABC
 </pre>
 </div>
 <ul class="concepts"><li class="concept"><p><code>System.out.print(...)</code> は表示した後に改行しません。</p><ul class="concept-details"><li>次の表示は、同じ行の続きになります。</li></ul></li>
-<li class="concept"><p><code>System.out.println(...)</code> は表示した後に改行します。</p></li>
+<li class="concept"><p><code>System.out.println(...)</code> は表示した後に改行します。</p><ul class="concept-details"><li>C言語の <code>printf</code> と違い、<code>\n</code> を書かなくても改行します。</li><li><code>println(&quot;Hello\n&quot;)</code> と書くと、改行が2回になり、空の行が入ります。</li></ul></li>
 <li class="concept"><p>二重引用符の内側には、日本語や絵文字も書けます。</p></li></ul>
 <div class="check"><b>確認</b><p><code>System.out.print(&quot;B&quot;);</code> を <code>println</code> に変えると、表示は何行になるでしょうか。
 予想してから実行しましょう。</p>
@@ -267,7 +278,7 @@ number
 </pre>
 </div>
 <ul class="concepts"><li class="concept"><p><code>int number = 99;</code> は、整数型の変数 <code>number</code> を作り、<code>99</code> を入れます。</p><ul class="concept-details"><li><code>型 名前 = 値;</code> の順に書きます。<code>int</code> は整数の型です。</li></ul></li>
-<li class="concept"><p><code>System.out.println(number)</code> は、変数の中の値 <code>99</code> を表示します。</p><ul class="concept-details"><li><code>&quot;number&quot;</code> と書くと文字列になり、<code>number</code> という文字がそのまま表示されます。</li></ul></li>
+<li class="concept"><p><code>System.out.println(number)</code> は、変数の中の値 <code>99</code> を表示します。</p><ul class="concept-details"><li>C言語の <code>%d</code> のような書式指定子は要りません。変数をそのまま括弧に入れます。</li><li><code>&quot;number&quot;</code> と書くと文字列になり、<code>number</code> という文字がそのまま表示されます。</li></ul></li>
 <li class="concept"><p>変数名には英字、数字、<code>_</code> を使えます。ただし、先頭を数字にはできません。</p><ul class="concept-details"><li>大文字と小文字は区別されます。<code>Number</code> と <code>number</code> は別の名前です。</li></ul></li></ul>
 <div class="check"><b>確認</b><p><code>int number = 99;</code> の <code>99</code> を自分の出席番号に変えて実行しましょう。</p>
 </div>
@@ -295,11 +306,11 @@ number
     </div>
   </div>
 <div class="expected"><pre>99
-158.5
+3.14
 太田健吾
 </pre>
 </div>
-<table>
+<div class="table-scroll"><table>
 <thead>
 <tr>
 <th>型</th>
@@ -316,7 +327,7 @@ number
 <tr>
 <td><code>double</code></td>
 <td>小数</td>
-<td><code>158.5</code>、<code>3.0</code></td>
+<td><code>3.14</code>、<code>0.5</code></td>
 </tr>
 <tr>
 <td><code>String</code></td>
@@ -324,9 +335,9 @@ number
 <td><code>&quot;太田健吾&quot;</code></td>
 </tr>
 </tbody>
-</table>
-<ul class="concepts"><li class="concept"><p><code>double height = 158.5;</code> は、小数型の変数 <code>height</code> に <code>158.5</code> を入れます。</p></li>
-<li class="concept"><p><code>String name = &quot;太田健吾&quot;;</code> は、文字列型の変数 <code>name</code> に氏名を入れます。</p><ul class="concept-details"><li><code>String</code> だけ先頭が大文字です。<code>int</code> と <code>double</code> は小文字です。</li></ul></li></ul>
+</table></div>
+<ul class="concepts"><li class="concept"><p><code>double pi = 3.14;</code> は、小数型の変数 <code>pi</code> に <code>3.14</code> を入れます。</p><ul class="concept-details"><li>C言語の授業では <code>float pi = 3.14;</code> と書きました。Javaでは、小数に <code>double</code> を使います。</li><li>Javaで <code>float pi = 3.14;</code> と書くと、コンパイルエラーになります。</li></ul></li>
+<li class="concept"><p><code>String name = &quot;太田健吾&quot;;</code> は、文字列型の変数 <code>name</code> に氏名を入れます。</p><ul class="concept-details"><li><code>String</code> だけ先頭が大文字です。<code>int</code> と <code>double</code> は小文字です。</li><li>Cの <code>char name[]</code> にあたります。</li></ul></li></ul>
 <p><code>print</code> と <code>println</code> を組み合わせると、変数の値を文の途中に入れられます。</p>
 <div class="exercise" data-exercise="self-intro">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
@@ -352,7 +363,8 @@ number
   </div>
 <div class="expected"><code>出席番号 99 番の 太田健吾 です。</code></div>
 <ul class="concepts"><li class="concept"><p><code>print</code> で改行せずに続けて表示し、最後だけ <code>println</code> で改行します。</p></li>
-<li class="concept"><p><code>&quot; 番の &quot;</code> のように、文字列の中の空白もそのまま表示されます。</p></li></ul>
+<li class="concept"><p><code>&quot; 番の &quot;</code> のように、文字列の中の空白もそのまま表示されます。</p></li>
+<li class="concept"><p>C言語では、<code>printf</code> と書式指定子で1行にまとめて書けました。</p><ul class="concept-details"><li>Javaで1行にまとめる方法は、2コマ目で学びます。</li></ul></li></ul>
 <div class="check"><b>確認</b><p><code>number</code> と <code>name</code> の値を自分の出席番号・氏名に変えて実行しましょう。</p>
 </div>
 </section>
@@ -575,10 +587,10 @@ number
 <li>課題3：<code>println</code> を3回使います。空白も二重引用符の内側に書きます。</li>
 </ul>
 </details>
-<p>余裕があれば、課題2に身長を加えましょう。
-身長は <code>double</code> の変数 <code>height</code> に入れ、次の2行を表示します。</p>
+<p>余裕があれば、課題2に1行加えましょう。
+<code>double</code> の変数 <code>pi</code> に <code>3.14</code> を入れ、次の2行を表示します。</p>
 <div class="expected"><pre>出席番号 99 番の 太田健吾 です。
-身長は 158.5 cm です。
+円周率は 3.14 です。
 </pre>
 </div>
 <div class="exercise" data-exercise="ext1">

@@ -157,7 +157,7 @@
 1
 </pre>
 </div>
-<ul class="concepts"><li class="concept"><p><code>int</code> 同士の <code>/</code> は、小数部分を切り捨てた整数になります。<code>7 / 2</code> は <code>3</code> です。</p><ul class="concept-details"><li>前期のPythonでは、<code>7 / 2</code> は <code>3.5</code> でした。Javaの整数同士では <code>3</code> になります。</li><li>Pythonで整数の割り算に使った <code>//</code> は、Javaでは使いません。</li></ul></li>
+<ul class="concepts"><li class="concept"><p><code>int</code> 同士の <code>/</code> は、小数部分を切り捨てた整数になります。<code>7 / 2</code> は <code>3</code> です。</p><ul class="concept-details"><li>前期のPythonでは、<code>7 / 2</code> は <code>3.5</code> でした。Javaの整数同士では <code>3</code> になります。</li><li>C言語でも、<code>int</code> 同士の <code>/</code> は同じく切り捨てになります。</li><li>Pythonで整数の割り算に使った <code>//</code> は、Javaでは使いません。</li></ul></li>
 <li class="concept"><p><code>%</code> は割り算の余りです。<code>7 % 2</code> は <code>1</code> になります。</p><ul class="concept-details"><li>偶数を2で割った余りは <code>0</code>、奇数なら <code>1</code> です。後の「条件分岐」で、偶数・奇数の判定に使います。</li></ul></li></ul>
 <div class="check"><b>確認</b><p><code>a</code> を <code>10</code>、<code>b</code> を <code>3</code> に変え、割り算の答えと余りを確認しましょう。</p>
 </div>
@@ -252,7 +252,7 @@
 ★★★★★
 </pre>
 </div>
-<ul class="concepts"><li class="concept"><p><code>1 + 2</code> は整数の足し算、<code>&quot;1&quot; + &quot;2&quot;</code> は文字列をつなぐ処理です。</p></li>
+<ul class="concepts"><li class="concept"><p><code>1 + 2</code> は整数の足し算、<code>&quot;1&quot; + &quot;2&quot;</code> は文字列をつなぐ処理です。</p><ul class="concept-details"><li>C言語では、文字列を <code>+</code> でつなぐことはできません。</li></ul></li>
 <li class="concept"><p><code>&quot;★&quot;.repeat(5)</code> は、文字列を5回繰り返します。</p><ul class="concept-details"><li><code>文字列.repeat(回数)</code> の形で書きます。</li><li>Pythonの文字列で使った <code>*</code> は、Javaの文字列には使えません。</li></ul></li></ul>
 <p>文字列と数値も <code>+</code> でつなげます。Pythonでは <code>&quot;a&quot; + 1</code> はエラーでしたが、Javaではつながります。</p>
 <div class="exercise" data-exercise="concat">
@@ -282,7 +282,7 @@
 合計 3
 </pre>
 </div>
-<ul class="concepts"><li class="concept"><p><code>+</code> の片方が文字列なら、もう片方の数値も文字列としてつながります。</p><ul class="concept-details"><li>1コマ目で <code>print</code> と <code>println</code> を5回使った自己紹介が、<code>println</code> 1回で書けます。</li></ul></li>
+<ul class="concepts"><li class="concept"><p><code>+</code> の片方が文字列なら、もう片方の数値も文字列としてつながります。</p><ul class="concept-details"><li>1コマ目で <code>print</code> と <code>println</code> を5回使った自己紹介が、<code>println</code> 1回で書けます。</li><li>5行目は、C言語なら <code>printf(&quot;出席番号 %d 番の %s です。\n&quot;, number, name);</code> と書く内容です。</li></ul></li>
 <li class="concept"><p><code>+</code> は左から順に処理されます。</p><ul class="concept-details"><li><code>&quot;合計 &quot; + 1</code> で先に <code>&quot;合計 1&quot;</code> となり、続けて <code>2</code> がつながります。</li><li>足し算を先にしたいときは <code>(1 + 2)</code> のように括弧で囲みます。</li></ul></li></ul>
 <div class="check"><b>確認</b><p><code>number</code> と <code>name</code> を自分の出席番号・氏名に変えて実行しましょう。</p>
 </div>
@@ -372,7 +372,7 @@
 </pre>
 </div>
 <ul class="concepts"><li class="concept"><p><code>count = count + 1</code> は、今の <code>count</code> に1を足した結果を、もう一度 <code>count</code> に入れます。</p><ul class="concept-details"><li>数学の「左右が等しい」という意味ではありません。</li></ul></li>
-<li class="concept"><p><code>count += 10</code> は <code>count = count + 10</code> を短く書いたものです。</p></li>
+<li class="concept"><p><code>count += 10</code> は <code>count = count + 10</code> を短く書いたものです。</p><ul class="concept-details"><li><code>=</code> と <code>+=</code> の書き方は、C言語でも同じです。</li></ul></li>
 <li class="concept"><p>変数を作るときは <code>int</code> を付けます。すでにある変数に入れ直すときは付けません。</p></li></ul>
 </section>
 <section id="errors" class="section"><h2>エラーを直す</h2><p>1コマ目と同じく、まず実行してエラーを確かめ、直してから再実行しましょう。</p>
