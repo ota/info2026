@@ -47,7 +47,8 @@
 - TeaVM版の第2回以降の機能、演習室の端末・他ブラウザ・一斉アクセスは未確認。
   - 明日の第1回ではScanner・GUI・複数ファイルを扱わない。
   - CheerpJの学校利用条件は未確認のままだが、第1回のTeaVM版ではCheerpJを使用しない。
-- GitHubリポジトリ作成、remote設定、Pages公開は未実施。
+- GitHubリポジトリは `https://github.com/ota/info2026`、remoteは `origin`、ブランチは `main`。
+  - 2026年9月29日の明示的な依頼に基づき、Pages公開と公開サイトの動作確認を完了。検証結果は末尾。
 - ロゴは未用意。
   - C言語の資料やロゴ、ClangのWASM・依存パッケージは含めていない。
 - 各回を行き来するサイドメニューは未実装。現状はその回の目次。
@@ -77,7 +78,7 @@
 1. ユーザーの最新の依頼を確認する。
 2. `content/lesson01.md` の初稿をユーザーと調整する。第2回以降は `docs/後期教材の構成.md` に沿って作成する。
 3. TeaVM版をユーザー・演習室で確認する。実行は全演習欄に接続済み。
-4. 公開の依頼があればGitHub Pagesへ配置する。`dist/teavm/` のライセンス・対応ソースも必ず含める。
+4. 公開更新は `main` にpush後、Actions「Deploy GitHub Pages」を手動実行する。`dist/teavm/` のライセンス・対応ソースも必ず含める。
    - `npm run build:pages` で `/info2026/` 用を生成できる。特別なサーバー機能は不要。
 5. 第2回以降で必要な機能を、順次TeaVM版で検証する。
 
@@ -111,7 +112,7 @@
   - この科目で全案の実装が依頼されたという意味ではない。
 - 同じlocalhostオリジンを使っても科目間の下書きが混ざらないよう、保存キーを変更済み。
 - 開発ポートはC教材との併用を考慮して5174。
-- `.github/workflows/` はまだ設置せず、`docs/deploy-pages.yml.example` に手動実行の例を置いた。
+- `.github/workflows/deploy.yml` を設置済み。pushだけでは公開されない。手動実行でテスト・ビルド・配置する。
 
 ## ひな形作成時の確認結果（今回の更新前）
 
@@ -173,7 +174,7 @@
 - 実際のPages公開、演習室の実機・IME・一斉アクセス確認、学校利用条件の確定は未実施。
 - 変更前のファイルは `/tmp/info2026-before-runtime/` に退避。C教材は変更していない。
 
-## TeaVMへの切り替え結果（最新）
+## TeaVMへの切り替え結果
 
 2026年9月29日。ユーザーの期限と第1回の範囲に合わせて切り替え。
 
@@ -195,3 +196,23 @@
 - 現在の確認先：開発版 `http://127.0.0.1:5174/lesson01.html`、静的版 `http://127.0.0.1:5177/info2026/lesson01.html`。
 - 変更前を `/tmp/info2026-before-teavm/` に退避。原稿とC教材は今回変更していない。
 - `npm ci`、11件のテスト、通常ビルド、Pages用ビルド成功。
+
+## GitHub Pages公開結果（最新）
+
+2026年9月29日、ユーザーからGitHub作成・Pages公開の明示的な依頼を受領し、完了。
+
+- リポジトリ：<https://github.com/ota/info2026>（public、`main`）。
+- 第1回：<https://ota.github.io/info2026/lesson01.html>。
+- PagesのSourceはGitHub Actions。`.github/workflows/deploy.yml` の手動実行で更新する。
+  - `main` にpushするだけでは公開ページは変わらない。
+  - [初回デプロイ](https://github.com/ota/info2026/actions/runs/36548749828) 成功。Node.js 24でインストール・テスト・Pages用ビルド・配置を実施。
+- Chrome 149で公開URLに対する `tests/browser/teavm-runtime.mjs` が成功。
+  - 第1回の見本2つ・全課題、日本語・改行なし・標準エラー、コンパイルエラーと実行時エラー。
+  - 無限ループの停止・再実行、出力上限からの復帰、リロード後の入力復元、貼り付け禁止。
+  - Canvas表示と提出HTMLの実ダウンロード。ブラウザのJavaScriptエラーは0件。
+  - 検証中はTeaVM公式サイトとCheerpJ CDNを遮断し、同じPagesサイトのファイルだけで実行。
+- 公開された実行用4ファイルと対応ソースZIPのSHA-256が手元の検証済みファイルと一致。
+  - `compiler.wasm` のContent-Typeは `application/wasm`。
+  - NOTICE、第三者ライセンス、ビルド手順も公開内容の一致を確認。
+- READMEに公開URLと更新手順を記載。`.local/`、`node_modules/`、端末の検証用ファイルはGitHubに含めない。
+- 演習室の端末・他ブラウザ・一斉アクセスと、第2回以降の機能は引き続き未検証。

@@ -6,6 +6,9 @@
 **第1回用のTeaVM実行環境を接続しました。通常のGitHub Pages用ビルドでもJavaを実行できます。**
 最初に [HANDOFF.md](HANDOFF.md) を読んでください。
 
+- 第1回の公開URL：<https://ota.github.io/info2026/lesson01.html>
+- GitHub：<https://github.com/ota/info2026>
+
 シラバスURLは [syllabus.txt](syllabus.txt)、後期16週の構成は [後期教材の構成](docs/後期教材の構成.md) に記録しています。
 昨年度資料はありません。難易度と説明の量は計算機基礎演習を参考にしています。
 
@@ -79,11 +82,14 @@ npm run build:pages
 ```
 
 `build:pages` は `/info2026/` 配信用です。TeaVMによる実行が有効です。
-GitHubリポジトリの作成と公開はまだ行っていません。
 `npm run preview -- --host 127.0.0.1 --port 5177 --base=/info2026/` で静的ビルドを確認できます。
 `dist/teavm/` のライセンスと対応ソースも含めて公開します。
-手動実行用のActions例は `docs/deploy-pages.yml.example` に置いてあります。
-公開するときに `.github/workflows/deploy.yml` へ移し、PagesのSourceをGitHub Actionsに設定します。
+
+公開設定は `.github/workflows/deploy.yml` です。原稿の変更を `main` にpushした後、
+[Deploy GitHub Pages](https://github.com/ota/info2026/actions/workflows/deploy.yml) の
+「Run workflow」で更新します。pushだけでは公開ページは変わりません。
+ActionsはNode.js 24でテストとビルドを実行し、成功した場合に配置します。
+PagesのSourceはGitHub Actionsに設定済みです。
 
 ## 保存機能の範囲
 

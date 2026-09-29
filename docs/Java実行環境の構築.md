@@ -39,7 +39,9 @@ npm run preview -- --host 127.0.0.1 --port 5177 --base=/info2026/
 確認先：`http://127.0.0.1:5177/info2026/lesson01.html`
 
 ビルド前に、実行用ファイルと対応ソースのSHA-256、ライセンス文書の存在を確認する。
-実際のGitHubリポジトリ作成・Pages公開は未実施。公開は別途依頼時に行う。
+公開先は <https://ota.github.io/info2026/lesson01.html>。
+`ota/info2026` のActions「Deploy GitHub Pages」を手動実行して更新する。
+実行用ファイル・ライセンス・対応ソースは同じPagesサイトから配信する。
 
 ## 確認した範囲と制約
 
