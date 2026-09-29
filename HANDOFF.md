@@ -286,3 +286,4 @@ Node.js 24で `npm ci`、`npm test`、`npm run build`、`npm run build:pages` �
 - 日本語入力の戻し忘れ、クラス名 `Main` を変えないこと、`型 名前 = 値;` の形、エラー表示の補助行の読み方、「最初のコードに戻す」の使い方を追記。
 - 見本のCanvasを、Webフォントの読み込み後に描き直すよう修正。以前は読み込みが遅いと代わりのフォントのまま残った。
 - ヒントに載せたコードも、ブラウザのJava実行環境で出力を確認。
+- [デプロイ](https://github.com/ota/info2026/actions/runs/36563280195) 成功（`4fff162`）。公開URLで外部の実行環境を遮断して `tests/browser/teavm-runtime.mjs` 成功。ブラウザエラー0件。
