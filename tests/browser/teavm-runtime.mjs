@@ -179,7 +179,7 @@ try {
   const secondList = exercises(secondSource);
   const secondSamples = secondList.filter(({ fix }) => !fix).map(({ code }) => code);
   const secondExpected = secondList.filter(({ fix }) => !fix).map(({ expected }) => expected);
-  assert.equal(secondSamples.length, 8);
+  assert.equal(secondSamples.length, 9);
   for (let i = 0; i < secondSamples.length; i++) {
     assert.ok(secondExpected[i], `expected output for sample ${i}`);
     const sampleResult = await run(secondSamples[i]);

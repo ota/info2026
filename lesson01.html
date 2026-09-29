@@ -51,6 +51,7 @@
 <li>「エラーを直す」の欄には、誤りを含むコードが最初から入っています。
 <ul>
 <li>実行してエラーを確かめ、直してから再実行します。</li>
+<li>分からなくなったら「最初のコードに戻す」を2回押すと、最初のコードに戻ります。</li>
 </ul>
 </li>
 <li>コードは使っているブラウザに自動保存されます。
@@ -108,7 +109,7 @@
 <tr>
 <td>変数を作る</td>
 <td><code>n = 12</code></td>
-<td><code>int n = 12;</code> のように型を書く</td>
+<td><code>int n = 12;</code> のように、データの種類（型）も書く</td>
 </tr>
 </tbody>
 </table>
@@ -125,7 +126,7 @@
 <li>日本語入力をオフにし、記号は半角で入力します。
 <ul>
 <li><code>(</code> <code>)</code> はShiftと <code>8</code> <code>9</code>、<code>&quot;</code> はShiftと <code>2</code> です。</li>
-<li><code>{</code> <code>}</code> はShiftと、<code>@</code> の右隣・<code>:</code> の右隣のキーです。</li>
+<li><code>[</code> <code>]</code> は <code>@</code> の右隣・<code>:</code> の右隣のキーです。Shiftと押すと <code>{</code> <code>}</code> になります。</li>
 <li><code>;</code> は <code>L</code> の右隣のキーです。</li>
 </ul>
 </li>
@@ -153,13 +154,14 @@
     </div>
   </div>
 <div class="expected"><code>Hello, World!</code></div>
-<ul class="concepts"><li class="concept"><p>3行目以外は、毎回同じ「基本の形」です。今日の見本はすべてこの形を使います。</p><ul class="concept-details"><li>1〜2行目と最後の2行はそのまま書き、3行目の位置に処理を書きます。</li></ul></li>
-<li class="concept"><p><code>public class Main { ... }</code> はプログラムを入れる外側のまとまりです。</p><ul class="concept-details"><li>このまとまりを「クラス」と呼びます。名前は <code>Main</code>、ファイル名は <code>Main.java</code> にします。</li></ul></li>
+<ul class="concepts"><li class="concept"><p>3行目以外は、毎回同じ「基本の形」です。今日の見本はすべてこの形を使います。</p><ul class="concept-details"><li>1〜2行目と最後の2行はそのまま書き、3行目の位置に処理を書きます。</li><li>処理が増えたら、3行目の位置に行を増やして書きます。</li></ul></li>
+<li class="concept"><p><code>public class Main { ... }</code> はプログラムを入れる外側のまとまりです。</p><ul class="concept-details"><li>このまとまりを「クラス」と呼びます。名前は <code>Main</code>、ファイル名は <code>Main.java</code> にします。</li><li>この教材の入力欄は <code>Main.java</code> として実行されます。<code>Main</code> の部分は変えません。</li></ul></li>
 <li class="concept"><p><code>public static void main(String[] args) { ... }</code> の中に、最初に実行する処理を書きます。</p><ul class="concept-details"><li>意味は後の回で学びます。今は基本の形としてそのまま使います。</li></ul></li>
 <li class="concept"><p><code>System.out.println(...)</code> は、括弧の中の値を画面に表示して改行します。</p><ul class="concept-details"><li>文字の並びを「文字列」と呼び、半角の二重引用符 <code>&quot;</code> で囲みます。</li><li>命令の最後には半角のセミコロン <code>;</code> を付けます。</li></ul></li>
 <li class="concept"><p><code>{</code> と <code>}</code> は処理のまとまりを囲みます。</p><ul class="concept-details"><li>内側の行の先頭を空けると、まとまりが分かりやすくなります。</li></ul></li></ul>
 <div class="check"><b>確認</b><p><code>Hello, World!</code> を <code>こんにちは、Java！</code> に書き換えて実行しましょう。
-二重引用符 <code>&quot;</code> は残します。</p>
+二重引用符 <code>&quot;</code> は残します。
+日本語を打ち終えたら、日本語入力をオフに戻します。戻し忘れると <code>”</code> や <code>；</code> が全角になり、エラーになります。</p>
 </div>
 <div class="check"><b>確認</b><p>3行目の下に <code>System.out.println(&quot;2行目&quot;);</code> を1行足して実行しましょう。
 命令は上から順に実行され、2行表示されます。</p>
@@ -195,7 +197,7 @@
 3.5
 </pre>
 </div>
-<ul class="concepts"><li class="concept"><p><code>7</code> は数値、<code>&quot;7&quot;</code> は文字列です。表示は同じでも、データの種類が違います。</p><ul class="concept-details"><li>データの種類を「型」と呼びます。型は次の「変数を使う」で書き方を学びます。</li></ul></li>
+<ul class="concepts"><li class="concept"><p><code>7</code> は数値、<code>&quot;7&quot;</code> は文字列です。表示は同じでも、データの種類が違います。</p><ul class="concept-details"><li>データの種類を「型」と呼びます。型の書き方は、この後の「変数を使う」で学びます。</li></ul></li>
 <li class="concept"><p><code>1 + 2</code> は計算され、<code>3</code> が表示されます。</p><ul class="concept-details"><li><code>&quot;1 + 2&quot;</code> は文字列なので、計算されずにそのまま表示されます。</li></ul></li>
 <li class="concept"><p><code>3.5</code> のように小数も表示できます。数値は二重引用符で囲みません。</p></li></ul>
 <div class="check"><b>確認</b><p><code>1 + 2</code> を <code>10 - 4</code> に変えると何が表示されるか、予想してから実行しましょう。</p>
@@ -236,7 +238,8 @@ ABC
 予想してから実行しましょう。</p>
 </div>
 </section>
-<section id="variables" class="section"><h2>変数を使う</h2><p>値を入れて、後から使える名前を「変数」と呼びます。Javaでは、変数を作るときに型も書きます。</p>
+<section id="variables" class="section"><h2>変数を使う</h2><p>値を入れて、後から使える名前を「変数」と呼びます。Javaでは、変数を作るときに型も書きます。
+<code>=</code> は、Shiftと <code>-</code> のキーで入力します。</p>
 <div class="exercise" data-exercise="variable">
     <div class="sample-head"><span class="file-icon">J</span> Main.java<span class="sample-tag">見ながら入力</span></div>
        <div class="sample-scroll"><canvas class="sample-canvas" aria-label="書き写すためのJavaコードサンプル。文字は選択できません。"></canvas></div>
@@ -263,7 +266,7 @@ ABC
 number
 </pre>
 </div>
-<ul class="concepts"><li class="concept"><p><code>int number = 12;</code> は、整数型の変数 <code>number</code> を作り、<code>12</code> を入れます。</p><ul class="concept-details"><li><code>int</code> は整数の型です。</li></ul></li>
+<ul class="concepts"><li class="concept"><p><code>int number = 12;</code> は、整数型の変数 <code>number</code> を作り、<code>12</code> を入れます。</p><ul class="concept-details"><li><code>型 名前 = 値;</code> の順に書きます。<code>int</code> は整数の型です。</li></ul></li>
 <li class="concept"><p><code>System.out.println(number)</code> は、変数の中の値 <code>12</code> を表示します。</p><ul class="concept-details"><li><code>&quot;number&quot;</code> と書くと文字列になり、<code>number</code> という文字がそのまま表示されます。</li></ul></li>
 <li class="concept"><p>変数名には英字、数字、<code>_</code> を使えます。ただし、先頭を数字にはできません。</p><ul class="concept-details"><li>大文字と小文字は区別されます。<code>Number</code> と <code>number</code> は別の名前です。</li></ul></li></ul>
 <div class="check"><b>確認</b><p><code>int number = 12;</code> の <code>12</code> を自分の出席番号に変えて実行しましょう。</p>
@@ -471,7 +474,7 @@ number
 <li>1つ目：<code>';' expected</code> は「<code>;</code> が必要」。3行目の行末に <code>;</code> を付けます。</li>
 <li>2つ目：<code>package system does not exist</code> は「<code>system</code> が見つからない」。<code>System</code> と大文字にします。</li>
 <li>3つ目：<code>unclosed string literal</code> は「文字列が閉じていない」。<code>!</code> の後に <code>&quot;</code> を足します。</li>
-<li>4つ目：<code>illegal character: '　'</code> は「使えない文字がある」。<code>　</code> は全角の空白です。
+<li>4つ目：<code>illegal character: '\u3000'</code> は「使えない文字がある」。<code>\u3000</code> は全角の空白を表す番号です。
 <ul>
 <li><code>String</code> と <code>name</code> の間を消し、半角の空白を打ち直します。</li>
 </ul>
@@ -539,7 +542,7 @@ number
     </div>
   </div>
 <h3 class="task-title">課題3 <span>山形模様</span></h3>
-<p>半角の空白と <code>*</code> を使い、次の3行を表示してください。</p>
+<p>半角の空白と <code>*</code> を使い、次の3行を表示してください。<code>*</code> はShiftと <code>:</code> のキーです。</p>
 <div class="expected"><pre>  *
  ***
 *****

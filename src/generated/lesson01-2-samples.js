@@ -18,7 +18,17 @@ export const samples = {
     "        int b = 2;",
     "        System.out.println(a / b);",
     "        System.out.println(a % b);",
-    "        System.out.println(7.0 / 2);",
+    "    }",
+    "}"
+  ],
+  "decimal": [
+    "public class Main {",
+    "    public static void main(String[] args) {",
+    "        double c = 7;",
+    "        int b = 2;",
+    "        System.out.println(c);",
+    "        System.out.println(c / b);",
+    "        System.out.println(7 / 2.0);",
     "    }",
     "}"
   ],

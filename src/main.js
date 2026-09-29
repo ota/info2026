@@ -23,6 +23,11 @@ for (const [name, lines] of Object.entries(samples)) {
   sampleCanvases.push([canvas, lines]);
   drawSample(canvas, lines);
 }
+// A canvas keeps whatever font was available when it was drawn, so redraw
+// once the web font has loaded; otherwise a slow load leaves the fallback.
+document.fonts?.load('14px "DM Mono"').then(() => {
+  for (const [canvas, lines] of sampleCanvases) drawSample(canvas, lines);
+});
 let resizeFrame;
 window.addEventListener("resize", () => {
   cancelAnimationFrame(resizeFrame);
