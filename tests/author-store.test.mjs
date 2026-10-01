@@ -358,3 +358,10 @@ test("exercises carry their kind, and expected blocks bind answers", () => {
     /出力例の対象 nothing が見つかりません/,
   );
 });
+
+test("generated pages open and close every div", () => {
+  const { html } = renderLesson(original, template, "lesson01.md");
+  const opened = html.match(/<div\b/g).length;
+  const closed = html.match(/<\/div>/g).length;
+  assert.equal(opened, closed);
+});
