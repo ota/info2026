@@ -380,3 +380,13 @@ Node.js 24で `npm ci`、`npm test`、`npm run build`、`npm run build:pages` �
 - ユーザーの了承（「とりあえず、これでいく」）を受けて公開。`main` に早送りで取り込みpush、[自動デプロイ](https://github.com/ota/keisanki2026/actions/runs/36958547138) 成功（`50ad3ed`）。作業用ブランチは削除。
   - 公開URL <https://ota.github.io/keisanki2026/lesson02.html> で、確認用の台本（全見本・試す欄・直す演習・課題・発展、達成状況100%（22 / 22））が成功。第1回の `tests/browser/c-runtime.mjs` も公開URLで成功。ブラウザエラー0件。
   - 残る検討事項：回の間を移動するリンク（C教材のサイドバーは今の回のみ）、写経の量（必要なら枠を最初から入れる等）、公開リポジトリの扱い（課題の解答を含むテストの置き場所）。
+
+## 説明ファイルを notes/ へ移動（最新）
+
+2026年10月2日、ユーザーの依頼で、GitHubのトップページに説明が表示されないよう、両リポジトリの説明ファイルを `notes/` に移した（非公開化などは後で検討）。
+
+- この教材：`README.md`、`HANDOFF.md`、`AGENTS.md`、`docs/` の6ファイル、`syllabus.txt`、`references/README.md`（→ `notes/references.md`）。
+  - ルートの `AGENTS.md` は、`notes/AGENTS.md` と `notes/HANDOFF.md` を読むよう案内するだけの短いファイル（CodexやClaude Codeが自動で読むため、ルートに残す）。
+  - `references/` はフォルダごとGit管理外にした。
+- C教材：`README.md`、`講義内容_Q3_Q4.txt`、`syllabus.txt`。リポジトリの説明欄に公開ページのURLを追加。
+- 両リポジトリでREADMEがトップページに表示されないこと（GitHubのREADME取得APIが404）、公開ページに影響がないことを確認。過去の履歴からは引き続き見られる。
