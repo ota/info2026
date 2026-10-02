@@ -1,5 +1,7 @@
 # 2I情報処理基礎演習 — 2026年度Web教材
 
+このフォルダ（`notes/`）は教員・作業者向けのメモです。GitHubのトップページに表示されないよう、ルートには置いていません。
+
 後期のJava入門のWeb教材です。第1回を1コマずつ2ページに分けています。
 計算機基礎演習の表示・編集・保存機能を引き継いでいます。
 
@@ -10,7 +12,7 @@
 - 第1回・2コマ目：<https://ota.github.io/info2026/lesson01-2.html>
 - GitHub：<https://github.com/ota/info2026>
 
-シラバスURLは [syllabus.txt](syllabus.txt)、後期16週の構成は [後期教材の構成](docs/後期教材の構成.md) に記録しています。
+シラバスURLは [syllabus.txt](syllabus.txt)、後期16週の構成は [後期教材の構成](後期教材の構成.md) に記録しています。
 昨年度資料はありません。難易度と説明の量は計算機基礎演習を参考にしています。
 
 ## 起動
@@ -31,7 +33,7 @@ npm run edit
 実行用ファイルは `public/teavm/` に同梱済みです。初回セットアップやローカルJDKは不要です。
 第1回の文字列表示、四則演算、基本的な変数、エラー表示、停止と再実行に対応しています。
 Scannerの対話入力やGUIは、この版の授業用機能には含めません。
-現在は `Main.java` / `Main` の1ファイル方式です。詳細は [Java実行環境の構築](docs/Java実行環境の構築.md) を参照してください。
+現在は `Main.java` / `Main` の1ファイル方式です。詳細は [Java実行環境の構築](Java実行環境の構築.md) を参照してください。
 
 本文・箇条書き・見本コードをブラウザ上で編集できます。
 「原稿を保存」でMarkdownへ反映します。
@@ -59,8 +61,9 @@ Zed側とブラウザ側に同時に変更がある場合、保存を止めて�
 | `src/sample.js` | 見本コードをCanvasへ描画 |
 | `src/export.js` | 氏名・出席番号・入力コードなどを含むHTML保存 |
 | `scripts/`、`author/` | Markdown生成、教員用編集画面 |
-| `docs/Javaブラウザ実行の調査.md` | 候補の比較と実測結果 |
-| `references/` | 参照資料の扱い。昨年度資料はなし |
+| `notes/` | 教員・作業者向けの説明、引き継ぎ、調査の記録（このファイルを含む） |
+| `notes/Javaブラウザ実行の調査.md` | 候補の比較と実測結果 |
+| `references/` | 手元の参照資料の置き場（Git管理外）。扱いは `notes/references.md` |
 
 `index.html`、`lesson01.html`、`lesson01-1.html`、`lesson01-2.html`、`src/generated/` は生成物です。
 旧 `lesson01.html` とトップページは1コマ目を表示します。
